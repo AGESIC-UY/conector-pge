@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connector>
+    <name>pruAgesicGlobal</name>
+    <description>Prueba con config global y sin dependencias entre wsdl (con soapAction)</description>
+    <type>Test</type>
+    <path>/pruAgesicGlobal</path>
+    <url>https://testservicios.pge.red.uy:6055/timestamp/TimestampService</url>
+    <wsdl>UEsDBBQACAAIAOlTUkMAAAAAAAAAAAAAAAAIAAAAd3NkbC54bWydVk1v1DAQvfdX5JZbvAWVQ5RdCS4ICSiiPXBDrj2klhLb2E6z++8Z20k223w0yy0ez8eb98ajFBz+CCmcUNImktawTx9FDdbRWj+AeREM0sRRU4L7jrdWU4Yuz87pnJC2bTNaghUsK5unrDkRq2iaHOtK2sHJsmeoqc3Qirc6U6YkreUV6Rxzb33b25+GEDfKvwYiP1p+4di+Dxnf7Xa35Ne3rw+hWnq4SQp30mDxIymOCCnYr+37BYxFHvfpbbb7D6TbgEaAUEEN0nWKfQY3iIZqYSf7FAvnF3ayIfgnNoqDAEtJhvtzMqZqXcHxEf3n0AS/yCn8bUAy6ELJZezGfAOAad5ouWiwFvKescYgtSjIq+nue0R/Th14e9dWBHeRdw5u9ArC+AEi/QQVWMCizgvP6fdiP4WmxiUd+BXyV3kpiM8SAHU4roS0BcochKXSWhk3UnOyXUI5pcFQv4RmJxrTotWBuTcczNyEFULqBgWPZSPgN7osSIiJ4apx18WPCY/BcSSGRgINfe/+8CQkF7JcoOFTvB0/vHmm/B7M+1zWnSr05oo1XiiMNlRaX3V1oYZd6u/jwK+zHwkKZc9+/viRubDt1rYbed3ExPAF39QPBEzmltVZob5xxU9JYxFjJXAeaNV7TsXcFrasXcex/7YR6uoEe9KTLmZev0Hi+TQ9EWPCKecGRzKpFKNnsi2y7TA2whLKZrqEzABH0vMPu7s74vrcE7o7xcNkhja73g43BRn9Chz+AVBLBwgKhy7SOQIAABgIAABQSwECFAAUAAgACADpU1JDCocu0jkCAAAYCAAACAAAAAAAAAAAAAAAAAAAAAAAd3NkbC54bWxQSwUGAAAAAAEAAQA2AAAAbwIAAAAA</wsdl>
+    <wsaTo>http://testservicios.pge.red.uy/timestamp</wsaTo>
+    <username>usuarioOrganismo</username>
+    <issuer>Organismo</issuer>
+    <policyName>urn:tokensimple</policyName>
+    <role_operation>
+        <role>OU=TEST_TUTORIAL,O=TEST_PE</role>
+        <operation>GetTimestamp</operation>
+        <operationFromWSDL>GetTimestamp</operationFromWSDL>
+        <wsaAction>pepito</wsaAction>
+        <soapAction>http://www.agesic.gub.uy/soa/TimestampService/TimestampServiceImplPort/GetTimestamp</soapAction>
+    </role_operation>
+    <enableCacheTokens>true</enableCacheTokens>
+    <tag></tag>
+    <enableLocalConf>false</enableLocalConf>
+    <enableUserToken>false</enableUserToken>
+    <version>2.0</version>
+</connector>

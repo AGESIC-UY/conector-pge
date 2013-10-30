@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+  	<ui:composition template="/templates/template.xhtml">			
+     	
+	<ui:define name="pageTitle">Init</ui:define>
+	<ui:define name="pageHeader">Init</ui:define>
+
+	<ui:define name="body">
+		<h:form>
+
+			<h:messages globalOnly="true" styleClass="fieldError"/>
+			<h:panelGrid columns="4">
+				
+				
+				<h:outputLabel value="Role - Operation"/>
+				<a:region id="roleRegion">
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="Role - Operation Panel" />
+					</f:facet>
+					<h:dataTable id="tableRoleOperation" value="#{connector.connector.role_operation}" var="rl" width="250px">
+					  <h:column>
+					    <f:facet name="header">
+					      <h:outputText value="Rol" />
+					    </f:facet>
+					    <h:outputText value="#{rl.role}" />
+					  </h:column>
+					  <h:column>
+					    <f:facet name="header">
+					      <h:outputText value="#{msg.wsaAction}" />
+					    </f:facet>
+					    <h:outputText value="#{rl.wsaAction}" />
+					  </h:column>
+					  <h:column>
+					    <f:facet name="header">
+					      <h:outputText value="Operación" />
+					    </f:facet>
+					    <h:outputText value="#{rl.operation}" />
+					  </h:column>
+					  <h:column>
+					    <f:facet name="header">
+					      <h:outputText value="Acciones" />
+					    </f:facet>
+					    <a:commandLink action="#{connector.editRoleOperation}" oncomplete="Richfaces.showModalPanel('newRoleOperation');" reRender="newRoleOperation"> 
+					    	<img src="../img/edit.png" title="#{messages['general.edit']}" /> 
+					       	<f:setPropertyActionListener value="#{rl}" target="#{connector.rlToEdit}" />
+							<f:setPropertyActionListener value="true" target="#{connector.editingRoleOper}" />
+					    </a:commandLink>
+					    <a:commandLink action="#{connector.removeRoleOperation}" reRender="tableRoleOperation" >
+					       	<img src="../img/Pdelete.png" title="#{messages['general.delete']}"/> 
+					       	<f:setPropertyActionListener value="#{rl}" target="#{connector.rlToDelete}" />
+					    </a:commandLink>
+					    
+					    
+					  </h:column>
+					</h:dataTable>
+					
+					<a:commandButton action="#{connector.initEditRoleOperation}" oncomplete="Richfaces.showModalPanel('newRoleOperation');" 
+						reRender="tableRoleOperation" value="+"  >
+						<f:setPropertyActionListener value="false" target="#{connector.editingRoleOper}" />
+				    </a:commandButton>
+				    
+					
+				</rich:panel>
+				</a:region>
+				<rich:spacer/>
+				<rich:spacer/>
+				
+				
+			</h:panelGrid>
+				
+			
+		</h:form>
+		
+		
+		<rich:modalPanel id="newRoleOperation">
+			<f:facet name="header" >
+				<h:outputText value="Rol - Operación" />
+			</f:facet>
+			<h:form>
+				<h:panelGroup>
+					<h:panelGrid columns="3">
+						<h:outputText value="Role: " />
+						<h:inputText id="roleEdit" value="#{connector.rlToEdit.role}" required="true">
+							<f:validateLength maximum="100"/>
+						</h:inputText>
+						<rich:spacer/>
+						
+						<h:outputText value="Operation: " />
+						<h:inputText id="opeEdit" value="#{connector.rlToEdit.operation}" >
+							<f:validateLength maximum="100"/>
+						</h:inputText>
+						<rich:spacer/>
+						
+						<a:commandButton value="Cancelar" onclick="Richfaces.hideModalPanel('newRoleOperation');" immediate="true"/>
+						<h:panelGroup id="botonAceptar">
+							<a:commandButton value="Salvar" action="#{connector.editRoleOperation}" 
+							oncomplete="if (!ajaxRequestContainsErrors()) Richfaces.hideModalPanel('newRoleOperation');" reRender="tableRoleOperation" />
+						</h:panelGroup>
+						<rich:spacer/>
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:form>
+		</rich:modalPanel>
+		
+	</ui:define>
+</ui:composition>
+</html>
