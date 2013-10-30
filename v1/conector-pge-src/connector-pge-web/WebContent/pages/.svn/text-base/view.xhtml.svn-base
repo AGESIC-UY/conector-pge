@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+  	<ui:composition template="/templates/template.xhtml">		
+		<ui:define name="pageTitle"><h:outputLabel value="#{msg.connector}"/></ui:define>
+		<ui:define name="pageHeader"><h:outputLabel value="#{msg.connector}"/></ui:define>
+
+		<ui:define name="body">
+			<h:form>
+				<h:messages globalOnly="true" styleClass="fieldError"/>
+				<h:panelGrid columns="4" style="font-size: 13px;">
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.name}: "/>
+					<h:outputLabel value="#{connector.connector.name}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.type}: "/>
+					<h:outputLabel value="#{connector.connector.typeLabel}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.description}: "/>
+					<h:outputLabel value="#{connector.connector.description}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.path}: "/>
+					<h:outputLabel value="#{connector.connector.path}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.url}: "/>
+					<h:outputLabel value="#{connector.connector.url}"/>
+					<rich:spacer/>					
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.wsaTo}: "/>
+					<h:outputLabel value="#{connector.connector.wsaTo}"/>
+					<rich:spacer/>
+									
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.username}: "/>
+					<h:outputLabel value="#{connector.connector.username}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.issuer}: "/>
+					<h:outputLabel value="#{connector.connector.issuer}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.policyName}: "/>
+					<h:outputLabel value="#{connector.connector.policyName}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.aliasKeystore}: "/>
+					<h:outputLabel value="#{connector.connector.aliasKeystore}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.passKeystoreOrg}: "/>
+					<h:outputLabel value="****"/>
+					<rich:spacer/>
+
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.passKeystore}: "/>
+					<h:outputLabel value="****"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.passKeystoreSsl}: "/>
+					<h:outputLabel value="****"/>
+					<rich:spacer/>
+
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.wsdl}: " />
+					<h:outputLink value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;fileName=#{connector.pathWsdl}" 
+							rendered="#{connector.connector.existWsdl}">
+							<img src="../img/download.png" alt="#{msg.download}" title="#{msg.download}"/>Descargar
+					</h:outputLink>
+					<rich:spacer rendered="#{not connector.connector.existWsdl}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.keystoreOrg}: " />
+					<h:outputLink value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;fileName=#{connector.pathKeystoreOrg}" 
+							rendered="#{connector.connector.existKeystoreOrg}">
+							<img src="../img/download.png" alt="#{msg.download}" title="#{msg.download}"/>Descargar
+					</h:outputLink>
+					<rich:spacer rendered="#{not connector.connector.existKeystoreOrg}"/>
+					<rich:spacer/>
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.keystore}: " />
+					<h:outputLink value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;fileName=#{connector.pathKeystore}" 
+							rendered="#{connector.connector.existKeystore}">
+							<img src="../img/download.png" alt="#{msg.download}" title="#{msg.download}"/>Descargar
+					</h:outputLink>
+					<rich:spacer rendered="#{not connector.connector.existKeystore}"/>
+					<rich:spacer/>
+
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.keystoreSsl}: " />
+					<h:outputLink value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;fileName=#{connector.pathKeystoreSsl}" 
+							rendered="#{connector.connector.existKeystoreSsl}">
+							<img src="../img/download.png" alt="#{msg.download}" title="#{msg.download}"/>Descargar
+					</h:outputLink>
+					<rich:spacer rendered="#{not connector.connector.existKeystoreSsl}"/>
+					<rich:spacer/>
+
+					<rich:spacer/>
+					<br/>
+					<rich:spacer/>
+					<rich:spacer/>				
+					
+					<rich:spacer/>
+					<h:outputLabel value="#{msg.roleOperator}"/>
+					<rich:dataTable id="tableRoleOperation" value="#{connector.connector.role_operation}" var="rl" width="250px" rowClasses="even, odd">
+					  <h:column>
+					    <f:facet name="header">
+					      <h:outputText value="#{msg.roleOnly}" />
+					    </f:facet>
+					    <h:outputText value="#{rl.role}" />
+					  </h:column>
+					  <h:column>
+					    <f:facet name="header">
+					      <h:outputText value="#{msg.wsaAction}" />
+					    </f:facet>
+					    <h:outputText value="#{rl.wsaAction}" />
+					  </h:column>
+					  <h:column>
+					    <f:facet name="header">
+					      <h:outputText value="#{msg.operator}" />
+					    </f:facet>
+					    <h:outputText value="#{rl.operationFromWSDL}" />
+					  </h:column>
+					</rich:dataTable>
+					
+					<rich:spacer/>
+					<rich:spacer/>
+				
+				</h:panelGrid>
+				
+				<br />
+				<br />
+                <div align="center">
+					<h:commandButton action="home" value="#{msg.back}" immediate="true" />
+					&#160;&#160;&#160;
+					<h:commandButton action="#{connector.edit}" value="#{msg.edit}"/>
+					&#160;&#160;&#160;
+					<h:commandButton action="#{connector.delete}" value="#{msg.delete}"  onclick="if (!confirm('Est&#243; seguro que desea eliminar el Conector?')) return false;" rendered="#{connector.editing}"/>
+					&#160;&#160;&#160;
+					<h:outputLink value="#{facesContext.externalContext.requestContextPath}/export?id=#{connector.connector.id}" ><h:outputLabel value="#{msg.export}"/></h:outputLink>
+					
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/repository/!svn/ver/4759/agesic/connector/trunk/connector-pge-web/WebContent/WEB-INF
+END
+faces-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repository/!svn/ver/4872/agesic/connector/trunk/connector-pge-web/WebContent/WEB-INF/faces-config.xml
+END
+jboss-web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/repository/!svn/ver/4806/agesic/connector/trunk/connector-pge-web/WebContent/WEB-INF/jboss-web.xml
+END
+.faces-config.xml.jsfdia
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repository/!svn/ver/4872/agesic/connector/trunk/connector-pge-web/WebContent/WEB-INF/.faces-config.xml.jsfdia
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/repository/!svn/ver/4872/agesic/connector/trunk/connector-pge-web/WebContent/WEB-INF/web.xml
+END

@@ -1,0 +1,350 @@
+package uy.gub.agesic.connector.entity;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@Entity
+@Table(name = "CONNECTOR") //, uniqueConstraints={@UniqueConstraint(columnNames={"NAME","TYPE"}), @UniqueConstraint(columnNames={"TYPE","PATH"})})
+public class Connector extends AbstractEntity implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	public static final String TYPE_TEST = "Test";
+	public static final String TYPE_PROD = "Prod";
+
+	public static final String TYPE_PROD_LABEL = "Producci\u00F3n";
+	public static final String TYPE_TEST_LABEL = "Test";
+
+	public static final String NAME_FILE_WSDL = "wsdl.xml";
+	public static final String NAME_FILE_KEYSTORE_ORG = "keystore_org.xml";
+	public static final String NAME_FILE_KEYSTORE = "keystore.xml";
+	public static final String NAME_FILE_KEYSTORE_SSL = "keystoreSsl.xml";
+
+	public static final String NAME_FILE_KEYSTORE_ORG2 = "organismo.keystore";
+	public static final String NAME_FILE_KEYSTORE2 = "ssl.keystore";
+	public static final String NAME_FILE_KEYSTORE_SSL2 = "ssl.trustore";
+
+	@Column(name="NAME", length=100)
+	private String name;
+	
+	@Column(name="DESCRIPTION", length=800)
+	private String description;
+	
+	@Column(name="TYPE", length=50)
+	private String type;
+
+	@Column(name="PATH", length=100)
+	private String path;	
+
+	@Column(name="URL", length=200)
+	private String url;
+	
+	@Transient
+	private byte[] wsdl;
+	
+	@XmlTransient
+	@Transient
+	private boolean existWsdl;
+	
+	@Transient
+	private byte[] keystoreOrg;
+	
+	@XmlTransient
+	@Transient
+	private boolean existKeystoreOrg;
+
+	@XmlTransient
+	@Transient
+	private String keystoreOrgName;
+
+	@Transient
+	private byte[] keystore;
+
+	@XmlTransient
+	@Transient
+	private boolean existKeystore;
+
+	@XmlTransient
+	@Transient
+	private String keystoreName;
+
+	@Column(name="ALIAS_KEYSTORE", length=100)
+	private String aliasKeystore;
+	
+	@Column(name="PASSWORD_KEYSTORE_ORG", length=50)
+	private String passwordKeystoreOrg;
+	
+	@Column(name="PASSWORD_KEYSTORE", length=50)
+	private String passwordKeystore;
+
+	@Transient
+	private byte[] keystoreSsl;
+	
+	@XmlTransient
+	@Transient
+	private boolean existKeystoreSsl;
+
+	@XmlTransient
+	@Transient
+	private String keystoreSslName;
+
+	@Column(name="PASSWORD_KEYSTORE_SSL", length=50)
+	private String passwordKeystoreSsl;
+	
+	@Column(name="WSA_TO", length=100)
+	private String wsaTo;
+
+	@Column(name="USERNAME", length=100)
+	private String username;
+	
+	@Column(name="ISSUER", length=100)
+	private String issuer;
+	
+	@Column(name="POLICY_NAME", length=100)
+	private String policyName;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	private List<RoleOperation> role_operation = new LinkedList<RoleOperation>();
+	
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;		
+	}
+	
+	public String getShortDescription() {
+		if (description != null) {
+			if (description.length() >= 100) {
+				return description.substring(0, 100);
+			}
+		}
+		return description;		
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getTypeLabel() {
+		return TYPE_PROD.equals(type) ? TYPE_PROD_LABEL : TYPE_TEST_LABEL; 
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public String getPathToWsdl() {
+		if (path != null) {
+			if (path.startsWith("/")) {
+				return path.substring(1, path.length());
+			}
+		}
+		return path;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public byte[] getWsdl() {
+		return wsdl;
+	}
+
+	public void setWsdl(byte[] wsdl) {
+		this.wsdl = wsdl;
+	}
+
+	public byte[] getKeystoreOrg() {
+		return keystoreOrg;
+	}
+
+	public void setKeystoreOrg(byte[] keystoreOrg) {
+		this.keystoreOrg = keystoreOrg;
+	}
+
+	public byte[] getKeystore() {
+		return keystore;
+	}
+
+	public void setKeystore(byte[] keystore) {
+		this.keystore = keystore;
+	}
+
+	public String getWsaTo() {
+		return wsaTo;
+	}
+
+	public void setWsaTo(String wsaTo) {
+		this.wsaTo = wsaTo;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getIssuer() {
+		return issuer;
+	}
+
+	public void setIssuer(String issuer) {
+		this.issuer = issuer;
+	}
+
+	public String getAliasKeystore() {
+		return aliasKeystore;
+	}
+
+	public void setAliasKeystore(String aliasKeystore) {
+		this.aliasKeystore = aliasKeystore;
+	}
+
+	public String getPasswordKeystoreOrg() {
+		return passwordKeystoreOrg;
+	}
+
+	public void setPasswordKeystoreOrg(String passwordKeystoreOrg) {
+		this.passwordKeystoreOrg = passwordKeystoreOrg;
+	}
+
+	public String getPasswordKeystore() {
+		return passwordKeystore;
+	}
+
+	public void setPasswordKeystore(String passwordKeystore) {
+		this.passwordKeystore = passwordKeystore;
+	}
+
+	public byte[] getKeystoreSsl() {
+		return keystoreSsl;
+	}
+
+	public void setKeystoreSsl(byte[] keystoreSsl) {
+		this.keystoreSsl = keystoreSsl;
+	}
+
+	public String getPasswordKeystoreSsl() {
+		return passwordKeystoreSsl;
+	}
+
+	public void setPasswordKeystoreSsl(String passwordKeystoreSsl) {
+		this.passwordKeystoreSsl = passwordKeystoreSsl;
+	}
+
+	public String getPolicyName() {
+		return policyName;
+	}
+
+	public void setPolicyName(String policyName) {
+		this.policyName = policyName;
+	}
+
+	public List<RoleOperation> getRole_operation() {
+		return role_operation;
+	}
+
+	public void setRole_operation(List<RoleOperation> role_operation) {
+		this.role_operation = role_operation;
+	}
+
+	public boolean isExistWsdl() {
+		return existWsdl;
+	}
+
+	public void setExistWsdl(boolean existWsdl) {
+		this.existWsdl = existWsdl;
+	}
+
+	public boolean isExistKeystoreOrg() {
+		return existKeystoreOrg;
+	}
+
+	public void setExistKeystoreOrg(boolean existKeystoreOrg) {
+		this.existKeystoreOrg = existKeystoreOrg;
+	}
+
+	public boolean isExistKeystore() {
+		return existKeystore;
+	}
+
+	public void setExistKeystore(boolean existKeystore) {
+		this.existKeystore = existKeystore;
+	}
+
+	public boolean isExistKeystoreSsl() {
+		return existKeystoreSsl;
+	}
+
+	public void setExistKeystoreSsl(boolean existKeystoreSsl) {
+		this.existKeystoreSsl = existKeystoreSsl;
+	}
+	
+	public String getKeystoreOrgName() {
+		return keystoreOrgName;
+	}
+
+	public void setKeystoreOrgName(String keystoreOrgName) {
+		this.keystoreOrgName = keystoreOrgName;
+	}
+
+	public String getKeystoreName() {
+		return keystoreName;
+	}
+
+	public void setKeystoreName(String keystoreName) {
+		this.keystoreName = keystoreName;
+	}
+
+	public String getKeystoreSslName() {
+		return keystoreSslName;
+	}
+
+	public void setKeystoreSslName(String keystoreSslName) {
+		this.keystoreSslName = keystoreSslName;
+	}
+
+	public String toString(){
+		return "Conector Id = "+ getId() + " - Name: "+ name + " - Type: " + type;
+	}
+	
+}

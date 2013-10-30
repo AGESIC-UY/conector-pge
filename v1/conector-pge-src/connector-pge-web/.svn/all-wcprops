@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/repository/!svn/ver/4759/agesic/connector/trunk/connector-pge-web
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/repository/!svn/ver/4759/agesic/connector/trunk/connector-pge-web/.project
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/repository/!svn/ver/4768/agesic/connector/trunk/connector-pge-web/.classpath
+END

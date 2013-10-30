@@ -1,0 +1,6 @@
+<jboss-app>
+	<module-order>strict</module-order>
+	<loader-repository>
+		uy.gub.agesic:loader=connector-pge
+	</loader-repository>
+</jboss-app>
