@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/repository/!svn/ver/5241/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/logger
+END
+ErrorPropertiesHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/repository/!svn/ver/5190/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/logger/ErrorPropertiesHandler.java
+END
+LoggerAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/repository/!svn/ver/5336/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/logger/LoggerAction.java
+END
+AgesicLoggerConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/repository/!svn/ver/5411/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/logger/AgesicLoggerConstants.java
+END

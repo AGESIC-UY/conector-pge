@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/repository/!svn/ver/5130/agesic/esbUtils/esbcontent/lib
+END
+httpcore-4.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/repository/!svn/ver/4787/agesic/esbUtils/esbcontent/lib/httpcore-4.1.1.jar
+END
+jlibs-core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/repository/!svn/ver/4892/agesic/esbUtils/esbcontent/lib/jlibs-core.jar
+END
+http-failover.jar
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/repository/!svn/ver/4685/agesic/esbUtils/esbcontent/lib/http-failover.jar
+END
+httpmime-4.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/repository/!svn/ver/5130/agesic/esbUtils/esbcontent/lib/httpmime-4.1.1.jar
+END
+commons-validator-1.4.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/repository/!svn/ver/5194/agesic/esbUtils/esbcontent/lib/commons-validator-1.4.0.jar
+END
+jlibs-xmldog.jar
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/repository/!svn/ver/4892/agesic/esbUtils/esbcontent/lib/jlibs-xmldog.jar
+END
+wsaMapperServiceApi.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/repository/!svn/ver/4563/agesic/esbUtils/esbcontent/lib/wsaMapperServiceApi.jar
+END
+oro-2.0.8.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/repository/!svn/ver/5194/agesic/esbUtils/esbcontent/lib/oro-2.0.8.jar
+END
+httpclient-4.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/repository/!svn/ver/4787/agesic/esbUtils/esbcontent/lib/httpclient-4.1.1.jar
+END
+jlibs-xml.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/repository/!svn/ver/4892/agesic/esbUtils/esbcontent/lib/jlibs-xml.jar
+END

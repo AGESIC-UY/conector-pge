@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<body>
+		<h2 id="ConectorPGE-ManualdeUsuario-GlobalConfig">Configuración Global</h2>
+		<p>
+			Permite definir la configuración de keystores y truststores que utilizan 
+			los conectores que tienen habilitada la opción de Configuración Global.
+		</p>
+		
+		<h3 id="ConectorPGE-ManualdeUsuario-Descripcióndelosdatos">Descripción de los datos</h3>
+<p>A continuación se detalla el significado de cada dato y el impacto de estos hacia el sistema.</p>
+<ul>
+
+<li>
+Alias del Keystore Organismo :
+Alias en donde se encuentra el certificado que se quiere utilizar para la firma del SOAP. Este alias corresponde al "Keystore Organismo"
+</li>
+<li>
+Password Keystore Organismo :
+Password del "Keystore Organismo"
+</li>
+<li>
+Password Keystore SSL :
+Password utilizada para acceder al certificado del keystore para el acceso por https.
+</li>
+<li>
+Password Truststore :
+Password utilizada para acceder al certificado del trustore para el acceso por https.
+</li>
+<li>
+Keystore Organismo :
+Keystore del Organismo utilizado para la firma del SOAP 
+</li>
+<li>
+Keystore SSL :
+Keystore utilizado para la comunicación HTTPS 
+</li>
+<li>
+Truststore SSL :
+Truststore utilizado para la comunicación HTTPS 
+</li>
+
+</ul>
+
+<h:panelGroup>
+<img src="../img/download.png"/>
+<h:outputLabel value="Botón para descargar el archivo que se encuentra guardado (o sea, el que se guardó al utilizar el botón de Salvar)." style="margin-left: 12px;"/>
+</h:panelGroup>
+<br/>
+<h:panelGroup>
+<img src="../img/broom.png"/>
+<h:outputLabel value="Botón que permite cancelar la subida de un archivo, de manera de poder seleccionar otro." style="margin-left: 12px;"/>
+</h:panelGroup>
+<br/>
+<h:panelGroup>
+<img src="../img/ok.png"/>
+<h:outputLabel value="Botón para validar el Keystore que se encuentra guardado. Notar que el botón solo aparece una vez que se haya salvado la config. global con un archivo Keystore." style="margin-left: 12px;"/>
+</h:panelGroup>
+<br/>
+<h:panelGroup>
+<img src="../img/find.png"/>
+<h:outputLabel value="Botón para ver información de el Keystore/Trustore que se encuentra guardado. Notar que el botón solo aparece una vez que se haya salvado la config. global con algún Keystore o Truststore." style="margin-left: 12px;"/>
+</h:panelGroup>
+
+</body>
+	
+</html>

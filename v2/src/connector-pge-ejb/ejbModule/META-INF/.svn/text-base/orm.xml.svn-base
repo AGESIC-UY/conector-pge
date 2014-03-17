@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+ 
+ 	<entity class="uy.gub.agesic.connector.entity.Connector">
+		<named-query name="connector.all">
+			<query>
+			  select c from Connector c Order By c.name, c.type
+			</query>
+		</named-query>
+		<named-query name="connector.allbytype">
+			<query>
+			  select c from Connector c where c.type = :type Order By c.name
+			</query>
+		</named-query>
+		<named-query name="connector.allbytypeAndtag">
+			<query>
+			  select c from Connector c where c.type = :type and UPPER(c.tag) LIKE UPPER(:tag) Order By c.name
+			</query>
+		</named-query>
+		<named-query name="connector.bypath">
+			<query>
+			  select c from Connector c where lower(c.path) = lower(:path) and c.type = :type
+			</query>
+		</named-query>
+		<named-query name="connector.byname">
+			<query>
+			  select c from Connector c where lower(c.name) = lower(:name) and c.type = :type
+			</query>
+		</named-query>
+		<named-query name="connector.byAssociatedConnector">
+			<query>
+			  select c from Connector c where c.connectorAssociated.id = :id and c.type = :type
+			</query>
+		</named-query>
+	</entity>
+ 
+	<entity class="uy.gub.agesic.connector.entity.GlobalConfiguration">
+		<named-query name="globalConfiguration.all">
+			<query>
+			  select c from GlobalConfiguration c where c.type = :type
+			</query>
+		</named-query>
+	</entity>
+	 
+</entity-mappings>

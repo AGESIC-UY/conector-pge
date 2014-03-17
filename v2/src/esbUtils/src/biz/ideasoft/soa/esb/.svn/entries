@@ -1,0 +1,43 @@
+10
+
+dir
+5273
+https://europa.ideasoft.biz/svn/repository/agesic/esbUtils/src/biz/ideasoft/soa/esb
+https://europa.ideasoft.biz/svn/repository
+
+
+
+2013-08-16T13:42:17.254520Z
+5273
+jlorenzo
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+afcedd90-51a2-11dc-bd1e-c7e3b9acb56f
+
+actions
+dir
+
+composers
+dir
+
+http
+dir
+
+saml
+dir
+
+util
+dir
+

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ <display-name>connector-pge-web</display-name>
+ <context-param>
+  <param-name>facelets.REFRESH_PERIOD</param-name>
+  <param-value>2</param-value>
+ </context-param>
+ <context-param>
+  <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+  <param-value>.xhtml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>org.ajax4jsf.SKIN</param-name>
+  <param-value>classic</param-value>
+ </context-param>
+ <filter>
+  <filter-name>checkSession</filter-name>
+  <filter-class>uy.gub.agesic.connector.web.LoginFiter</filter-class>
+ </filter>
+ <filter>
+  <display-name>Ajax4jsf Filter</display-name>
+  <filter-name>ajax4jsf</filter-name>
+  <filter-class>org.ajax4jsf.Filter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>extensionsFilter</filter-name>
+  <filter-class>org.apache.myfaces.component.html.util.ExtensionsFilter</filter-class>
+  <init-param>
+   <param-name>uploadMaxFileSize</param-name>
+   <param-value>100m</param-value>
+  </init-param>
+  <init-param>
+   <param-name>uploadThresholdSize</param-name>
+   <param-value>100k</param-value>
+  </init-param>
+ </filter>
+ <filter-mapping>
+  <filter-name>checkSession</filter-name>
+   <url-pattern>/pages/*</url-pattern>
+   <url-pattern>/fileDownload/*</url-pattern>
+   <url-pattern>/export/*</url-pattern>
+ </filter-mapping> 
+ <filter-mapping>
+  <filter-name>ajax4jsf</filter-name>
+  <servlet-name>Faces Servlet</servlet-name>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>INCLUDE</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>extensionsFilter</filter-name>
+  <url-pattern>*.xhtml</url-pattern>
+ </filter-mapping>
+ <servlet>
+  <servlet-name>Faces Servlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet>
+  <servlet-name>Download Servlet</servlet-name>
+  <servlet-class>uy.gub.agesic.connector.web.DownloadServlet</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>Export Servlet</servlet-name>
+  <servlet-class>uy.gub.agesic.connector.web.ExportServlet</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>Download Servlet</servlet-name>
+  <url-pattern>/fileDownload</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>Export Servlet</servlet-name>
+  <url-pattern>/export</url-pattern>
+ </servlet-mapping>
+ <session-config>
+  <session-timeout>30</session-timeout>
+ </session-config>
+ <welcome-file-list>
+  <welcome-file>index.html</welcome-file>
+  <welcome-file>index.htm</welcome-file>
+  <welcome-file>index.jsp</welcome-file>
+  <welcome-file>default.html</welcome-file>
+  <welcome-file>default.htm</welcome-file>
+  <welcome-file>default.jsp</welcome-file>
+ </welcome-file-list>
+ <error-page>
+  <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+  <location>/logout.jsp</location>
+ </error-page>
+ <error-page>
+  <exception-type>java.lang.Exception</exception-type>
+  <location>/pages/error.xhtml</location>
+ </error-page>
+ <security-constraint>
+  <web-resource-collection>
+   <web-resource-name>ConnectorPGE</web-resource-name>
+   <url-pattern>/pages/*</url-pattern>
+   <url-pattern>/fileDownload/*</url-pattern>
+   <url-pattern>/export/*</url-pattern>
+   <http-method>GET</http-method>
+   <http-method>POST</http-method>
+  </web-resource-collection>
+  <auth-constraint>
+   <role-name>ConnectorEditorUser</role-name>
+  </auth-constraint>
+ </security-constraint>
+ <login-config>
+  <auth-method>FORM</auth-method>
+  <realm-name>Form-Based Authentication Area</realm-name>
+  <form-login-config>
+   <form-login-page>/login.xhtml</form-login-page>
+   <form-error-page>/login.xhtml</form-error-page>
+  </form-login-config>
+ </login-config>
+ <security-role>
+  <role-name>ConnectorEditorUser</role-name>
+ </security-role>
+</web-app>

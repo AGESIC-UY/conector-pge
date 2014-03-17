@@ -1,7 +1,0 @@
-Conector Versión 2.0
-
-Compuesto por:
-
-conector-pge: Contiene la soa-p con la versión del conector 2.0
-conectoresTesting: Carpeta donde se encuentran conectores de testing, y certificados de agesic de Testing
-Documentacion: Documentación técnica del conector (modelo 4+1)

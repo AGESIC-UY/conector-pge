@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/repository/!svn/ver/5190/agesic/esbUtils/src/biz/ideasoft/soa/esb/util
+END
+XPathUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/repository/!svn/ver/4825/agesic/esbUtils/src/biz/ideasoft/soa/esb/util/XPathUtil.java
+END
+SoapUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/repository/!svn/ver/5190/agesic/esbUtils/src/biz/ideasoft/soa/esb/util/SoapUtil.java
+END
+PropertiesUtilities.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repository/!svn/ver/4526/agesic/esbUtils/src/biz/ideasoft/soa/esb/util/PropertiesUtilities.java
+END
+XPathXmlDogUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/repository/!svn/ver/5176/agesic/esbUtils/src/biz/ideasoft/soa/esb/util/XPathXmlDogUtil.java
+END
+PropertiesConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/repository/!svn/ver/4732/agesic/esbUtils/src/biz/ideasoft/soa/esb/util/PropertiesConfiguration.java
+END
+DslSupport.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/repository/!svn/ver/4019/agesic/esbUtils/src/biz/ideasoft/soa/esb/util/DslSupport.java
+END
