@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.jboss.esb.runtime.classpath/soa-p-5.2"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/soa-p-5.2">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.jboss.esb"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/esbUtils"/>
+	<classpathentry kind="lib" path="esbcontent/lib/opensaml-2.3.1.jar"/>
+	<classpathentry kind="lib" path="esbcontent/lib/xmltooling-1.2.1.jar"/>
+	<classpathentry kind="lib" path="esbcontent/lib/agesic-sts.jar" sourcepath="/PGEClient"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/repository/!svn/ver/5318/agesic/esbUtils/src/biz/ideasoft/soa/esb/saml
+END
+CachedSamlToken.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/repository/!svn/ver/5318/agesic/esbUtils/src/biz/ideasoft/soa/esb/saml/CachedSamlToken.java
+END
+SamlTokenCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/repository/!svn/ver/5318/agesic/esbUtils/src/biz/ideasoft/soa/esb/saml/SamlTokenCache.java
+END
+SamlTokenValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/repository/!svn/ver/5318/agesic/esbUtils/src/biz/ideasoft/soa/esb/saml/SamlTokenValidator.java
+END

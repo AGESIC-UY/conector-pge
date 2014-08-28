@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/repository/!svn/ver/5241/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/soap
+END
+WSInvoker.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/repository/!svn/ver/5402/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/soap/WSInvoker.java
+END
+SkipSOAPProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repository/!svn/ver/5129/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/soap/SkipSOAPProcessor.java
+END
+SOAPInvokeServiceAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/repository/!svn/ver/4141/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/soap/SOAPInvokeServiceAction.java
+END
+SetResponseHeaderAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/repository/!svn/ver/5134/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/soap/SetResponseHeaderAction.java
+END

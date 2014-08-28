@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repository/!svn/ver/5370/agesic/connector/trunk/connector-pge-esb/src/uy/gub/agesic/esb/action/logger
+END
+ConnectorMessageLogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/repository/!svn/ver/5370/agesic/connector/trunk/connector-pge-esb/src/uy/gub/agesic/esb/action/logger/ConnectorMessageLogger.java
+END
+ConnectorLoggerConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/repository/!svn/ver/5239/agesic/connector/trunk/connector-pge-esb/src/uy/gub/agesic/esb/action/logger/ConnectorLoggerConstants.java
+END
