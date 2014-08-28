@@ -1,4 +1,0 @@
-<jbossesb-deployment>
-    <depends>jboss.esb:deployment=soap.esb</depends>
-    <depends>jboss.esb:deployment=esbUtils.esb</depends>
-</jbossesb-deployment>
