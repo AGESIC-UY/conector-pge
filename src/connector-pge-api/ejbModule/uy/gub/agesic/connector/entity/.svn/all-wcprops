@@ -13,7 +13,7 @@ Connector.java
 K 25
 svn:wc:ra_dav:version-url
 V 126
-/svn/repository/!svn/ver/5401/agesic/connector/trunk/connector-pge-api/ejbModule/uy/gub/agesic/connector/entity/Connector.java
+/svn/repository/!svn/ver/5421/agesic/connector/trunk/connector-pge-api/ejbModule/uy/gub/agesic/connector/entity/Connector.java
 END
 ConnectorKeystoreType.java
 K 25
@@ -37,7 +37,7 @@ RoleOperation.java
 K 25
 svn:wc:ra_dav:version-url
 V 130
-/svn/repository/!svn/ver/5401/agesic/connector/trunk/connector-pge-api/ejbModule/uy/gub/agesic/connector/entity/RoleOperation.java
+/svn/repository/!svn/ver/5428/agesic/connector/trunk/connector-pge-api/ejbModule/uy/gub/agesic/connector/entity/RoleOperation.java
 END
 ConnectorPaths.java
 K 25

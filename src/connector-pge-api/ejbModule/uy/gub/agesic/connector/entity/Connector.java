@@ -75,7 +75,8 @@ public class Connector extends AbstractEntity implements Serializable {
 		this.setEnableCacheTokens(con.isEnableCacheTokens());
 		this.setTag(con.getTag());
 		this.setEnableLocalConf(con.isEnableLocalConf());
-		
+		this.setUserNameTokenName(con.getUserNameTokenName());
+		this.setUserNameTokenPassword(con.getUserNameTokenPassword());
 		
 		
 		List<RoleOperation> role_operation = new LinkedList<RoleOperation>();

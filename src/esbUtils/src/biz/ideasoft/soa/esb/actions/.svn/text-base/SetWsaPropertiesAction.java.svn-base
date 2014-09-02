@@ -172,7 +172,9 @@ public class SetWsaPropertiesAction extends AbstractActionLifecycle {
 			 **/
 			if (listResultsXPath.get(4) instanceof Collection) {
 				List<String> wsaRelatesToList = (List<String>) listResultsXPath.get(4);
-				String[] wsaRelatesTo = Arrays.copyOf(wsaRelatesToList.toArray(), wsaRelatesToList.size() , String[].class);
+				String[] wsaRelatesTo = new String[wsaRelatesToList.size()];
+				wsaRelatesToList.toArray(wsaRelatesTo);
+//				String[] wsaRelatesTo = Arrays.copyOf(wsaRelatesToList.toArray(), wsaRelatesToList.size() , String[].class);
 				message.getProperties().setProperty("wsaRelatesTo", wsaRelatesTo);
 				
 			} else if (listResultsXPath.get(4) != null) {				

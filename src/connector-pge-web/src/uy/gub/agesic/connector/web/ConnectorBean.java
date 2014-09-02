@@ -13,6 +13,7 @@ import java.security.cert.CertificateNotYetValidException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -84,6 +85,7 @@ public class ConnectorBean {
 	private UploadedFile importConnectorFile;
 	
 	private static final String DEFAULT_PASS = "DEFAULT_PASS";
+	private static final int  MAX_LENGTH_WSA_ACTION = 256;
 	
 	private String keystoreOrganismoPass = DEFAULT_PASS;
 	private String keystoreSSLPass = DEFAULT_PASS;
@@ -225,6 +227,11 @@ public class ConnectorBean {
 	
 	public String save() {
 		try {
+			
+			if (validateFields(connector) == null) {
+				return null;
+			}
+			
 			assureConnectorManager();
 			
 			if (keystoreOrganismoPass == null || !keystoreOrganismoPass.equals(ConnectorBean.DEFAULT_PASS)) {
@@ -757,6 +764,21 @@ public class ConnectorBean {
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			Connector con = (Connector) unmarshaller.unmarshal(inputStream);
 			
+			
+			
+			List<RoleOperation> role_operation = con.getRole_operation();
+			Iterator<RoleOperation> it= role_operation.iterator();
+			
+			while (it.hasNext()){
+				RoleOperation roleOperation = it.next();
+				roleOperation.setSoapAction(roleOperation.getWsaAction());
+			}
+			
+			con.setRole_operation(role_operation);
+			
+			
+			
+			
 			if (con.getVersion() == null) {
 				con.setVersion("1");
 				con.setEnableLocalConf(true);
@@ -1060,6 +1082,20 @@ public class ConnectorBean {
 			return Connector.TYPE_PROD;
 		}
 		return Connector.TYPE_TEST;
+	}
+	
+	public String validateFields(Connector con) {
+		List<RoleOperation> roleOperationList = con.getRole_operation();
+			for(RoleOperation rolOp : roleOperationList) {
+				if (rolOp.getWsaAction().length() > MAX_LENGTH_WSA_ACTION) {
+					log.error("save failed");
+					FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "El campo wsa:Action tiene un m\u00E1ximo permitido de " + MAX_LENGTH_WSA_ACTION, null);
+					FacesContext.getCurrentInstance().addMessage(null, fm);
+					return null;
+				}
+					
+			}
+		return "ok";
 	}
 	
 	public boolean getKeystoreOrgRequired() {

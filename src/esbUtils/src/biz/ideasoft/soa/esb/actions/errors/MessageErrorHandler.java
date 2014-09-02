@@ -146,11 +146,11 @@ public abstract class MessageErrorHandler extends AbstractActionPipelineProcesso
 			
 			String wsaRelatesTo = "";
 			if (prop.getProperty(AgesicLoggerConstants.MESSAGE_RELATES_TO) != null) {
-				Object[] list = (Object[])prop.getProperty(AgesicLoggerConstants.MESSAGE_RELATES_TO); 
+				String[] list = (String[]) prop.getProperty(AgesicLoggerConstants.MESSAGE_RELATES_TO); 
 				
-				String[] wsaRelatesToList = Arrays.copyOf(list, list.length, String[].class);
+//				String[] wsaRelatesToList = Arrays.copyOf(list, list.length, String[].class);
 				StringBuilder relatesBuilder = new StringBuilder();
-				for(String item: wsaRelatesToList) {
+				for(String item: list) {
 					relatesBuilder.append(item);
 					relatesBuilder.append(",");
 				}

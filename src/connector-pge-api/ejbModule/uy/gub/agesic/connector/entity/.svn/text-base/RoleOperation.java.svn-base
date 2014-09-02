@@ -21,10 +21,10 @@ public class RoleOperation extends AbstractEntity{
 	@Column(name="OPERATION_WSDL", length=100)
 	private String operationFromWSDL;
 	
-	@Column(name="WSA_ACTION", length=100)
+	@Column(name="WSA_ACTION", length=256)
 	private String wsaAction;
 	
-	@Column(name="SOAP_ACTION", length=100)
+	@Column(name="SOAP_ACTION", length=256)
 	private String soapAction;
 	
 	public String getWsaAction() {
