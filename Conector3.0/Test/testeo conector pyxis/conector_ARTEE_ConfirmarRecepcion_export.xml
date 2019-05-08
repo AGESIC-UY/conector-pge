@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connector>
+    <name>ARTEE_ConfirmarRecepcion</name>
+    <description>ARTEE_ConfirmarRecepcion</description>
+    <type>Test</type>
+    <path>/ARTEE/ConfirmarRecepcion</path>
+    <url>https://testservicios.pge.red.uy:6278/Ruteo/ConfirmarRecepcion.svc</url>
+    <wsdl>UEsDBBQACAAIABCSbUsAAAAAAAAAAAAAAAAIAAAAd3NkbC54bWzFWf9P2zgU/1ei3i/jpMYNg8GqQcUGaJVg7FpOd9JxmtzELZYSO8QObXfa/37PsZ06NEnDQNoP0KR+n/fNn/f8pR9GqyT2HkkmKGcnvcAf9DzCQh5Rtjjp5XLeP+6NTj8sRRQPIzKnjEoQFB7DCTnpTUn2SEPyibM5zZJzvmQxx1HPkzhbEPkFZESKQxC8lzIdIiQKecqFny6In5HIz9cIL4igIcKZJAQZVTibkJCkIMp6HnjIxFC5sFEU3pMECx+GBMepz7MFUgJoI42DQSm+XC795dtCan8wOESDY4SjKCNCQJgbyGqHfgU+QIP3KCEri1LDwf5ux7Sc419eYiIeCp9jQUWfp4QZjLUWID2k3gZBHwbUHwnzjMp1P5c0Vp8wcf5KRBv1aV3wTIDifspjGq6dTKXd4naThqpKEhFu6UhomHHB59IPeWK0HCLIQZGPkDOZ4VA6bjzfCwecNEz2EQKjjt8JkTjCEjvQZQP03ROo8tvCJBOvwmoVXzfylNSBaW5wOEB/X19NCyWufqjnVhOFdlv0qKeqPR1+LebXA54Ox2DvUy4kTz5SpmS+TU3E23F9M7zQSi5WMMPx+oYR/X4Wx+qBJ3h4k0qa0O8kuqYJAX0Ux/Q7Vs2lnBgQ61qQ2iriVmkCSoWrtIeUYZwMz8r5dOO0g4yzdcJzMYHGBW2OCIAhVwxtKUFlYOhpyKhqAFqoXKdEnH6AKRzqiDwSk4Qwecmhf5I5zmN50nvIwe85Ja/dSbVhY9G08G2xsRWEsk1jsroFn43L5CEHnpCqnoSymxDaERQELB5a6zmHbym/yeiCANcZjWM8i2FAZjmBqEDlSa9QKTNVx2i3ynF0m+Hv2AVTJrsgp/ks0v508wRVY0VbuUCOxW45vcnlrqSi3ZbQhjevwSFNF0ueotGcTW4vLsyqLv6anl/VcgaqA2zgqDGfD8HQkdH1/BBsFbPqw3YdsD0Myvmo4sYVnWU4W/vXUHDg8WaCXi0PL3Knbj14ib4tlmzl/Lm1+An6+qIj9XfWNRFhRs0K9joKJY5j8kqF+RNUhYlzuLpNLsstLMGNWS5JE7teSL7qbgmY8hYFA1RZGJ0dQPcNQB0xO9kqgq8mE7O1ynPzZA2tBKpH/zkZt4OVQB12hgV5dwDbDyiVFg0VsVo9nMcEt3B3aCVq0WvZFnwxXIeDRkBuYUfSgi1FavEkpAmO2+BGohbN81lbhQ2NQB12Duc52QLV43VItTY348qV+wkq5mpT3wgrhutwf6jCagHq8TqkuOdZm6d6vBap+1IL1OmCT7A5E3TBSPSxnVEVsTY949Zsu1JtWq7as18Ra9Mz3ZHTqlydpvAeZ20duxjXQEHVAuCslMVYMQR7dJiCsDhUqNbgUg9VoHVlk2f65NDiRinT4Eo53uxOVSSFZYZkzHvEcQ7jd/3R1zd30e/ne6M3t+rhMzzAx7X+eHPnw/+90XRvtDcyPsAiO2ZhnAv6SKya/tdg8O7oMHj//vx2//PB8fWhf3B0dHg8OJ5aFF5toZpAR1ObPyegDgld5DRqS2Yx3pDIYqw5iabS6lL4z12E+/Oz/uW//x3/6DtvB53fgv0fXSMudwnG70vY+vHMrJq13egpYhw5guPzBqkJmVfEJheXJanN1gW5B87iOdFbzPaDXyGZwhHSiMEjfEJGRbnF0dNVi0fWrrHV0bI+Hr3AtFLw87a/fSY4Uma2fbhJia5PvUd0HHnYrznj7D/vcNXgcgpt0SF/822LdZhbLxujtJKUpbn09CVGQeMX3SigZtdq77xamOeZFLSTS0eby18XhL0Zag5GcXFXNBW+lrNnv7Dzb+Kd6Vs3a7DjTZzbWncwyF5SQVchmTpbebAPP+n99txLP4hIXc6VDsPJlwkVzO7rRzW+meAudC4sbSTV6y9gtJDruNhjh7lqC2UIus5aO61OFY/WXq6WsZhCp9NbeLRRUaV8e/8sFN4XrawD/8qm56l2V9Ppnnq1y1/tYyOpDSlMQHpuqh1u63ckpx0+m/zGnElAV5iJ0lz6ezEPsaaUuT8OBsMLFqUcNpFlsdgBcyl8atgnYatQsMxl3wSWcF5DJF88hsXdsqPHvtcY3LQJ+2zyaV+dn+pO/wdQSwcIznw6lTYGAADjGwAAUEsBAhQAFAAIAAgAEJJtS858OpU2BgAA4xsAAAgAAAAAAAAAAAAAAAAAAAAAAHdzZGwueG1sUEsFBgAAAAABAAEANgAAAGwGAAAAAA==</wsdl>
+    <wsaTo>http://testservicios.pge.red.uy/artee/ConfirmarRecepcion</wsaTo>
+    <username>agesic</username>
+    <issuer>agesic</issuer>
+    <policyName>urn:tokensimple</policyName>
+    <role_operation>
+        <role>ou=test,o=ute</role>
+        <operation>ConfirmarRecepcionIn</operation>
+        <operationFromWSDL>ConfirmarRecepcion</operationFromWSDL>
+        <wsaAction>http://servicios.pge.red.uy/agesic/artee/ConfirmarRecepcion/ServicioConfirmarRecepcion/ConfirmarRecepcion</wsaAction>
+        <soapAction>http://servicios.pge.red.uy/agesic/artee/ConfirmarRecepcion/ServicioConfirmarRecepcion/ConfirmarRecepcion</soapAction>
+    </role_operation>
+    <enableCacheTokens>false</enableCacheTokens>
+    <tag>ARTEE</tag>
+    <enableLocalConf>false</enableLocalConf>
+    <enableUserToken>false</enableUserToken>
+    <version>2.0</version>
+</connector>

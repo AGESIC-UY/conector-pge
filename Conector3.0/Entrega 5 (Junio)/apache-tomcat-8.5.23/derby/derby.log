@@ -1,0 +1,14 @@
+Wed Jun 06 18:35:27 UYT 2018 : Servidor de red Apache Derby: Se ha iniciado 10.14.1.0 - (1808820) y está listo para aceptar las conexiones en el puerto 1527
+----------------------------------------------------------------
+Wed Jun 06 18:35:39 UYT 2018:
+ Iniciando instancia a816c00e-0163-d706-a71f-ffffeea006e4 de Derby, versión The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): 
+en el directorio de base de datos C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\derby\connectorpge con el cargador de clases java.net.URLClassLoader@13221655
+Cargado desde file:/C:/temp/conector_empaquetado_web_v2/conector_empaquetado_web/apache-tomcat-8.5.23/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_151-b12
+user.dir=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\bin
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/derby
+Cargador de clases de base de datos iniciado - derby.database.classpath=''

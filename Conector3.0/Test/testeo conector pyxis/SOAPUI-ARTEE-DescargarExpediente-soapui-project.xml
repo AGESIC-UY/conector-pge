@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="210186ea-ba0e-4c0d-b0d8-a8c89cf6384b" activeEnvironment="Default" name="ARTEE_DescargarExpediente" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="0d9751fd-261e-44e1-b5c0-084e972f295f" wsaVersion="200508" name="CustomBinding_ServicioDescargarExpediente" type="wsdl" bindingName="{http://servicios.pge.red.uy/agesic/artee/DescargarExpediente}CustomBinding_ServicioDescargarExpediente" soapVersion="1_1" anonymous="required" definition="http://10.255.6.145:9800/ARTEE/DescargarExpediente?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://10.255.6.145:9800/ARTEE/DescargarExpediente?wsdl"><con:part><con:url>http://10.255.6.145:9800/ARTEE/DescargarExpediente?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ServiceDownloadExpedient" targetNamespace="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsp:Policy wsu:Id="CustomBinding_ServicioDescargarExpediente_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses/>
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente">
+      <xsd:element name="DescargarExpedienteIn">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="DominioOrigen" nillable="true" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="Subdominio" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DescargarExpedienteOut">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Expediente" type="q1:StreamBody" xmlns:q1="http://schemas.microsoft.com/Message"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Traza" nillable="true" type="q2:Traza" xmlns:q2="http://schemas.datacontract.org/2004/07/ARTEEDataContract.Entity"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Message">
+      <xsd:simpleType name="StreamBody">
+        <xsd:restriction base="xsd:base64Binary"/>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ARTEEDataContract.Entity" xmlns:tns="http://schemas.datacontract.org/2004/07/ARTEEDataContract.Entity">
+      <xsd:complexType name="Traza">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Anio" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AnioAnterior" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Confidencial" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="Descargado" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="ElementosFisicos" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="ErrorTraza" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="ErrorTrazaDescripcion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Id" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Inciso" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IncisoAnterior" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MesaDestino" nillable="true" type="tns:Mesa"/>
+          <xsd:element minOccurs="0" name="MesaDestinoDescripcion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Notificacion" nillable="true" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="Numero" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NumeroAnterior" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganismoDestino" nillable="true" type="tns:Organismo"/>
+          <xsd:element minOccurs="0" name="OrganismoDestinoDescripcion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OrganismoOrigen" nillable="true" type="tns:Organismo"/>
+          <xsd:element minOccurs="0" name="OrganismoOrigenDescripcion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Recibido" nillable="true" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="SeccionDestino" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SeccionOrigen" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Timestamp" type="xsd:dateTime"/>
+          <xsd:element minOccurs="0" name="TimestampTexto" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="UnidadEjecutora" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="UnidadEjecutoraAnterior" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Traza" nillable="true" type="tns:Traza"/>
+      <xsd:complexType name="Mesa">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Activa" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="Confidencial" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="Descripcion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Id" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="PorDefecto" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="Subdominio" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Telefono" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Mesa" nillable="true" type="tns:Mesa"/>
+      <xsd:complexType name="Organismo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Activo" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="ClavePublica" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Descripcion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Direccion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Dominio" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Email" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Id" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Telefono" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Organismo" nillable="true" type="tns:Organismo"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://agesic.red.uy/wsdl/ARTEEServicesWSDL">
+      <xsd:element name="Resultado" nillable="true" type="q3:Resultado" xmlns:q3="http://schemas.datacontract.org/2004/07/ARTEEServiceLibrary.Message"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ARTEEServiceLibrary.Message" xmlns:tns="http://schemas.datacontract.org/2004/07/ARTEEServiceLibrary.Message">
+      <xsd:complexType name="Resultado">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Codigo" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Descripcion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Detalle" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Resultado" nillable="true" type="tns:Resultado"/>
+    </xsd:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DescargarExpedienteIn">
+    <wsdl:part name="parameters" element="tns:DescargarExpedienteIn"/>
+  </wsdl:message>
+  <wsdl:message name="DescargarExpedienteOut">
+    <wsdl:part name="parameters" element="tns:DescargarExpedienteOut"/>
+  </wsdl:message>
+  <wsdl:message name="DescargarExpedienteOut_Headers">
+    <wsdl:part name="OperationResult" element="q4:Resultado" xmlns:q4="http://agesic.red.uy/wsdl/ARTEEServicesWSDL"/>
+    <wsdl:part name="Trace" element="tns:Traza"/>
+  </wsdl:message>
+  <wsdl:portType name="ServicioDescargarExpediente">
+    <wsdl:operation name="DescargarExpediente">
+      <wsdl:input wsam:Action="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente/ServicioDescargarExpediente/DescargarExpediente" name="DescargarExpedienteIn" message="tns:DescargarExpedienteIn"/>
+      <wsdl:output wsam:Action="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente/ServicioDescargarExpediente/DescargarExpedienteResponse" name="DescargarExpedienteOut" message="tns:DescargarExpedienteOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_ServicioDescargarExpediente" type="tns:ServicioDescargarExpediente">
+    <wsp:PolicyReference URI="#CustomBinding_ServicioDescargarExpediente_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DescargarExpediente">
+      <soap:operation soapAction="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente/ServicioDescargarExpediente/DescargarExpediente" style="document"/>
+      <wsdl:input name="DescargarExpedienteIn">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DescargarExpedienteOut">
+        <soap:header message="tns:DescargarExpedienteOut_Headers" part="OperationResult" use="literal"/>
+        <soap:header message="tns:DescargarExpedienteOut_Headers" part="Trace" use="literal"/>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceDownloadExpedient">
+    <wsdl:port name="CustomBinding_ServicioDescargarExpediente" binding="tns:CustomBinding_ServicioDescargarExpediente">
+      <soap:address location="http://10.255.6.145:9800/ARTEE/DescargarExpediente"/>
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://testartee.pge.red.uy/Ruteo/DescargarExpediente.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.255.6.145:9800/ARTEE/DescargarExpediente</con:endpoint></con:endpoints><con:operation id="8ae90cea-5ccb-4424-a726-0f920ccfa7cd" isOneWay="false" action="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente/ServicioDescargarExpediente/DescargarExpediente" name="DescargarExpediente" bindingOperationName="DescargarExpediente" type="Request-Response" outputName="DescargarExpedienteOut" inputName="DescargarExpedienteIn" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ba064af5-0999-4a45-9c25-993f1598b1ae" name="Request 1" useWsAddressing="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.255.6.145:9800/ARTEE/DescargarExpediente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:des="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <des:DescargarExpedienteIn>\r
+         <!--Optional:-->\r
+         <des:DominioOrigen>test_descarga.expediente.red.uy</des:DominioOrigen>\r
+         <!--Optional:-->\r
+         <des:Subdominio>mesaentrada</des:Subdominio>\r
+      </des:DescargarExpedienteIn>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente/ServicioDescargarExpediente/DescargarExpediente"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:authRepository/><con:tags/></con:soapui-project>

@@ -1,0 +1,205 @@
+27-Apr-2018 10:46:10.045 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9700"]
+27-Apr-2018 10:46:12.344 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9800"]
+27-Apr-2018 10:46:13.640 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8443"]
+27-Apr-2018 10:46:15.789 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8553"]
+27-Apr-2018 10:46:17.938 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+27-Apr-2018 10:46:19.731 INFORMACIÓN [Thread-18] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+27-Apr-2018 10:46:20.106 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-runtime] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+27-Apr-2018 10:46:20.235 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [derby.NetworkServerStarter] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.blockingStart(Unknown Source)
+ sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.lang.reflect.Method.invoke(Method.java:498)
+ org.apache.derby.iapi.jdbc.DRDAServerStarter.run(Unknown Source)
+ java.lang.Thread.run(Thread.java:748)
+27-Apr-2018 10:46:20.238 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [NetworkServerThread_1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.DualStackPlainSocketImpl.accept0(Native Method)
+ java.net.DualStackPlainSocketImpl.socketAccept(DualStackPlainSocketImpl.java:131)
+ java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+ java.net.PlainSocketImpl.accept(PlainSocketImpl.java:199)
+ java.net.ServerSocket.implAccept(ServerSocket.java:545)
+ java.net.ServerSocket.accept(ServerSocket.java:513)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ java.security.AccessController.doPrivileged(Native Method)
+ org.apache.derby.impl.drda.ClientThread.acceptClientWithRetry(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread.run(Unknown Source)
+27-Apr-2018 10:46:20.242 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.246 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.248 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.252 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.254 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_6] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.258 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_7] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.261 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.264 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.266 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_10] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.270 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_11] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.272 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_12] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.276 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_13] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.279 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_14] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.281 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_15] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.285 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_16] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.287 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_17] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.290 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_18] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.291 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_19] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.294 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_20] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.296 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_21] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.299 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_22] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.301 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_23] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+27-Apr-2018 10:46:20.419 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-web] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+27-Apr-2018 10:46:20.443 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9700"]
+27-Apr-2018 10:46:20.450 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9800"]
+27-Apr-2018 10:46:20.457 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8443"]
+27-Apr-2018 10:46:20.487 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8553"]
+27-Apr-2018 10:46:20.492 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+27-Apr-2018 10:46:20.498 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9700"]
+27-Apr-2018 10:46:20.501 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9800"]
+27-Apr-2018 10:46:20.504 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8443"]
+27-Apr-2018 10:46:20.507 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8553"]
+27-Apr-2018 10:46:20.509 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

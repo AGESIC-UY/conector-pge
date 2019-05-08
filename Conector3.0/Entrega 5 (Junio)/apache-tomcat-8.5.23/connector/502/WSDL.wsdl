@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://bps.gub.uy/atyr/cuentaempresa/bse/v001" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" targetNamespace="http://bps.gub.uy/atyr/cuentaempresa/bse/v001">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import namespace="http://bps.gub.uy/atyr/cuentaempresa/bse/v001" schemaLocation="WsDebesNeteosBSEService.xsd8.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="obtDebesNeteosBSE">
+    <wsdl:part xmlns:xsns="http://bps.gub.uy/atyr/cuentaempresa/bse/v001" element="xsns:obtDebesNeteosBSE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="obtDebesNeteosBSEResponse">
+    <wsdl:part xmlns:xsns="http://bps.gub.uy/atyr/cuentaempresa/bse/v001" element="xsns:obtDebesNeteosBSEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="obtVersion">
+    <wsdl:part xmlns:xsns="http://bps.gub.uy/atyr/cuentaempresa/bse/v001" element="xsns:obtVersion" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="obtVersionResponse">
+    <wsdl:part xmlns:xsns="http://bps.gub.uy/atyr/cuentaempresa/bse/v001" element="xsns:obtVersionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WsDebesNeteosBSE">
+    <wsdl:operation name="obtDebesNeteosBSE">
+      <wsdl:input message="ns0:obtDebesNeteosBSE" name="obtDebesNeteosBSERequest"/>
+      <wsdl:output message="ns0:obtDebesNeteosBSEResponse" name="obtDebesNeteosBSEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="obtVersion">
+      <wsdl:input message="ns0:obtVersion" name="obtVersionRequest"/>
+      <wsdl:output message="ns0:obtVersionResponse" name="obtVersionResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsDebesNeteosBSEBinding" type="ns0:WsDebesNeteosBSE">
+    <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="obtDebesNeteosBSE">
+      <soap11:operation soapAction="obtDebesNeteosBSE" style="document"/>
+      <wsdl:input name="obtDebesNeteosBSERequest">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obtDebesNeteosBSEResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtVersion">
+      <soap11:operation soapAction="obtVersion" style="document"/>
+      <wsdl:input name="obtVersionRequest">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="obtVersionResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsDebesNeteosBSEService">
+    <wsdl:port binding="ns0:WsDebesNeteosBSEBinding" name="WsDebesNeteosBSE">
+      <soap11:address location="http://10.120.41.1:9800/connector-runtime/debesnetos"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

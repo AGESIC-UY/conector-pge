@@ -1,0 +1,992 @@
+12-Mar-2018 13:00:06.330 GRAVE [main] org.apache.catalina.startup.Catalina.initDirs No puedo hallar carpeta temporal especificada en [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\temp]
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.23
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 28 2017 10:30:11 UTC
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.23.0
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 7
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.1
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_151-b12
+12-Mar-2018 13:00:07.570 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\conf\logging.properties
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.mtomTempLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/temp/mtom/
+12-Mar-2018 13:00:07.580 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DuploadFolder=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/connector
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dderby.system.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/derby
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\temp
+12-Mar-2018 13:00:07.590 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Python35-32\Scripts\;C:\Program Files (x86)\Python35-32\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\gradle-2.12\bin;C:\Program Files (x86)\Skype\Phone\;;C:\Program Files\Docker Toolbox;C:\apache-maven-3.3.9\bin;C:\Users\guzman.llambias\AppData\Roaming\Python\Python35\Scripts;.]
+12-Mar-2018 13:00:07.973 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 13:00:09.218 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 13:00:09.218 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 13:00:09.218 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 13:00:09.228 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 13:00:10.571 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 13:00:10.571 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 13:00:10.581 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 13:00:10.581 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 13:00:10.591 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 13:00:10.591 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Initialization processed in 4259 ms
+12-Mar-2018 13:00:10.641 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+12-Mar-2018 13:00:10.641 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.23
+12-Mar-2018 13:00:10.671 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] de la aplicación web
+12-Mar-2018 13:00:11.823 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:14.509 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] has finished in [3.834] ms
+12-Mar-2018 13:00:14.514 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] de la aplicación web
+12-Mar-2018 13:00:22.199 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:40.197 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] has finished in [25.683] ms
+12-Mar-2018 13:00:40.198 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] de la aplicación web
+12-Mar-2018 13:00:44.665 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:56.688 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] has finished in [16.490] ms
+12-Mar-2018 13:00:56.689 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] de la aplicación web
+12-Mar-2018 13:00:57.260 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:57.266 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] has finished in [576] ms
+12-Mar-2018 13:00:57.266 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] de la aplicación web
+12-Mar-2018 13:00:58.092 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:58.169 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] has finished in [903] ms
+12-Mar-2018 13:00:58.169 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] de la aplicación web
+12-Mar-2018 13:00:58.779 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:58.785 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] has finished in [616] ms
+12-Mar-2018 13:00:58.786 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] de la aplicación web
+12-Mar-2018 13:00:59.219 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:59.223 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] has finished in [437] ms
+12-Mar-2018 13:00:59.223 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] de la aplicación web
+12-Mar-2018 13:00:59.733 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 13:00:59.737 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] has finished in [514] ms
+12-Mar-2018 13:00:59.744 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 13:00:59.761 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 13:00:59.768 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 13:00:59.774 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 13:00:59.788 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 13:00:59.795 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in 49199 ms
+12-Mar-2018 13:14:35.064 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 13:14:36.828 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 13:14:38.627 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 13:14:40.018 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 13:14:41.173 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 13:14:42.204 INFORMACIÓN [Thread-10] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+12-Mar-2018 13:14:42.315 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-runtime] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 13:14:42.378 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [derby.NetworkServerStarter] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.blockingStart(Unknown Source)
+ sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.lang.reflect.Method.invoke(Method.java:498)
+ org.apache.derby.iapi.jdbc.DRDAServerStarter.run(Unknown Source)
+ java.lang.Thread.run(Thread.java:748)
+12-Mar-2018 13:14:42.379 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [NetworkServerThread_1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.DualStackPlainSocketImpl.accept0(Native Method)
+ java.net.DualStackPlainSocketImpl.socketAccept(DualStackPlainSocketImpl.java:131)
+ java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+ java.net.PlainSocketImpl.accept(PlainSocketImpl.java:199)
+ java.net.ServerSocket.implAccept(ServerSocket.java:545)
+ java.net.ServerSocket.accept(ServerSocket.java:513)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ java.security.AccessController.doPrivileged(Native Method)
+ org.apache.derby.impl.drda.ClientThread.acceptClientWithRetry(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread.run(Unknown Source)
+12-Mar-2018 13:14:42.381 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 13:14:42.382 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 13:14:42.508 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-web] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 13:14:42.538 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 13:14:42.545 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 13:14:42.550 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 13:14:42.553 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 13:14:42.556 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 13:14:42.675 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 13:14:42.679 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 13:14:42.681 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 13:14:42.689 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 13:14:42.693 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:25:53.648 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.23
+12-Mar-2018 15:25:53.655 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 28 2017 10:30:11 UTC
+12-Mar-2018 15:25:53.655 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.23.0
+12-Mar-2018 15:25:53.656 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 7
+12-Mar-2018 15:25:53.656 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.1
+12-Mar-2018 15:25:53.657 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Mar-2018 15:25:53.657 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win
+12-Mar-2018 15:25:53.658 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_151-b12
+12-Mar-2018 15:25:53.658 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+12-Mar-2018 15:25:53.659 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:25:53.659 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:25:53.660 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\conf\logging.properties
+12-Mar-2018 15:25:53.662 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Mar-2018 15:25:53.663 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Mar-2018 15:25:53.665 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Mar-2018 15:25:53.666 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+12-Mar-2018 15:25:53.667 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.mtomTempLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/temp/mtom/
+12-Mar-2018 15:25:53.669 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DuploadFolder=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/connector
+12-Mar-2018 15:25:53.670 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 15:25:53.672 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 15:25:53.673 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 15:25:53.674 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dderby.system.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/derby
+12-Mar-2018 15:25:53.676 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 15:25:53.677 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:25:53.678 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:25:53.679 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\temp
+12-Mar-2018 15:25:53.680 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Python35-32\Scripts\;C:\Program Files (x86)\Python35-32\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\gradle-2.12\bin;C:\Program Files (x86)\Skype\Phone\;;C:\Program Files\Docker Toolbox;C:\apache-maven-3.3.9\bin;C:\Users\guzman.llambias\AppData\Roaming\Python\Python35\Scripts;.]
+12-Mar-2018 15:25:54.029 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 15:25:55.280 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:25:55.285 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 15:25:55.287 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:25:55.292 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 15:25:57.526 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:25:57.530 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 15:25:57.605 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:25:57.613 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:25:57.622 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:25:57.623 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Initialization processed in 5148 ms
+12-Mar-2018 15:25:57.722 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+12-Mar-2018 15:25:57.725 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.23
+12-Mar-2018 15:25:57.811 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] de la aplicación web
+12-Mar-2018 15:25:59.667 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:02.961 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] has finished in [5.145] ms
+12-Mar-2018 15:26:02.974 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] de la aplicación web
+12-Mar-2018 15:26:09.799 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:23.400 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] has finished in [20.425] ms
+12-Mar-2018 15:26:23.401 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] de la aplicación web
+12-Mar-2018 15:26:27.668 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:40.055 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] has finished in [16.653] ms
+12-Mar-2018 15:26:40.079 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] de la aplicación web
+12-Mar-2018 15:26:40.605 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:40.609 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] has finished in [529] ms
+12-Mar-2018 15:26:40.609 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] de la aplicación web
+12-Mar-2018 15:26:41.400 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:41.461 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] has finished in [852] ms
+12-Mar-2018 15:26:41.462 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] de la aplicación web
+12-Mar-2018 15:26:42.049 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:42.107 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] has finished in [644] ms
+12-Mar-2018 15:26:42.110 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] de la aplicación web
+12-Mar-2018 15:26:43.626 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:43.637 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] has finished in [1.526] ms
+12-Mar-2018 15:26:43.641 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] de la aplicación web
+12-Mar-2018 15:26:44.490 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:26:44.495 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] has finished in [855] ms
+12-Mar-2018 15:26:44.504 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 15:26:44.521 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 15:26:44.528 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 15:26:44.537 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 15:26:44.544 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:26:44.550 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in 46924 ms
+12-Mar-2018 15:27:39.370 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 15:27:41.058 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 15:27:42.421 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 15:27:43.422 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 15:27:44.421 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:27:45.960 INFORMACIÓN [Thread-10] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+12-Mar-2018 15:27:46.135 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-runtime] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 15:27:46.270 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [derby.NetworkServerStarter] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.blockingStart(Unknown Source)
+ sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.lang.reflect.Method.invoke(Method.java:498)
+ org.apache.derby.iapi.jdbc.DRDAServerStarter.run(Unknown Source)
+ java.lang.Thread.run(Thread.java:748)
+12-Mar-2018 15:27:46.272 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [NetworkServerThread_1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.DualStackPlainSocketImpl.accept0(Native Method)
+ java.net.DualStackPlainSocketImpl.socketAccept(DualStackPlainSocketImpl.java:131)
+ java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+ java.net.PlainSocketImpl.accept(PlainSocketImpl.java:199)
+ java.net.ServerSocket.implAccept(ServerSocket.java:545)
+ java.net.ServerSocket.accept(ServerSocket.java:513)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ java.security.AccessController.doPrivileged(Native Method)
+ org.apache.derby.impl.drda.ClientThread.acceptClientWithRetry(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread.run(Unknown Source)
+12-Mar-2018 15:27:46.276 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 15:27:46.366 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-web] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 15:27:46.397 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 15:27:46.407 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 15:27:46.417 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 15:27:46.421 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 15:27:46.424 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:27:46.428 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 15:27:46.431 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 15:27:46.434 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 15:27:46.436 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 15:27:46.438 INFORMACIÓN [Thread-10] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:28:32.473 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.23
+12-Mar-2018 15:28:32.479 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 28 2017 10:30:11 UTC
+12-Mar-2018 15:28:32.480 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.23.0
+12-Mar-2018 15:28:32.480 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 7
+12-Mar-2018 15:28:32.481 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.1
+12-Mar-2018 15:28:32.481 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Mar-2018 15:28:32.487 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win
+12-Mar-2018 15:28:32.488 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_151-b12
+12-Mar-2018 15:28:32.488 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+12-Mar-2018 15:28:32.488 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:28:32.489 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:28:32.490 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\conf\logging.properties
+12-Mar-2018 15:28:32.491 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Mar-2018 15:28:32.492 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Mar-2018 15:28:32.493 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Mar-2018 15:28:32.494 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+12-Mar-2018 15:28:32.495 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.mtomTempLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/temp/mtom/
+12-Mar-2018 15:28:32.496 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DuploadFolder=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/connector
+12-Mar-2018 15:28:32.497 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 15:28:32.498 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 15:28:32.500 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 15:28:32.501 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dderby.system.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/derby
+12-Mar-2018 15:28:32.502 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 15:28:32.503 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:28:32.504 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 15:28:32.505 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\temp
+12-Mar-2018 15:28:32.507 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Python35-32\Scripts\;C:\Program Files (x86)\Python35-32\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\gradle-2.12\bin;C:\Program Files (x86)\Skype\Phone\;;C:\Program Files\Docker Toolbox;C:\apache-maven-3.3.9\bin;C:\Users\guzman.llambias\AppData\Roaming\Python\Python35\Scripts;.]
+12-Mar-2018 15:28:32.776 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 15:28:34.923 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:28:34.936 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 15:28:34.941 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:28:34.945 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 15:28:37.199 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:28:37.206 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 15:28:37.219 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:28:37.224 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:28:37.231 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 15:28:37.233 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Initialization processed in 5925 ms
+12-Mar-2018 15:28:37.298 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+12-Mar-2018 15:28:37.298 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.23
+12-Mar-2018 15:28:37.366 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] de la aplicación web
+12-Mar-2018 15:28:39.147 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:28:41.717 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] has finished in [4.348] ms
+12-Mar-2018 15:28:41.721 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime.war] de la aplicación web
+12-Mar-2018 15:28:47.991 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:29:01.059 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime.war] has finished in [19.339] ms
+12-Mar-2018 15:29:01.061 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web.war] de la aplicación web
+12-Mar-2018 15:29:04.809 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:29:18.351 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web.war] has finished in [17.290] ms
+12-Mar-2018 15:29:18.353 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] de la aplicación web
+12-Mar-2018 15:29:18.885 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:29:18.889 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] has finished in [535] ms
+12-Mar-2018 15:29:18.892 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] de la aplicación web
+12-Mar-2018 15:29:19.695 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:29:19.756 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] has finished in [864] ms
+12-Mar-2018 15:29:19.756 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] de la aplicación web
+12-Mar-2018 15:29:20.306 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:29:20.312 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] has finished in [556] ms
+12-Mar-2018 15:29:20.312 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] de la aplicación web
+12-Mar-2018 15:29:20.764 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:29:20.767 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] has finished in [455] ms
+12-Mar-2018 15:29:20.768 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] de la aplicación web
+12-Mar-2018 15:29:21.125 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 15:29:21.128 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] has finished in [360] ms
+12-Mar-2018 15:29:21.134 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 15:29:21.145 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 15:29:21.149 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 15:29:21.153 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 15:29:21.158 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 15:29:21.162 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in 43927 ms
+12-Mar-2018 16:16:51.473 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:16:52.902 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:16:54.217 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:16:55.253 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:16:56.211 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 16:16:56.489 INFORMACIÓN [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/connector-runtime]
+12-Mar-2018 16:16:56.578 ADVERTENCIA [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-runtime] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 16:16:56.675 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime\WEB-INF\lib] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:56.678 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime\WEB-INF] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:56.679 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:56.685 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.delete [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:56.936 INFORMACIÓN [Thread-18] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+12-Mar-2018 16:16:56.936 INFORMACIÓN [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Repliegue (undeploy) de la aplicación web que tiene como trayectoria de contexto [/connector-web]
+12-Mar-2018 16:16:56.987 ADVERTENCIA [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-web] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 16:16:57.101 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web\WEB-INF\lib] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:57.108 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web\WEB-INF] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:57.109 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:57.109 GRAVE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.delete [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] no pudo ser completamente borrado. La presencia de los ficheros restantes puede causar problemas
+12-Mar-2018 16:16:57.115 INFORMACIÓN [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] de la aplicación web
+12-Mar-2018 16:16:57.581 INFORMACIÓN [localhost-startStop-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:16:57.588 INFORMACIÓN [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime] has finished in [473] ms
+12-Mar-2018 16:16:57.589 INFORMACIÓN [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] de la aplicación web
+12-Mar-2018 16:16:58.076 INFORMACIÓN [localhost-startStop-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:16:58.083 INFORMACIÓN [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web] has finished in [494] ms
+12-Mar-2018 16:16:58.161 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [derby.NetworkServerStarter] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.blockingStart(Unknown Source)
+ sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.lang.reflect.Method.invoke(Method.java:498)
+ org.apache.derby.iapi.jdbc.DRDAServerStarter.run(Unknown Source)
+ java.lang.Thread.run(Thread.java:748)
+12-Mar-2018 16:16:58.165 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [NetworkServerThread_1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.DualStackPlainSocketImpl.accept0(Native Method)
+ java.net.DualStackPlainSocketImpl.socketAccept(DualStackPlainSocketImpl.java:131)
+ java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+ java.net.PlainSocketImpl.accept(PlainSocketImpl.java:199)
+ java.net.ServerSocket.implAccept(ServerSocket.java:545)
+ java.net.ServerSocket.accept(ServerSocket.java:513)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ java.security.AccessController.doPrivileged(Native Method)
+ org.apache.derby.impl.drda.ClientThread.acceptClientWithRetry(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread.run(Unknown Source)
+12-Mar-2018 16:16:58.170 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.173 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.175 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.178 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.180 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_6] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.181 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_7] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.184 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.186 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.187 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_10] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.188 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_11] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.189 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_12] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.192 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_13] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.194 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_14] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.196 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_15] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.197 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_16] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.199 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_17] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.200 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_18] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.202 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_19] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.204 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_20] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.207 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_21] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.208 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_22] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.209 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_23] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.210 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_24] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.211 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_25] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.212 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_26] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.214 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_27] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.215 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_28] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.216 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_29] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.217 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_30] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.218 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_31] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.220 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_32] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.221 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_33] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.222 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_34] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.223 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_35] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.224 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_36] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.226 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_37] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.227 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_38] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.228 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_39] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.229 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_40] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.230 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_41] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.231 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_42] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.232 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_43] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:16:58.245 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:16:58.248 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:16:58.252 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:16:58.253 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:16:58.256 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 16:16:58.258 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:16:58.259 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:16:58.260 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:16:58.261 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:16:58.262 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 16:17:16.786 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.23
+12-Mar-2018 16:17:16.794 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 28 2017 10:30:11 UTC
+12-Mar-2018 16:17:16.795 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.23.0
+12-Mar-2018 16:17:16.795 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 7
+12-Mar-2018 16:17:16.796 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.1
+12-Mar-2018 16:17:16.796 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+12-Mar-2018 16:17:16.801 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win
+12-Mar-2018 16:17:16.802 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_151-b12
+12-Mar-2018 16:17:16.802 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+12-Mar-2018 16:17:16.803 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 16:17:16.803 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 16:17:16.804 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\conf\logging.properties
+12-Mar-2018 16:17:16.805 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+12-Mar-2018 16:17:16.807 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+12-Mar-2018 16:17:16.809 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+12-Mar-2018 16:17:16.810 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+12-Mar-2018 16:17:16.811 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.mtomTempLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/temp/mtom/
+12-Mar-2018 16:17:16.813 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DuploadFolder=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/connector
+12-Mar-2018 16:17:16.814 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 16:17:16.814 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.configLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/conf
+12-Mar-2018 16:17:16.815 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.integration.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 16:17:16.817 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dderby.system.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/derby
+12-Mar-2018 16:17:16.818 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dconnector.web.log4jLocation=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23/logs
+12-Mar-2018 16:17:16.819 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 16:17:16.820 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23
+12-Mar-2018 16:17:16.821 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\temp
+12-Mar-2018 16:17:16.822 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\jre1.8.0_151_win\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Python35-32\Scripts\;C:\Program Files (x86)\Python35-32\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\gradle-2.12\bin;C:\Program Files (x86)\Skype\Phone\;;C:\Program Files\Docker Toolbox;C:\apache-maven-3.3.9\bin;C:\Users\guzman.llambias\AppData\Roaming\Python\Python35\Scripts;.]
+12-Mar-2018 16:17:17.106 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:17:19.276 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 16:17:19.288 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:17:19.292 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 16:17:19.296 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:17:21.700 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 16:17:21.707 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:17:21.722 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 16:17:21.728 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 16:17:21.735 INFORMACIÓN [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+12-Mar-2018 16:17:21.738 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Initialization processed in 5893 ms
+12-Mar-2018 16:17:21.830 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+12-Mar-2018 16:17:21.836 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.23
+12-Mar-2018 16:17:21.910 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] de la aplicación web
+12-Mar-2018 16:17:23.774 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:17:26.520 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\aderby.war] has finished in [4.602] ms
+12-Mar-2018 16:17:26.539 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime.war] de la aplicación web
+12-Mar-2018 16:17:33.364 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:17:51.923 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-runtime.war] has finished in [25.384] ms
+12-Mar-2018 16:17:51.924 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Despliegue del archivo [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web.war] de la aplicación web
+12-Mar-2018 16:17:55.804 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:18:07.816 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\connector-web.war] has finished in [15.892] ms
+12-Mar-2018 16:18:07.820 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] de la aplicación web
+12-Mar-2018 16:18:08.372 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:18:08.376 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\docs] has finished in [556] ms
+12-Mar-2018 16:18:08.377 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] de la aplicación web
+12-Mar-2018 16:18:09.147 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:18:09.218 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\examples] has finished in [841] ms
+12-Mar-2018 16:18:09.219 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] de la aplicación web
+12-Mar-2018 16:18:09.751 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:18:09.757 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\host-manager] has finished in [537] ms
+12-Mar-2018 16:18:09.757 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] de la aplicación web
+12-Mar-2018 16:18:10.201 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:18:10.205 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\manager] has finished in [448] ms
+12-Mar-2018 16:18:10.206 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Despliegue del directorio [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] de la aplicación web
+12-Mar-2018 16:18:10.644 INFORMACIÓN [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+12-Mar-2018 16:18:10.659 INFORMACIÓN [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\temp\conector_empaquetado_web_v2\conector_empaquetado_web\apache-tomcat-8.5.23\webapps\ROOT] has finished in [453] ms
+12-Mar-2018 16:18:10.680 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:18:10.714 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:18:10.727 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:18:10.751 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:18:10.773 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 16:18:10.789 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in 49049 ms
+12-Mar-2018 16:20:55.101 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:20:56.630 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:20:58.536 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:20:59.930 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:21:01.151 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 16:21:02.768 INFORMACIÓN [Thread-18] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+12-Mar-2018 16:21:03.007 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-runtime] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 16:21:03.021 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [connector-runtime] appears to have started a thread named [Resource Destroyer in BasicResourcePool.close()] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+12-Mar-2018 16:21:03.176 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [derby.NetworkServerStarter] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.blockingStart(Unknown Source)
+ sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.lang.reflect.Method.invoke(Method.java:498)
+ org.apache.derby.iapi.jdbc.DRDAServerStarter.run(Unknown Source)
+ java.lang.Thread.run(Thread.java:748)
+12-Mar-2018 16:21:03.182 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [NetworkServerThread_1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.DualStackPlainSocketImpl.accept0(Native Method)
+ java.net.DualStackPlainSocketImpl.socketAccept(DualStackPlainSocketImpl.java:131)
+ java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+ java.net.PlainSocketImpl.accept(PlainSocketImpl.java:199)
+ java.net.ServerSocket.implAccept(ServerSocket.java:545)
+ java.net.ServerSocket.accept(ServerSocket.java:513)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread$1.run(Unknown Source)
+ java.security.AccessController.doPrivileged(Native Method)
+ org.apache.derby.impl.drda.ClientThread.acceptClientWithRetry(Unknown Source)
+ org.apache.derby.impl.drda.ClientThread.run(Unknown Source)
+12-Mar-2018 16:21:03.187 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.190 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.193 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.198 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.202 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_6] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.206 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_7] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.210 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.213 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.216 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_10] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.219 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_11] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.222 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_12] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.225 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_13] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.229 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_14] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.231 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_15] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.234 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_16] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.237 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_17] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.240 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_18] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.244 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_19] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.248 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_20] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.251 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_21] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.Object.wait(Object.java:502)
+ org.apache.derby.impl.drda.NetworkServerControlImpl.getNextSession(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.254 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_22] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.258 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_23] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.262 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_24] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.266 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_25] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.269 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_26] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.272 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_27] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.276 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_28] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.281 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_29] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.284 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_30] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.288 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_31] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.291 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_32] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.295 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_33] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.298 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_34] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.302 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_35] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.305 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_36] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.309 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_37] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.313 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_38] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.317 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_39] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.322 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_40] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.328 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aderby] appears to have started a thread named [DRDAConnThread_41] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.net.SocketInputStream.socketRead0(Native Method)
+ java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+ java.net.SocketInputStream.read(SocketInputStream.java:171)
+ java.net.SocketInputStream.read(SocketInputStream.java:141)
+ org.apache.derby.impl.drda.DDMReader.fill(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.ensureALayerDataInBuffer(Unknown Source)
+ org.apache.derby.impl.drda.DDMReader.readDssHeader(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
+ org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
+12-Mar-2018 16:21:03.504 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc La aplicación web [connector-web] registró el conductor JDBC [org.apache.derby.jdbc.ClientDriver] pero falló al anular el registro mientras la aplicación web estaba parada. Para prevenir un fallo de memoria, se ha anulado el registro del conductor JDBC por la fuerza.
+12-Mar-2018 16:21:03.511 ADVERTENCIA [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [connector-web] appears to have started a thread named [Resource Destroyer in BasicResourcePool.close()] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.unmarkPooledConnectionInUse(C3P0PooledConnectionPool.java:728)
+ com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.access$300(C3P0PooledConnectionPool.java:70)
+ com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.destroyResource(C3P0PooledConnectionPool.java:649)
+ com.mchange.v2.resourcepool.BasicResourcePool$1DestroyResourceTask.run(BasicResourcePool.java:1076)
+ com.mchange.v2.resourcepool.BasicResourcePool.destroyResource(BasicResourcePool.java:1101)
+ com.mchange.v2.resourcepool.BasicResourcePool.destroyResource(BasicResourcePool.java:1062)
+ com.mchange.v2.resourcepool.BasicResourcePool.access$100(BasicResourcePool.java:44)
+ com.mchange.v2.resourcepool.BasicResourcePool$5.run(BasicResourcePool.java:1316)
+12-Mar-2018 16:21:03.562 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:21:03.573 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:21:03.581 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:21:03.594 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:21:03.608 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+12-Mar-2018 16:21:03.616 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9700"]
+12-Mar-2018 16:21:03.619 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9800"]
+12-Mar-2018 16:21:03.622 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8443"]
+12-Mar-2018 16:21:03.626 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["https-jsse-nio-8553"]
+12-Mar-2018 16:21:03.632 INFORMACIÓN [Thread-18] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

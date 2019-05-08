@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connector>
+    <name>ARTEE_DescargarExpediente</name>
+    <description>ARTEE_DescargarExpediente</description>
+    <type>Test</type>
+    <path>/ARTEE/DescargarExpediente</path>
+    <url>http://testservicios.pge.red.uy:6038/Ruteo/DescargarExpediente.svc</url>
+    <wsdl>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</wsdl>
+    <wsaTo>http://testservicios.pge.red.uy/artee/descargarExpediente</wsaTo>
+    <username>agesic</username>
+    <issuer>agesic</issuer>
+    <policyName>urn:tokensimple</policyName>
+    <role_operation>
+        <role>ou=test,o=ute</role>
+        <operation>DescargarExpedienteIn</operation>
+        <operationFromWSDL>DescargarExpediente</operationFromWSDL>
+        <wsaAction>http://servicios.pge.red.uy/agesic/artee/DescargarExpediente/ServicioDescargarExpediente/DescargarExpediente</wsaAction>
+        <soapAction>http://servicios.pge.red.uy/agesic/artee/DescargarExpediente/ServicioDescargarExpediente/DescargarExpediente</soapAction>
+    </role_operation>
+    <enableCacheTokens>false</enableCacheTokens>
+    <tag>ARTEE</tag>
+    <enableLocalConf>false</enableLocalConf>
+    <enableUserToken>false</enableUserToken>
+    <version>2.0</version>
+</connector>

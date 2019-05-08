@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.agesic.gub.uy/soa" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TimestampService" targetNamespace="http://www.agesic.gub.uy/soa">
+ <types>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.agesic.gub.uy/soa" version="1.0">
+   <xs:element name="GetTimestamp" type="tns:GetTimestamp"/>
+   <xs:element name="GetTimestampResponse" type="tns:GetTimestampResponse"/>
+   <xs:complexType name="GetTimestamp">
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="GetTimestampResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name="TimestampService_GetTimestampResponse">
+  <part element="tns:GetTimestampResponse" name="GetTimestampResponse"/>
+ </message>
+ <message name="TimestampService_GetTimestamp">
+  <part element="tns:GetTimestamp" name="GetTimestamp"/>
+ </message>
+ <portType name="TimestampService">
+  <operation name="GetTimestamp" parameterOrder="GetTimestamp">
+   <input message="tns:TimestampService_GetTimestamp"/>
+   <output message="tns:TimestampService_GetTimestampResponse"/>
+  </operation>
+ </portType>
+ <binding name="TimestampServiceBinding" type="tns:TimestampService">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="GetTimestamp">
+   <soap:operation soapAction="http://testservicios.pge.red.uy/timestamp"/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+ </binding>
+ <service name="TimestampService">
+  <port binding="tns:TimestampServiceBinding" name="TimestampServiceImplPort">
+   <soap:address location="http://10.120.41.1:9800/connector-runtime/timestamp"/>
+  </port>
+ </service>
+</definitions>
