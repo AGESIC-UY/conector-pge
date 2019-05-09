@@ -1,2 +1,0 @@
-JBoss-Product-Release-Name: WildFly Servlet
-JBoss-Product-Release-Version: 9.0.2.Final

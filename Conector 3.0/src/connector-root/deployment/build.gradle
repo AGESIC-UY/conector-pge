@@ -1,0 +1,34 @@
+def environment = System.properties['environment']
+def tomcatHome = System.properties['tomcat.home']
+def tomcatBin = tomcatHome+"/bin"
+def deploymentConfig = tomcatHome+'/conf'
+
+task undeployTomcatEnvironment(type: Delete) {
+    delete tomcatBin+'/setenv.bat'
+}
+
+task deployTomcatEnvironment(type: Copy) {
+    from environment+"/tomcat/bin/setenv.sh"
+    into tomcatBin
+}
+
+task undeployConf(type: Delete) {
+    delete deploymentConfig+'/connector.properties'
+}
+
+task deployConf(type: Copy) {
+    from environment+"/tomcat/conf/connector.properties"
+    into deploymentConfig
+}
+
+task deploy(dependsOn: ['deployConf', 'deployTomcatEnvironment']){
+    group 'deployment'
+    description "Deploys connector configuration properties and tomcat environment properties. "+
+    "Usage gradle deployment:deploy -Denvironment=develop -Dtomcat.home=Tomcat location"
+}
+
+task undeploy(dependsOn: ['undeployConf', 'undeployTomcatEnvironment']){
+    group 'deployment'
+    description "Undeploys connector.properties and tomcat environment properties. "+
+    "Usage gradle deployment:undeploy -Denvironment=develop -Dtomcat.home=Tomcat location"
+}

@@ -1,0 +1,51 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://servicios.pge.red.uy/acce/rupe/novedadesProveedores/consumo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:f="http://ps.agesic.gub.uy" xmlns:fexp="http://ws.rupe.acce.gub.uy/novedadesProveedores" name="RecibirNovedadService" targetNamespace="http://servicios.pge.red.uy/acce/rupe/novedadesProveedores/consumo">
+  <types>
+    <xsd:schema xmlns:tns="http://ps.agesic.gub.uy" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ps.agesic.gub.uy" version="1.0">
+      <xs:element name="pullNotificationRequest" type="tns:pullNotificationRequest"/>
+      <xs:element name="NotificationRequest" nillable="true" type="tns:pullNotificationRequest"/>
+      <xs:complexType name="pullNotificationRequest">
+        <xs:sequence>
+          <xs:element name="subscriber" type="xs:string"/>
+          <xs:element name="topic" type="xs:string"/>
+          <xs:element minOccurs="0" name="ackNotificationId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xsd:import namespace="http://ws.rupe.acce.gub.uy/novedadesProveedores" schemaLocation="AcceRupeProveedores.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://ws.rupe.acce.gub.uy/novedadesProveedores" schemaLocation="AcceRupeProveedores.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://ws.rupe.acce.gub.uy/novedadesProveedores" schemaLocation="AcceRupeProveedores.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="RecibirNovedadService_recibirNovedadResponse">
+    <part element="fexp:novedadProveedor" name="novedadProveedor"/>
+  </message>
+  <message name="RecibirNovedadService_recibirNovedad">
+    <part element="f:NotificationRequest" name="NotificationRequest"/>
+  </message>
+  <portType name="RecibirNovedadService">
+    <operation name="recibirNovedad" parameterOrder="NotificationRequest">
+      <input message="tns:RecibirNovedadService_recibirNovedad"/>
+      <output message="tns:RecibirNovedadService_recibirNovedadResponse"/>
+    </operation>
+  </portType>
+  <binding name="RecibirNovedadServiceBinding" type="tns:RecibirNovedadService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="recibirNovedad">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="RecibirNovedadService">
+    <port binding="tns:RecibirNovedadServiceBinding" name="RecibirNovedadPort">
+      <soap:address location="http://10.255.6.145:9800/novedades/RecibirNovedadService"/>
+    </port>
+  </service>
+</definitions>
