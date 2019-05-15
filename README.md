@@ -17,7 +17,7 @@ El contenido esta categorizado en las siguientes carpetas
 # Conector 2.0
 El contenido esta categorizado en las siguientes carpetas
   - src (fuentes del proyecto)
-  - config (arhicvos de configuración)
+  - lib (librería PGE)
   - doc (documentación)
 
 ### Descarga
