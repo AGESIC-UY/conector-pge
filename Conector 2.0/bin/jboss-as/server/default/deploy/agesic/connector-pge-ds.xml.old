@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+  <local-tx-datasource>
+    <jndi-name>ConnectorPGEDS</jndi-name>
+    <connection-url>jdbc:postgresql://192.168.10.116:5432/connectorPGEDB</connection-url>
+    <driver-class>org.postgresql.Driver</driver-class>
+    <user-name>postgres</user-name>
+    <password>postgres</password>
+    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+    <min-pool-size>15</min-pool-size>
+    <max-pool-size>50</max-pool-size>
+    <metadata>
+       <type-mapping>PostgreSQL 8.0</type-mapping>
+    </metadata>
+  </local-tx-datasource>
+</datasources>

@@ -1,0 +1,628 @@
+html {
+	overflow-y: scroll;
+}
+
+body {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0px;
+	background: #002727 url(../img/bg.jpg) top left fixed;
+	
+}
+
+a img {
+	border: none;
+}
+
+h1 {
+	font-size: 1.6em;
+	margin-top: 0;
+}
+
+.header{
+	margin:auto;
+	width:950px;
+	height:103px;
+	margin-top:20px;
+	background: url(../img/top.png) top center no-repeat;
+	-moz-border-radius-topleft: 15px;
+	-webkit-border-top-left-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	-webkit-border-top-right-radius: 15px;
+}
+
+.navage {
+	margin:auto;
+	width:950px;
+}
+
+input[type=submit], input[type=button] {
+-moz-background-clip:border;
+-moz-background-origin:padding;
+-moz-background-size:auto auto;
+background-attachment:scroll;
+background-color:transparent;
+background: url(../img/bt.png) ;
+border:none;
+background-position:center center;
+background-repeat:repeat-x;
+border-top-color:-moz-use-text-color;
+border-top-style:none;
+border-top-width:medium;
+color:#FFFFFF;
+font-size:8pt;
+height:38px;
+padding-bottom:4px;
+width:120px;
+}
+
+input[type=text], input[type=password], textarea, select {
+	font-size: 12px;
+	padding-left: 1px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-image:none;
+	border:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#000;
+	background-color:#FFF;
+	padding:2px;
+}
+
+select {
+	font-size: 13px;
+}
+
+.tableControl, .actionButtons {
+	width: 100%;
+}
+
+.tableControl a {
+	padding-left: 10px;
+}
+
+.tableControl {
+	text-align: right;
+}
+
+.footer {
+	text-align: center;
+	font-size: 11px;
+	margin-bottom: 10px;
+	color:#FFF;
+}
+
+.rich-table {
+	width: 100%;
+    background-color:none;
+    background:none;
+    border-collapse: collapse;
+    border-left: medium none;
+    border-top: medium none;
+    empty-cells: show;
+}
+
+.rich-table-thead {
+	border: none;	
+}
+
+
+.rich-table-cell {
+    border-bottom: none;
+    border-right: none;
+    color: #FFF;
+    font-family: Arial,Verdana,sans-serif;
+    font-size: 11px;
+    padding: 4px;
+}
+
+.body {
+	width:930px;
+	margin:auto;
+	border-bottom-left-radius: 15px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	background: url(../img/bgBody.png) repeat;
+	padding:10px;
+	color: white;
+}
+.message {
+	padding: 5px;
+	list-style: none;
+	border: 0;
+	background: none;
+	padding: 0;
+	color: #000000;
+	margin: 5px 0 8px 0;
+	font-size: 12px;
+}
+
+.message li {
+	background: no-repeat left center;
+	padding-top: 1px;
+	padding-left: 20px;
+	margin-left: 3px;
+}
+
+.message li.infomsg {
+	background-image: url(../img/msginfo.png);
+}
+
+.message li.errormsg {
+	background-image: url(../img/msgerror.png);
+}
+
+.message li.warnmsg {
+	background-image: url(../img/msgwarn.png);
+}
+
+.name {
+	vertical-align: top;
+	font-weight: bold;
+	width: 115px;
+	float: left;
+	padding: 5px;
+	margin-top: 3px;
+	clear: left;
+	text-align: left;
+}
+
+.filterName {
+	vertical-align: top;
+	font-weight: bold;
+	float: left;
+	padding: 5px;
+	margin-top: 3px;
+	clear: left;
+}
+
+.value {
+	float: left;
+	padding: 5px;
+}
+
+.error {
+	float: left;
+	padding: 5px;
+}
+
+.errors {
+	color: #FF0000;
+	vertical-align: middle;
+}
+
+img.errors {
+	padding-right: 5px;
+}
+
+.errors input, .errors textarea, .errors select {
+	border: 1px solid red !important;
+}
+
+.required {
+	color: #FF0000;
+	padding-left: 2px;
+}
+
+.rich-stglpanel-body {
+	overflow: auto;
+} 
+
+/* the specificity here is necessary to override the defaults */
+/*
+.rich-panel .rich-panel-header,
+.rich-stglpanel .rich-stglpanel-header {
+	padding: 2px 3px;
+}*/
+
+.rich-panel input[type=submit], .rich-panel input[type=button],
+.rich-tabpanel input[type=submit], .rich-tabpanel input[type=button] {
+	margin-bottom: 0;
+}
+
+.tableControl input[type=submit], .tableControl input[type=button], .tableControl select {
+	margin: 5px 0 5px 5px;
+}
+
+/* I don't know why this is necessary, but the select is off by a pixel on the top and is padding too much on the left */
+.tableControl select {
+	margin-left: 2px;
+	position: relative;
+	top: 1px;
+}
+
+.actionButtons {
+	padding-left: 1px;
+	text-align:center;
+	margin:auto;
+}
+
+.actionButtons select {
+	margin: 5px 5px 5px 0;
+	vertical-align: bottom;
+}
+
+.rich-toolbar-item a {
+	text-decoration: none;
+}
+
+.rich-toolbar-item a:hover, .rich-ddmenu-label-select {
+	text-decoration: underline;
+}
+
+.rich-toolbar-item .rich-menu-item a:hover {
+	text-decoration: none;
+}
+
+.rich-datalist {
+	list-style: square;
+	margin: 6px 0 1px 0;
+	padding-left: 18px;
+}
+
+.rich-list-item {
+	padding-bottom: 4px;
+}
+
+div.info {
+	font-size: 1.2em;
+}
+
+ul.bullets {
+	list-style: square;
+}
+
+ul.bullets li {
+	padding-bottom: 2px;
+}
+
+td.action {
+	text-align: center;
+	width: 8em;
+	white-space: nowrap;
+}
+
+td.action a {
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+table.radio {
+   border: 0;
+}
+
+table.radio td {
+   padding: 0 2px;
+}
+
+table.radio input[type=radio] {
+   vertical-align: bottom;
+}
+
+.rich-toolbar {
+	height:36px;
+	border:none;
+	background: url(../img/nav.png) repeat-x;
+}
+
+.rich-toolbar-item {
+	color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:13px;
+}
+
+.rich-toolbar a:link, .rich-toolba.r a:visited, .rich-toolbar a:active, .rich-toolbar a:hover {
+	color:#FFF;
+}
+
+.dr-pnl {
+	background:none;
+	border:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.dr-stglpnl {
+	background:none;
+	border:none;
+}
+
+.dr-stglpnl-b {
+	background:none;
+	border:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+	font-size:12px;
+}
+
+.dr-stglpnl-h {
+	color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	background-image:none;
+	background-color:#003631;
+	font-size:14px;
+	border:none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width:300px;
+	margin:5px;
+	padding:5px;
+}
+
+.dr-pnl-h {
+	color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	background-image:none;
+	background-color:#003631;
+	font-size:14px;
+	border:none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width:300px;
+	margin:5px;
+	padding:5px;
+}
+
+.rich-table-subheadercell {
+	background-color:#02393b;
+	border:none;
+	background-image:none;
+	font-size:12px;
+	text-align: left;
+	color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.rich-table-subheader {
+	background-color:#02393b;
+	border:none;
+	background-image:none;
+	font-size:12px;
+	color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.dr-table-subheadercell {
+	color:#FFF;
+	text-decoration:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	text-align:left;
+}
+
+.dr-table-subheader a {
+	color:#FFF;
+	text-decoration:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+
+.dr-table-thead {
+	border:none;
+}
+
+.dr-table {
+	border:none;
+}
+
+.rich-toolbar a:link, .rich-toolbar a:visited, .rich-toolbar a:active, .rich-toolbar a:hover {
+	color:#FFF;
+}
+
+.dr-pnl-b {
+	color:#FFFFFF;
+	text-decoration:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+.extdt-table-layout {
+	background:none;
+	border:none;
+	color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+.extdt-subheader {
+	color:#fff;
+	border:none;
+	background:#02393B;
+}
+
+.extdt-subheadercell {
+	border:none;
+}
+
+.extdt-subheadercell a{
+	color:#FFF;
+	font-size:12px;
+	text-decoration:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.extdt-cell {
+	color:#FFF;
+	font-size:12px;
+	border:none;
+	text-decoration:none;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.extdt-maindiv {
+	border:none;
+}
+
+.extdt-empty-cell {
+	border:none;
+}
+
+.extdt-row-selected {
+	background-color:#00292a;
+}
+
+.dr-table-cell {
+	border:none;
+}
+
+.rich-calendar-exterior {
+	color:#000;
+}
+
+.dr-table-row {
+	color:#FFF;
+	background-color:none;
+	font-size:12px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.dr-table-cell {
+	background-color:none;
+		font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+		color:#fff;
+}
+
+.rich-mpnl-mask-div {
+	background-color:#000;
+	opacity:.4;
+	filter: alpha (opacity=40);
+}
+
+.rich-mpnl-header {
+	background:url(../img/nav.png) repeat-x;
+	color:#FFF;
+	border:none;
+	text-align:center;
+		color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height:24px;
+	line-height:22px;
+	-moz-border-radius-topleft: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-webkit-border-top-right-radius: 10px;
+}
+
+.rich-mpnl-content {
+	background:url(../img/bg.jpg) repeat;
+	border:none;
+	color:white;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+.rich-mpnl-body {
+	color:white;
+}
+
+.dr-mpnl-pnl-b {
+		color:#FFF;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	text-align:center;
+}
+
+.dr-mpnl-header {
+	height:19px;
+}
+
+.message {
+	color:#FFF;
+}
+
+.odd {
+	background-color:#004b4e;
+	
+}
+
+rich-table-row  odd{
+ 	background-color:none;
+ 	background:none;
+}
+
+.even{
+	background-color:none;
+}
+
+.dr-table {
+	background-color:none;
+	background:none;
+	color:#FFF;
+}
+
+td.action {
+	text-align:left;
+}
+
+
+.rich-toolbar .currentTab:visited, .rich-toolbar .currentTab:link, .rich-toolbar .currentTab:active, .rich-toolbar .currentTab:hover {
+	color: #00b5de;	
+}
+
+.normalTab {
+}
+
+.rich-panel-body {
+    color: white;
+    padding: 1px;
+}
+
+#j_id20:j_id79 {
+    background: none repeat scroll 0 0 transparent;
+    color: white;
+}
+
+rich-panel-body {
+    background: none repeat scroll 0 0 transparent;
+    color: white;
+}
+
+.rich-panel {
+	background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+.rich-panel-header{
+	-moz-border-radius: 5px 5px 5px 5px;
+    background-color: #003631;
+    background-image: none;
+    border: medium none;
+    color: #FFFFFF;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    margin: 5px;
+    padding: 5px;
+    width: 300px;
+}
+
+.rich-tool-tip {
+	background: #666;
+	border: 1px solid #333;
+	
+}
+
+/* estilos para paginado */
+.rich-dtascroller-table  {
+	background-color:transparent;
+	border-color:transparent;
+}
+
+.rich-datascr-button {
+	background-color:transparent;
+	border-color:transparent;
+}
+
+.rich-datascr-inact {
+	border-top-color: rgb(74, 117, 181);
+	color: rgb(74, 117, 181);
+}
+
+.rich-datascr-act {
+	border-top-color: white;
+	color: white;
+}

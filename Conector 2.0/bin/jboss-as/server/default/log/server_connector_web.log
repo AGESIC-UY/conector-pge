@@ -1,0 +1,28 @@
+2017-01-27 11:32:35,785 WARN  [org.apache.myfaces.component.html.util.ExtensionsFilter] Please adjust your web.xml to use org.apache.myfaces.webapp.filter.ExtensionsFilter
+2017-01-27 11:32:36,337 WARN  [org.hibernate.impl.SessionFactoryObjectFactory] InitialContext did not implement EventContext
+2017-01-27 11:33:33,091 WARN  [org.richfaces.skin.SkinFactoryImpl] Init parameter for a skin name changed to org.richfaces.SKIN
+2017-01-27 11:33:33,675 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/jsf-facelets.jar!/META-INF/jsf-core.taglib.xml
+2017-01-27 11:33:33,682 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/jsf-facelets.jar!/META-INF/jsf-html.taglib.xml
+2017-01-27 11:33:33,710 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/jsf-facelets.jar!/META-INF/jsf-ui.taglib.xml
+2017-01-27 11:33:33,732 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/jsf-facelets.jar!/META-INF/jstl-core.taglib.xml
+2017-01-27 11:33:33,738 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/jsf-facelets.jar!/META-INF/jstl-fn.taglib.xml
+2017-01-27 11:33:33,776 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/richfaces-ui-3.3.2.SR1.jar!/META-INF/a4j.taglib.xml
+2017-01-27 11:33:33,901 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/richfaces-ui-3.3.2.SR1.jar!/META-INF/rich.taglib.xml
+2017-01-27 11:33:33,905 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/richfaces-ui-3.3.2.SR1.jar!/META-INF/jsp.taglib.xml
+2017-01-27 11:33:33,910 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/richfaces-ui-3.3.2.SR1.jar!/META-INF/richfaces.taglib.xml
+2017-01-27 11:33:33,915 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/richfaces-ui-3.3.2.SR1.jar!/META-INF/ajax4jsf.taglib.xml
+2017-01-27 11:33:33,949 ERROR [STDERR] 27/01/2017 11:33:33 com.sun.facelets.compiler.TagLibraryConfig loadImplicit
+INFO: Added Library from: jar:file:/C:/Users/sofis/Downloads/conector3/jboss-as/server/default/deploy/agesic/connector-pge-ear.ear/connector-pge-web.war/WEB-INF/lib/tomahawk12-1.1.10.jar!/META-INF/tomahawk.taglib.xml
+2017-01-27 11:33:42,979 WARN  [org.jboss.ejb3.JmxKernelAbstraction] jboss.j2ee:ear=connector-pge-ear.ear,jar=connector-pge-ejb.jar,name=ConnectorManagerSession,service=EJB3 is not registered
+2017-01-27 11:33:42,984 WARN  [org.jboss.ejb3.JmxKernelAbstraction] jboss.j2ee:ear=connector-pge-ear.ear,jar=connector-pge-ejb.jar,name=GlobalConfigurationManagerSession,service=EJB3 is not registered
+2017-01-27 11:33:42,996 WARN  [org.jboss.ejb3.JmxKernelAbstraction] persistence.units:ear=connector-pge-ear.ear,jar=connector-pge-ejb.jar,unitName=connector-pge is not registered

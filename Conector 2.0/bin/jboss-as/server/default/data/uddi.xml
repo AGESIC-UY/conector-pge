@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?><uddi>
+    <reloadDelay>3600000</reloadDelay>
+    <manager name="uddi-portlet-manager">
+        <nodes>
+            <node>
+                
+                <name>default</name> 
+                <description>Main jUDDI node</description>
+                
+                
+                <proxyTransport>org.jboss.internal.soa.esb.registry.client.JuddiInVMTransport</proxyTransport>
+                <custodyTransferUrl>org.apache.juddi.api.impl.UDDICustodyTransferImpl</custodyTransferUrl>
+                <inquiryUrl>org.apache.juddi.api.impl.UDDIInquiryImpl</inquiryUrl>
+                <publishUrl>org.apache.juddi.api.impl.UDDIPublicationImpl</publishUrl>
+                <securityUrl>org.apache.juddi.api.impl.UDDISecurityImpl</securityUrl>
+                <subscriptionUrl>org.apache.juddi.api.impl.UDDISubscriptionImpl</subscriptionUrl>
+                <subscriptionListenerUrl>org.apache.juddi.api.impl.UDDISubscriptionListenerImpl</subscriptionListenerUrl>
+                <juddiApiUrl>org.apache.juddi.api.impl.JUDDIApiImpl</juddiApiUrl>
+                
+            </node>
+            <node>
+                <name>default-ws</name> 
+                <description>jUDDI console node</description>
+                
+                <proxyTransport>org.jboss.internal.soa.esb.registry.client.JuddiInVMTransport</proxyTransport>
+                <custodyTransferUrl>org.apache.juddi.api.impl.UDDICustodyTransferImpl</custodyTransferUrl>
+                <inquiryUrl>org.apache.juddi.api.impl.UDDIInquiryImpl</inquiryUrl>
+                <publishUrl>org.apache.juddi.api.impl.UDDIPublicationImpl</publishUrl>
+                <securityUrl>org.apache.juddi.api.impl.UDDISecurityImpl</securityUrl>
+                <subscriptionUrl>org.apache.juddi.api.impl.UDDISubscriptionImpl</subscriptionUrl>
+                <subscriptionListenerUrl>org.apache.juddi.api.impl.UDDISubscriptionListenerImpl</subscriptionListenerUrl>
+                <juddiApiUrl>org.apache.juddi.api.impl.JUDDIApiImpl</juddiApiUrl>
+            </node>
+        </nodes>
+    </manager>
+</uddi>

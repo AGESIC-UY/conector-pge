@@ -1,0 +1,8 @@
+2017-01-27 11:32:23,056 WARN  [org.jboss.jms.server.security.SecurityMetadataStore] WARNING! POTENTIAL SECURITY RISK. It has been detected that the MessageSucker component which sucks messages from one node to another has not had its password changed from the installation default. Please see the JBoss Messaging user guide for instructions on how to do this.
+2017-01-27 11:32:26,031 WARN  [org.hibernate.impl.SessionFactoryObjectFactory] InitialContext did not implement EventContext
+2017-01-27 11:32:31,433 WARN  [org.jboss.deployment.DeploymentInfo] Only the root deployment can set the loader repository, ignoring config=LoaderRepositoryConfig(repositoryName: uy.gub.agesic:loader=connector-pge, repositoryClassName: org.jboss.mx.loading.HeirarchicalLoaderRepository3, configParserClassName: org.jboss.mx.loading.HeirarchicalLoaderRepository3ConfigParser, repositoryConfig: java2ParentDelegation=false)
+2017-01-27 11:33:42,925 WARN  [org.jboss.soa.esb.listeners.message.ServiceMessageCounterLifecycleResource] Calling cleanup on existing service message counters for identity ID-0
+2017-01-27 11:33:43,454 WARN  [org.jboss.ejb3.JmxKernelAbstraction] jboss.j2ee:jar=InterfazPGE-EJB.jar,name=InterfazPGEDao,service=EJB3 is not registered
+2017-01-27 11:33:43,465 WARN  [org.jboss.ejb3.JmxKernelAbstraction] persistence.units:jar=InterfazPGE-EJB.jar,unitName=InterfazPGEPU is not registered
+2017-01-27 11:33:43,479 ERROR [org.jboss.jdbc.DerbyDatabase] According to the docs, should have caught an exception!
+2017-01-27 11:33:43,860 ERROR [org.jboss.jdbc.DerbyDatabase] According to the docs, should have caught an exception!
