@@ -20,12 +20,5 @@ El contenido esta categorizado en las siguientes carpetas
   - lib (librería PGE)
   - doc (documentación)
 
-### Descarga
 
-La descarga de este repositoro debe realizarse a través de ssh, por lo cual se debe contar con un usuario para poder acceder a https://git.agesic.gub.uy y se debe tener configurado en el mismo sitio una llave ssh.
-
-```sh
-$ cd conectorPGE
-$ git config --global user.email xxx@xxx
-$ git clone  git@gitshell.pge.red.uy:plataformadeinteroperabilidad/conectorpge.git
 ```
