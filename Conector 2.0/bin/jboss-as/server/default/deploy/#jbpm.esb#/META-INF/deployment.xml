@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><jbossesb-deployment>
-  <depends>jboss.esb:deployment=jbossesb.esb</depends>
-  <depends>jboss.esb:service=JbpmService</depends>
-  <depends>jboss.esb.destination:service=Queue,name=CallbackQueue</depends> 
-</jbossesb-deployment>
