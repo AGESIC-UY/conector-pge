@@ -12,7 +12,7 @@ El contenido esta categorizado en las siguientes carpetas
   - src (fuentes del proyecto)
   - config (arhicvos de configuración)
   - doc (documentación)
-  - bin (Conector embebido en Tomcat 8.x y/o wildfly 9.x)
+ 
 
 # Conector 2.0
 El contenido esta categorizado en las siguientes carpetas
