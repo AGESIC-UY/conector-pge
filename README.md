@@ -9,7 +9,7 @@ Spring boot 3,OpenJDK 13, Wildfly 11, Tomcat 8
 <b>Organización:</b><br/>
 <ul>
   <li>calidad<br/>
-Plan de pruebas <br/></li>
+Plan de pruebas y scripts de pruebas <br/></li>
   <li>src<br/>
 Fuentes de la solución<br/></li>
   <li>doc<br/>
