@@ -9,12 +9,12 @@ OpenJDK 13
 Wildfly 11
 Tomcat 8
 
-Organización:
--calidad
-Plan de pruebas 
--src
-Fuentes de la solución
--versiones anteriores
-Fuentes de las versiones anteriores del conector
--doc
-Documentación de la solución
+Organización:<br/>
+-calidad<br/>
+Plan de pruebas <br/>
+-src<br/>
+Fuentes de la solución<br/>
+-versiones anteriores<br/>
+Fuentes de las versiones anteriores del conector<br/>
+-doc<br/>
+Documentación de la solución<br/>
