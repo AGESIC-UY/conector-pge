@@ -1,0 +1,96 @@
+
+------=_Part_0_27477334.1513187882246
+Content-Type: application/xop+xml; charset=UTF-8; type="text/xml"
+Content-Transfer-Encoding: 8bit
+Content-ID: <rootpart@soapui.org>
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:env="http://servicios.pge.red.uy/agesic/artee/EnviarExpediente">
+<soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+<env:UnidadEjecutoraAnterior>2</env:UnidadEjecutoraAnterior>
+<env:UnidadEjecutora>2</env:UnidadEjecutora>
+<env:SubdominioDestino>mesaentrada</env:SubdominioDestino>
+<env:SeccionOrigen>Computación</env:SeccionOrigen>
+<env:SeccionDestino>oficina</env:SeccionDestino>
+<env:NumeroAnterior>00139</env:NumeroAnterior>
+<env:Numero>00139</env:Numero>
+<env:IncisoAnterior>10</env:IncisoAnterior>
+<env:Inciso>10</env:Inciso>
+<env:ElementosFisicos>false</env:ElementosFisicos>
+<env:DominioOrigen>test_envio.expediente.red.uy</env:DominioOrigen>
+<env:DominioDestino>test_descarga.expediente.red.uy</env:DominioDestino>
+<env:Confidencial>false</env:Confidencial>
+<env:AnioAnterior>2016</env:AnioAnterior>
+<env:Anio>2016</env:Anio>
+
+
+<a:MessageID xmlns:e="http://schemas.xmlsoap.org/soap/envelope/" xmlns:a="http://www.w3.org/2005/08/addressing">uuid:62c9f71b-4e23-4667-a${id}-7c872adc5a45</a:MessageID>
+<a:To xmlns:e="http://schemas.xmlsoap.org/soap/envelope/" xmlns:a="http://www.w3.org/2005/08/addressing">http://testservicios.pge.red.uy/testPDI/testmocksendmtom</a:To>
+<wsse:Security soapenv:actor="agesic" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+<saml:Assertion AssertionID="Assertion-uuid294357a1-0160-1f9b-a4e5-c236f3437dec" IssueInstant="2017-12-06T00:39:27Z" Issuer="AGESIC" MajorVersion="1" MinorVersion="1" xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion">
+<saml:Conditions NotBefore="2017-12-06T00:24:26Z" NotOnOrAfter="2017-12-06T00:54:28Z">
+<saml:AudienceRestrictionCondition>
+<saml:Audience>http://testservicios.pge.red.uy/testPDI/testmocksendmtom</saml:Audience>
+</saml:AudienceRestrictionCondition>
+</saml:Conditions>
+<saml:AuthenticationStatement AuthenticationInstant="2017-12-06T00:39:27Z" AuthenticationMethod="urn:oasis:names:tc:SAML:1.0:am:password">
+<saml:Subject>
+<saml:NameIdentifier>ou=gerencia de proyectos,o=agesic,o=presidencia de la republica,o=poder ejecutivo,o=gobierno nacional,o=gobierno,c=uy</saml:NameIdentifier>
+<saml:SubjectConfirmation>
+<saml:ConfirmationMethod>urn:oasis:names:tc:SAML:1.0:cm:bearer</saml:ConfirmationMethod>
+</saml:SubjectConfirmation>
+</saml:Subject>
+</saml:AuthenticationStatement>
+<saml:AttributeStatement>
+<saml:Subject>
+<saml:NameIdentifier>ou=gerencia de proyectos,o=agesic,o=presidencia de la republica,o=poder ejecutivo,o=gobierno nacional,o=gobierno,c=uy</saml:NameIdentifier>
+<saml:SubjectConfirmation>
+<saml:ConfirmationMethod>urn:oasis:names:tc:SAML:1.0:cm:bearer</saml:ConfirmationMethod>
+</saml:SubjectConfirmation>
+</saml:Subject>
+<saml:Attribute AttributeName="User" AttributeNamespace="urn:std15">
+<saml:AttributeValue>agesic</saml:AttributeValue>
+</saml:Attribute>
+</saml:AttributeStatement>
+<ds:Signature Id="uuid294357a2-0160-1c62-9cdd-c236f3437dec" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<ds:Reference URI="#Assertion-uuid294357a1-0160-1f9b-a4e5-c236f3437dec">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+<xc14n:InclusiveNamespaces PrefixList="saml" xmlns:xc14n="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>jhM98uy94dyrRaYknvI5T78TAv4=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>dZ7TQMqfId72fhyoj5eFOMQbt7BEd0JnOZsAVMV//z7kcnCcNJ9CpftzXrM7NVeWcX631GPa2dToWn26yPLDJ0njp0F6Ch7YX6JbjEPRaBfn6r02gKDLX41RqRfiXKAdTn2naQ7boukU45dn5O6YC05Bij9S7txtWXDhDteidTJt+Rpe0UQd8qka0sKjWOVzo8aqxNU+B+mBu0hLxclzwKApPgrP/N/vMhB7el+psTTp7HdRh0pxzGON7sRt6K9krg0YdbDWiqiVBqwUJRnoIPFTb+yV5rYJ+T0Xijx08mESt34fjoAdnnWDfQ+NzD1CpwRE/yfPTiirRUHt+jcO8Q==</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:X509Data>
+<ds:X509Certificate>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</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+</ds:Signature>
+</saml:Assertion>
+</wsse:Security>
+<wsa:Action>http://servicios.pge.red.uy/agesic/artee/EnviarExpediente/ServicioEnviarExpediente/EnviarExpediente</wsa:Action><wsa:ReplyTo><wsa:Address>http://www.w3.org/2005/08/addressing/anonymous</wsa:Address></wsa:ReplyTo></soapenv:Header>
+<soapenv:Body>
+<env:EnviarExpedienteIn>
+<env:Expediente>
+<inc:Include href="cid:http://www.soapui.org/54555111605784" xmlns:inc="http://www.w3.org/2004/08/xop/include"/>
+</env:Expediente>
+</env:EnviarExpedienteIn>
+</soapenv:Body>
+</soapenv:Envelope>
+------=_Part_0_27477334.1513187882246
+Content-Type: text/plain; charset=Cp1252
+Content-Transfer-Encoding: base64
+Content-ID: <MTOM_5MB.txt>
+Content-Disposition: attachment; name="MTOM_5MB.txt"
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAA=
+------=_Part_0_27477334.1513187882246--

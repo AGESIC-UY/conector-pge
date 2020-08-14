@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:r="http://richfaces.org" template="/templates/template.xhtml">
+
+	<ui:define name="pageTitle">Init</ui:define>
+	<ui:define name="pageHeader">Init</ui:define>
+
+	<ui:define name="body">
+		<h:form id="form1" enctype="multipart/form-data">
+			<rich:toolTip value="#{msg.pathTooltip}" for="labelTooltipPath" />
+			<rich:toolTip value="#{msg.urlTooltip}" for="labelTooltipUrl" />
+
+			<h:panelGrid id="mainPanel" columns="4">
+
+				<h:panelGroup>
+					<h:outputLabel value="#{msg.name}" />
+					<h:outputLabel value="*" rendered="#{not connector.editing}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText id="name" value="#{connector.connector.name}"
+						required="true" validator="#{connector.validateName}"
+						rendered="#{not connector.editing}" autocomplete="off"
+						style="margin-left: 80px;">
+						<f:validateLength maximum="100" />
+					</h:inputText>
+					<h:outputLabel value="#{connector.connector.name}"
+						rendered="#{connector.editing}"
+						style="font-weight: bold; margin-left: 80px;" />
+				</h:panelGroup>
+				<h:message for="name" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:panelGroup>
+					<h:outputLabel value="#{msg.type}" />
+					<h:outputLabel value="*" rendered="#{not connector.editing}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:selectOneListbox id="type" value="#{connector.connector.type}"
+						size="1" rendered="#{not connector.editing and not connector.editingToProduction}"
+						style="margin-left: 80px;">
+						<f:selectItem id="item1" itemLabel="#{connector.typeTestingLabel}"
+							itemValue="#{connector.typeTesting}" />
+						<f:selectItem id="item2"
+							itemLabel="#{connector.typeProductionLabel}"
+							itemValue="#{connector.typeProduction}" />
+					</h:selectOneListbox>
+					<h:outputLabel value="#{connector.connector.typeLabel}"
+						rendered="#{connector.editing or connector.editingToProduction}"
+						style="font-weight: bold; margin-left:80px;" />
+				</h:panelGroup>
+				<h:message for="type" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:outputLabel value="#{msg.description}*" />
+				<h:inputTextarea id="description"
+					value="#{connector.connector.description}" cols="95" rows="4"
+					required="true" style="margin-left: 80px;">
+					<f:validateLength maximum="800" />
+				</h:inputTextarea>
+				<h:message for="description" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:outputLabel id="labelPath" value="#{msg.path} *"
+					styleClass="tooltipData" />
+				<h:panelGroup>
+					<h:inputText id="path" value="#{connector.connector.path}"
+						required="true" size="90" autocomplete="off"
+						style="margin-left: 80px;">
+						<f:validateLength maximum="100" />
+					</h:inputText>
+					<rich:spacer />
+					<img id="labelTooltipPath" src="../img/question.png" />
+				</h:panelGroup>
+				<h:message for="path" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:outputLabel id="labelUrl" value="#{msg.url}"
+					rendered="#{connector.editing}" />
+				<rich:panel id="urlPanel">
+					<h:panelGroup rendered="#{connector.editing}">
+						<!--  <h:outputLabel id="url" value="#{connector.connector.url}" size="90">
+					</h:outputLabel> -->
+						<h:inputText id="url" value="#{connector.connector.url}"
+							required="true" size="90" autocomplete="off"
+							style="margin-left: 78px;">
+							<f:validateLength maximum="100" />
+						</h:inputText>
+						<rich:spacer />
+					</h:panelGroup>
+				</rich:panel>
+				<h:message for="url" errorClass="fieldError"
+					rendered="#{connector.editing}" />
+				<rich:spacer rendered="#{connector.editing}" />
+
+				<rich:spacer />
+				<rich:spacer />
+				<rich:spacer />
+				<rich:spacer />
+
+				<rich:spacer />
+				<rich:spacer />
+				<rich:spacer />
+				<rich:spacer rendered="#{connector.editing}" />
+
+
+				<h:outputLabel value="#{msg.wsaTo}*" />
+				<h:inputText id="wsa_to" value="#{connector.connector.wsaTo}"
+					size="60" required="true" autocomplete="off"
+					style="margin-left: 80px;">
+					<f:validateLength maximum="100" />
+				</h:inputText>
+				<h:message for="wsa_to" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:outputLabel value="#{msg.username}*" />
+				<h:inputText id="username" value="#{connector.connector.username}"
+					size="60" required="true" autocomplete="off"
+					style="margin-left: 80px;">
+					<f:validateLength maximum="100" />
+				</h:inputText>
+				<h:message for="username" errorClass="fieldError" />
+				<rich:spacer />
+
+
+				<h:outputLabel value="#{msg.issuer}*" />
+				<h:inputText id="issuer" value="#{connector.connector.issuer}"
+					size="60" required="true" autocomplete="off"
+					style="margin-left: 80px;">
+					<f:validateLength maximum="100" />
+				</h:inputText>
+				<h:message for="issuer" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:outputLabel value="#{msg.policyName}*" />
+				<h:inputText id="policy_name"
+					value="#{connector.connector.policyName}" size="60" required="true"
+					autocomplete="off" style="margin-left: 80px;">
+					<f:validateLength maximum="100" />
+				</h:inputText>
+				<h:message for="policy_name" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:panelGroup />
+
+				<h:panelGroup>
+					<h:selectBooleanCheckbox id="check2"
+						value="#{connector.connector.enableUserToken}"
+						style="margin-right:5px;  margin-left:80px;">
+						<a:support ajaxSingle="true" reRender="richPanel3" event="onclick" />
+					</h:selectBooleanCheckbox>
+					<h:outputLabel value="#{msg.enableUserToken}" />
+				</h:panelGroup>
+				<rich:spacer />
+				<rich:spacer />
+				<rich:spacer />
+
+				<h:panelGroup>
+					<h:selectBooleanCheckbox id="check"
+						value="#{connector.connector.enableLocalConf}"
+						style="margin-right:5px;  margin-left:80px;">
+						<a:support ajaxSingle="true"
+							reRender="alias,password_keystoreOrg,password_keystore,password_keystore_ssl,mainPanel2,richPanel2"
+							event="onclick" />
+					</h:selectBooleanCheckbox>
+					<h:outputLabel value="#{msg.enableLocalConf}" />
+				</h:panelGroup>
+				<rich:spacer />
+				<rich:spacer />
+
+				<h:panelGroup />
+				<h:panelGroup>
+					<h:selectBooleanCheckbox
+						value="#{connector.connector.enableCacheTokens}"
+						style="margin-right:5px;  margin-left:80px;" />
+					<h:outputLabel value="#{msg.enableCacheTokens}" />
+				</h:panelGroup>
+				<rich:spacer />
+				<br />
+
+			</h:panelGrid>
+
+			<rich:panel id="richPanel3">
+
+				<h:panelGroup rendered="#{connector.connector.enableUserToken}">
+
+					<h:panelGrid id="mainPanel4" columns="4"
+						rendered="#{connector.connector.enableUserToken}">
+
+						<h:outputLabel value="#{msg.userNameTokenName}" />
+						<h:inputText id="userNameTokenName_ID"
+							value="#{connector.connector.userNameTokenName}" size="60"
+							required="false" autocomplete="off" style="margin-left: 28px;">
+							<f:validateLength maximum="100" />
+						</h:inputText>
+						<h:message for="userNameTokenName_ID" errorClass="fieldError" />
+						<rich:spacer />
+
+						<h:outputLabel value="#{msg.userNameTokenPassword}" />
+						<h:inputSecret id="userNameTokenPassword_ID"
+							value="#{connector.userNameTokenPass}" size="60" redisplay="true"
+							required="false" style="margin-left: 28px;">
+							<f:validateLength maximum="100" />
+						</h:inputSecret>
+						<h:message for="userNameTokenPassword_ID" errorClass="fieldError" />
+						<rich:spacer />
+
+					</h:panelGrid>
+				</h:panelGroup>
+			</rich:panel>
+
+			<rich:panel id="richPanel2">
+
+				<h:panelGroup rendered="#{connector.connector.enableLocalConf}">
+
+					<h:panelGrid id="mainPanel2" columns="4"
+						rendered="#{connector.connector.enableLocalConf}">
+
+						<h:outputLabel id="aliasLabel" value="#{msg.aliasKeystore}*"
+							rendered="#{connector.connector.enableLocalConf}" />
+						<h:inputText id="alias"
+							value="#{connector.connector.aliasKeystore}" size="60"
+							autocomplete="off" required="true"
+							rendered="#{connector.connector.enableLocalConf}"
+							style="margin-left:5px;">
+							<f:validateLength maximum="100" />
+						</h:inputText>
+						<h:message for="alias" errorClass="fieldError" />
+						<rich:spacer />
+
+						<h:outputLabel value="#{msg.passKeystoreOrg}*"
+							rendered="#{connector.connector.enableLocalConf}" />
+						<h:inputSecret id="password_keystoreOrg"
+							value="#{connector.keystoreOrganismoPass}" size="60"
+							redisplay="true" autocomplete="off"
+							rendered="#{connector.connector.enableLocalConf}"
+							style="margin-left:5px;">
+							<f:validateLength maximum="100" />
+						</h:inputSecret>
+						<h:message for="password_keystoreOrg" errorClass="fieldError" />
+						<rich:spacer />
+
+						<h:outputLabel value="#{msg.passKeystore}*"
+							rendered="#{connector.connector.enableLocalConf}" />
+						<h:inputSecret id="password_keystore"
+							value="#{connector.keystoreSSLPass}" size="60" redisplay="true"
+							autocomplete="off"
+							rendered="#{connector.connector.enableLocalConf}"
+							style="margin-left:5px;">
+							<f:validateLength maximum="100" />
+						</h:inputSecret>
+						<h:message for="password_keystore" errorClass="fieldError" />
+						<rich:spacer rendered="#{connector.connector.enableLocalConf}" />
+
+						<h:outputLabel value="#{msg.passKeystoreSsl}*"
+							rendered="#{connector.connector.enableLocalConf}" />
+						<h:inputSecret id="password_keystore_ssl"
+							value="#{connector.trustorePass}" size="60" redisplay="true"
+							autocomplete="off"
+							rendered="#{connector.connector.enableLocalConf}"
+							style="margin-left:5px;">
+							<f:validateLength maximum="100" />
+						</h:inputSecret>
+						<h:message for="password_keystore_ssl" errorClass="fieldError" />
+						<rich:spacer rendered="#{connector.connector.enableLocalConf}" />
+
+						<h:outputLabel value="#{msg.keystoreOrg}*"
+							rendered="#{connector.connector.enableLocalConf}"
+							style="width:40px;" />
+						<h:panelGroup>
+							<t:inputFileUpload id="keystoreOrgFile" storage="file"
+								required="#{connector.keystoreOrgRequired}"
+								value="#{connector.keystoreOrgUploadFile}" size="40"
+								style="margin-right:5px;"
+								disabled="#{not connector.connector.enableLocalConf}" 
+								rendered="#{empty connector.keystoreOrgUploadFile}"/>
+							<h:outputLabel value="Archivo subido : #{connector.nameKeystoreOrgUploadFile} " rendered="#{not empty connector.keystoreOrgUploadFile}" style="margin-left:5px;"/>
+							<h:commandButton action="#{connector.cleanKeystoreOrg}" value="Borra el archivo subido" image="../img/broom.png" label="Borra el archivo subido" title="#{msg.clean}" rendered="#{not empty connector.keystoreOrgUploadFile}" >
+							</h:commandButton>
+							<h:outputLink
+								value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;typeFile=connectorFile&amp;fileName=#{connector.pathKeystoreOrg}&amp;editingToProduction=#{connector.editingToProduction}"
+								rendered="#{connector.connector.existKeystoreOrg}"
+								style="margin-right:5px;">
+								<img src="../img/download.png" alt="#{msg.download}"
+									title="#{msg.download}" /></h:outputLink>
+							<h:commandButton action="#{connector.validateKeystoreOrg}"
+								value="Verifica el keystore" image="../img/ok.png"
+								label="Cargar" title="#{msg.validate}"
+								disabled="#{not connector.connector.enableLocalConf}"
+								rendered="#{connector.connector.existKeystoreOrg}">
+							</h:commandButton>
+							<a:commandLink action="#{certViewer.showCertificates}"
+								oncomplete="Richfaces.showModalPanel('keystoreViewer');"
+								reRender="keystoreViewer"
+								rendered="#{connector.connector.existKeystoreOrg}"
+								title="#{msg.detail}">
+								<img src="../img/find.png" title="#{messages['general.edit']}" />
+								<f:setPropertyActionListener value="ORGANISMO"
+									target="#{certViewer.storeType}" />
+								<f:setPropertyActionListener value="#{connector.filesPathBean}"
+									target="#{certViewer.filesPathBean}" />
+								<f:setPropertyActionListener
+									value="#{connector.connector.aliasKeystore}"
+									target="#{certViewer.alias}" />
+								<f:setPropertyActionListener
+									value="#{connector.keystoreOrganismoPass}"
+									target="#{certViewer.keyStorePwd}" />
+								<f:setPropertyActionListener
+									value="#{connector.connector.passwordKeystoreOrg}"
+									target="#{certViewer.storedPasswordOrg}" />
+							</a:commandLink>
+						</h:panelGroup>
+						<h:message for="keystoreOrgFile" errorClass="fieldError" />
+						<rich:spacer />
+
+
+						<h:outputLabel value="#{msg.keystore}*"
+							rendered="#{connector.connector.enableLocalConf}" />
+						<h:panelGroup>
+							<t:inputFileUpload id="keystoreFile" storage="file"
+								required="#{connector.keystoreRequired}"
+								value="#{connector.keystoreUploadFile}" size="40"
+								style="margin-right:5px;"
+								disabled="#{not connector.connector.enableLocalConf}"
+								rendered="#{empty connector.keystoreUploadFile}" />
+							<h:outputLabel value="Archivo subido : #{connector.nameKeystoreUploadFile} " rendered="#{not empty connector.keystoreUploadFile}" style="margin-left:5px;"/>
+							<h:commandButton action="#{connector.cleanKeystore}" value="Borra el archivo subido" image="../img/broom.png" label="Borra el archivo subido" title="#{msg.clean}" rendered="#{not empty connector.keystoreUploadFile}" >
+							</h:commandButton>
+							<h:outputLink
+								value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;typeFile=connectorFile&amp;fileName=#{connector.pathKeystore}&amp;editingToProduction=#{connector.editingToProduction}"
+								rendered="#{connector.connector.existKeystore}"
+								style="margin-right:5px;">
+								<img src="../img/download.png" alt="#{msg.download}"
+									title="#{msg.download}" /></h:outputLink>
+							<h:commandButton action="#{connector.validateKeystoreSSL}"
+								value="Verifica el keystore" image="../img/ok.png"
+								label="Cargar" title="#{msg.validate}"
+								disabled="#{not connector.connector.enableLocalConf}"
+								rendered="#{connector.connector.existKeystore}">
+							</h:commandButton>
+							<a:commandLink action="#{certViewer.showCertificates}"
+								oncomplete="Richfaces.showModalPanel('keystoreViewer');"
+								reRender="keystoreViewer"
+								rendered="#{connector.connector.existKeystore}"
+								title="#{msg.detail}">
+								<img src="../img/find.png" title="#{messages['general.edit']}" />
+								<f:setPropertyActionListener value="KEYSTORE_SSL"
+									target="#{certViewer.storeType}" />
+								<f:setPropertyActionListener value="#{connector.filesPathBean}"
+									target="#{certViewer.filesPathBean}" />
+								<f:setPropertyActionListener
+									value="#{connector.connector.aliasKeystore}"
+									target="#{certViewer.alias}" />
+								<f:setPropertyActionListener
+									value="#{connector.keystoreSSLPass}"
+									target="#{certViewer.keyStoreSSLPwd}" />
+								<f:setPropertyActionListener
+									value="#{connector.connector.passwordKeystore}"
+									target="#{certViewer.storedPasswordSsl}" />
+							</a:commandLink>
+						</h:panelGroup>
+						<h:message for="keystoreFile" errorClass="fieldError" />
+						<rich:spacer />
+
+						<h:outputLabel value="#{msg.keystoreSsl}*"
+							rendered="#{connector.connector.enableLocalConf}" />
+						<h:panelGroup>
+							<t:inputFileUpload id="keystoreSslFile" storage="file"
+								required="#{connector.keystoreSslRequired}"
+								value="#{connector.keystoreSslUploadFile}" size="40"
+								style="margin-right:5px;"
+								disabled="#{not connector.connector.enableLocalConf}"
+								rendered="#{empty connector.keystoreSslUploadFile}" />
+							<h:outputLabel value="Archivo subido : #{connector.nameKeystoreSslUploadFile} " rendered="#{not empty connector.keystoreSslUploadFile}" style="margin-left:5px;"/>
+							<h:commandButton action="#{connector.cleanKeystoreSsl}" value="Borra el archivo subido" image="../img/broom.png" label="Borra el archivo subido" title="#{msg.clean}" rendered="#{not empty connector.keystoreSslUploadFile}" >
+							</h:commandButton>
+							<h:outputLink
+								value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;typeFile=connectorFile&amp;fileName=#{connector.pathKeystoreSsl}&amp;editingToProduction=#{connector.editingToProduction}"
+								rendered="#{connector.connector.existKeystoreSsl}"
+								style="margin-right:5px;">
+								<img src="../img/download.png" alt="#{msg.download}"
+									title="#{msg.download}" /></h:outputLink>
+							<a:commandLink action="#{certViewer.showCertificates}"
+								oncomplete="Richfaces.showModalPanel('keystoreViewer');"
+								reRender="keystoreViewer"
+								rendered="#{connector.connector.existKeystoreSsl}"
+								title="#{msg.detail}">
+								<img src="../img/find.png" title="#{messages['general.edit']}" />
+								<f:setPropertyActionListener value="TRUSTORE"
+									target="#{certViewer.storeType}" />
+								<f:setPropertyActionListener value="#{connector.filesPathBean}"
+									target="#{certViewer.filesPathBean}" />
+								<f:setPropertyActionListener
+									value="#{connector.connector.aliasKeystore}"
+									target="#{certViewer.alias}" />
+								<f:setPropertyActionListener value="#{connector.trustorePass}"
+									target="#{certViewer.truststorePwd}" />
+								<f:setPropertyActionListener
+									value="#{connector.connector.passwordKeystoreSsl}"
+									target="#{certViewer.storedPasswordTruststore}" />
+							</a:commandLink>
+						</h:panelGroup>
+						<h:message for="keystoreSslFile" errorClass="fieldError" />
+						<rich:spacer />
+
+					</h:panelGrid>
+				</h:panelGroup>
+			</rich:panel>
+
+			<h:panelGrid id="mainPanel3" columns="4">
+
+				<h:outputLabel value="#{msg.wsdl}*" />
+				<h:panelGroup>
+					<t:inputFileUpload id="wsdlFile" storage="file"
+						value="#{connector.wsdlUploadFile}"
+						required="#{connector.wsdlRequired}" size="40"
+						style="margin-right:5px; margin-left: 125px;" 
+						rendered="#{empty connector.wsdlUploadFile}"/>
+					<h:outputLabel value="Archivo subido : #{connector.nameWsdlUploadFile} " rendered="#{not empty connector.wsdlUploadFile}" style="margin-left:130px;"/>
+							<h:commandButton action="#{connector.cleanWsdl}" value="Borra el archivo subido" image="../img/broom.png" label="Borra el archivo subido" title="#{msg.clean}" rendered="#{not empty connector.wsdlUploadFile}" >
+							</h:commandButton>
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/fileDownload?type=#{connector.connector.type}&amp;name=#{connector.connector.name}&amp;typeFile=connectorFile&amp;fileName=#{connector.pathWsdl}&amp;editingToProduction=#{connector.editingToProduction}"
+						rendered="#{connector.connector.existWsdl}"
+						style="margin-right:5px;">
+						<img src="../img/download.png" alt="#{msg.download}"
+							title="#{msg.download}" /></h:outputLink>
+					<h:commandButton action="#{connector.refreshInfoFromWSDL}"
+						value="Carga el WSDL y refresca los datos relativos a este."
+						image="../img/update.png" label="Cargar"
+						title="Carga el WSDL y refresca las operacions y la URL.">
+					</h:commandButton>
+				</h:panelGroup>
+				<h:message for="wsdlFile" errorClass="fieldError" />
+				<rich:spacer />
+
+				<h:outputLabel value="#{msg.tag}" />
+				<h:inputText id="tag" value="#{connector.connector.tag}" size="60"
+					autocomplete="off" style="margin-left: 130px;">
+					<f:validateLength maximum="100" />
+				</h:inputText>
+				<h:message for="tag" errorClass="fieldError" />
+				<rich:spacer />
+				<rich:spacer />
+				<rich:spacer />
+
+			</h:panelGrid>
+
+
+			<rich:panel>
+				<f:facet name="header">
+					<h:outputText value="#{msg.roleOperator}" />
+				</f:facet>
+				<h:panelGroup>
+					<h:panelGrid columns="3" style="width:70%">
+						<rich:spacer width="50px" />
+						<a:region id="roleRegion">
+							<rich:dataTable id="tableRoleOperation"
+								value="#{connector.connector.role_operation}" var="rl"
+								width="100%" rowClasses="even, odd">
+								<h:column style="width:33%">
+									<f:facet name="header">
+										<h:outputText value="#{msg.roleOnly}" />
+									</f:facet>
+									<h:inputText id="roleTableID" value="#{rl.role}"
+										required="false" />
+									<h:message for="roleTableID" errorClass="fieldError" />
+								</h:column>
+								<h:column style="width:33%">
+									<f:facet name="header">
+										<h:outputText value="#{msg.wsaAction}" />
+									</f:facet>
+									<h:inputText id="wsaActionTableID" value="#{rl.wsaAction}"
+										required="true" />
+									<h:message for="wsaActionTableID" errorClass="fieldError" />
+								</h:column>
+								<h:column style="width:33%">
+									<f:facet name="header">
+										<h:outputText value="#{msg.operator}" />
+									</f:facet>
+									<h:outputText value="#{rl.operationFromWSDL}" />
+								</h:column>
+							</rich:dataTable>
+						</a:region>
+					</h:panelGrid>
+				</h:panelGroup>
+			</rich:panel>
+
+			<br />
+			<br />
+			<div align="center">
+				<h:panelGrid columns="4">
+					<h:panelGroup>
+						<h:commandButton action="home" value="#{msg.cancel}"
+							immediate="true"
+							onclick="if (!confirm('Los campos modificados (si los hay) no ser&#225;n guardados. Confirma?')) return false;" />
+							&#160;&#160;&#160;
+						</h:panelGroup>
+					<h:panelGroup>
+						<h:commandButton action="#{connector.save}" value="#{msg.save}" />
+							&#160;&#160;&#160;
+						</h:panelGroup>
+					<h:panelGroup>
+						<h:commandButton action="#{connector.delete}"
+							value="#{msg.delete}" immediate="true"
+							rendered="#{connector.editing}"
+							onclick="if (!confirm('Est&#243; seguro que desea eliminar el Connector?')) return false;" />
+							&#160;&#160;&#160;
+						</h:panelGroup>
+					<h:panelGroup>
+						<h:commandButton action="#{connector.toProduction}"
+							value="#{msg.toProduction}"
+							rendered="#{connector.testType and connector.editing}" />
+
+						<h:commandButton action="#{connector.viewAssociated}"
+							value="#{connector.typeAssociated} #{msg.associated}"
+							rendered="#{connector.editing and connector.associated and not connector.testType}" />
+
+					</h:panelGroup>
+				</h:panelGrid>
+
+			</div>
+
+		</h:form>
+
+		<rich:modalPanel id="newRoleOperation">
+			<f:facet name="header">
+				<h:outputText value="#{msg.roleOperator}" />
+			</f:facet>
+			<h:form>
+				<h:panelGroup>
+					<h:panelGrid columns="5">
+						<h:outputText value="#{msg.roleOnly}*: " />
+						<h:inputText id="roleEdit" value="#{connector.rlToEdit.role}"
+							required="true">
+							<f:validateLength maximum="100" />
+						</h:inputText>
+						<h:message for="roleEdit" errorClass="fieldError" />
+						<rich:spacer />
+
+						<h:outputLabel value="#{msg.wsaAction}*" />
+						<h:inputText id="wsa_action"
+							value="#{connector.rlToEdit.wsaAction}" size="60" required="true">
+							<f:validateLength maximum="100" />
+						</h:inputText>
+						<h:message for="wsa_action" errorClass="fieldError" />
+						<rich:spacer />
+
+						<h:outputText value="#{msg.operator}*: " />
+						<h:inputText id="opeEdit" value="#{connector.rlToEdit.operation}"
+							required="true">
+							<f:validateLength maximum="100" />
+						</h:inputText>
+						<h:message for="opeEdit" errorClass="fieldError" />
+						<rich:spacer />
+
+						<a:commandButton value="#{msg.cancel}"
+							onclick="Richfaces.hideModalPanel('newRoleOperation');"
+							immediate="true" />
+						<h:panelGroup id="botonAceptar">
+							<a:commandButton value="#{msg.save}"
+								action="#{connector.editRoleOperation}"
+								oncomplete="if (!ajaxRequestContainsErrors()) Richfaces.hideModalPanel('newRoleOperation');"
+								reRender="tableRoleOperation" />
+						</h:panelGroup>
+						<rich:spacer />
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:form>
+		</rich:modalPanel>
+
+		<rich:modalPanel width="600" height="160" id="keystoreViewer">
+			<f:facet name="header">
+				<h:panelGroup>
+					<h:outputText value="#{certViewer.storeTitle}"></h:outputText>
+				</h:panelGroup>
+			</f:facet>
+			<f:facet name="controls">
+				<h:panelGroup>
+					<h:graphicImage value="../img/cross.png" styleClass="hidelink"
+						id="hideKeystoreViewer" />
+					<rich:componentControl for="keystoreViewer"
+						attachTo="hideKeystoreViewer" operation="hide" event="onclick" />
+				</h:panelGroup>
+			</f:facet>
+			<h:panelGroup rendered="#{not certViewer.storeValidated}">
+				<h:outputText value="#{certViewer.errorMsg}" styleClass="errormsg" />
+			</h:panelGroup>
+
+			<a:repeat value="#{certViewer.keystoreInfoList}" var="keystore"
+				id="repeat">
+				<rich:panel style="float:left; width:700px; padding:5px;">
+					<h:panelGrid columns="2" rendered="#{certViewer.storeValidated}">
+						<h:panelGroup>
+							<h:outputLabel value="Alias" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="#{keystore.alias}" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="Tipo" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="#{keystore.type}" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="Proveedor" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="#{keystore.provider}" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="Fecha Creacion" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="#{keystore.creationDate}" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="Fecha de Vecimiento" />
+						</h:panelGroup>
+						<h:panelGroup>
+							<h:outputLabel value="#{keystore.expirationDate}" />
+						</h:panelGroup>
+					</h:panelGrid>
+				</rich:panel>
+			</a:repeat>
+		</rich:modalPanel>
+
+	</ui:define>
+</ui:composition>

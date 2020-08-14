@@ -1,0 +1,3 @@
+endpoint
+http://10.255.4.109:15000/routerService/route
+http://10.255.4.110:15000/routerService/route

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/repository/!svn/ver/4805/agesic/connector/trunk/connector-pge-ear/resources
+END
+connector-pge-roles.properties
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repository/!svn/ver/4805/agesic/connector/trunk/connector-pge-ear/resources/connector-pge-roles.properties
+END
+connector-pge-ds.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/repository/!svn/ver/4760/agesic/connector/trunk/connector-pge-ear/resources/connector-pge-ds.xml
+END
+connector-pge-users.properties
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repository/!svn/ver/4805/agesic/connector/trunk/connector-pge-ear/resources/connector-pge-users.properties
+END

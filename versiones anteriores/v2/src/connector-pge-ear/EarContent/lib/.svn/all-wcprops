@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/repository/!svn/ver/5275/agesic/connector/trunk/connector-pge-ear/EarContent/lib
+END
+jlibs-core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repository/!svn/ver/5275/agesic/connector/trunk/connector-pge-ear/EarContent/lib/jlibs-core.jar
+END
+jlibs-xmldog.jar
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/repository/!svn/ver/5275/agesic/connector/trunk/connector-pge-ear/EarContent/lib/jlibs-xmldog.jar
+END
+jlibs-xml.jar
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/repository/!svn/ver/5275/agesic/connector/trunk/connector-pge-ear/EarContent/lib/jlibs-xml.jar
+END

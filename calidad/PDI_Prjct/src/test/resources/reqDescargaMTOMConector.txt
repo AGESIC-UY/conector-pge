@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:des="http://servicios.pge.red.uy/agesic/artee/DescargarExpediente">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <des:DescargarExpedienteIn>
+         <!--Optional:-->
+         <des:DominioOrigen>test_descargar.expediente.red.uy</des:DominioOrigen>
+         <!--Optional:-->
+         <des:Subdominio>mesaentrada</des:Subdominio>
+      </des:DescargarExpedienteIn>
+   </soapenv:Body>
+</soapenv:Envelope>

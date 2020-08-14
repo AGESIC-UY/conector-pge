@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<faceted-project>
-  <runtime name="jbossesb-server-4.9"/>
-  <fixed facet="java"/>
-  <fixed facet="jst.jboss.esb"/>
-  <installed facet="java" version="1.5"/>
-  <installed facet="jst.jboss.esb" version="4.7"/>
-</faceted-project>

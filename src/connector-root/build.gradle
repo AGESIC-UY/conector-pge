@@ -1,0 +1,36 @@
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+    apply plugin: 'pmd'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+
+    group 'gub.agesic.connector'
+    targetCompatibility = '1.8'
+    sourceCompatibility = '1.8'
+
+    project.ext.springVersion = '4.3.12.RELEASE'
+    project.ext.springSecurityVersion = '4.2.3.RELEASE'
+    project.ext.slf4jlog4jVersion = '1.7.25'
+
+    compileJava.options.encoding = 'UTF-8'
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    jacoco {
+        toolVersion = "0.7.4.201502262128"
+    }
+
+    pmd {
+        ruleSetFiles = files("$rootDir/conf/pmd/pmd-rulesets.xml")
+    }
+
+    dependencies {
+        compile "org.springframework:spring-core:$springVersion"
+        compile "org.slf4j:slf4j-log4j12:$slf4jlog4jVersion"
+    }
+
+}

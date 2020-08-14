@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
+
+	<body><h2 id="ConectorPGE-ManualdeUsuario-Verunconector">Ver un conector</h2>
+<p>Se muestra los datos del Conector, permitiendo bajar los archivos y obtener el XML para la exportación.</p>
+
+<p>Al exportar un conector, vale destacar que en caso de utilizar la configuración local, las contraseñas de los keystores y truststores no son incluidas en la exportación, por razones de seguridad.</p>
+
+<h3 id="ConectorPGE-ManualdeUsuario-Descripcióndelosdatos">Descripción de los datos</h3>
+<p>A continuación se detalla el significado de cada dato y el impacto de estos hacia el sistema.</p>
+<ul>
+
+<li>
+Nombre: 
+Nombre del Servicio. Se usa como identificación interna del servicio y junto con el Tipo deben ser únicos.
+</li>
+
+<li>
+Tipo :
+El tipo de servicio identifica si este es un servicio de Test o de Producción.
+</li>
+
+<li>
+Descripción :
+Información descriptiva del servicio sin uso operativo.
+</li>
+
+<li>
+Path :
+Es el path relativo en donde queda publicado el servicio. Por ejemplo, si el path es /censo/CensoINEService entonces si el tipo es "Test" el servicio queda publicado en
+<a class="external-link" rel="nofollow" href="http://server_host:9800/censo/CensoINEService">http://server_host:9800/censo/CensoINEService</a>
+y si el tipo es "Producción" el servicio queda publicado en
+<a class="external-link" rel="nofollow" href="http://server_host:9700/censo/CensoINEService">http://server_host:9700/censo/CensoINEService</a>
+</li>
+
+<li>
+Url :
+La Url que especifica el endpoint del servicio a invocar. Se obtiene del endpoint especificado en el WSDL (pero puede ser modificada).
+</li>
+
+<li>
+wsa:To :
+Este dato se agrega como Header del mensaje SOAP. Es un endpoint lógico e indica cual es el Web Service que se quiere invocar a través de la plataforma.
+</li>
+
+<li>
+Username :
+Usuario dentro del organismo que desea acceder al
+servicio final, este dato es utilizado para la firma del mensaje SOAP. 
+</li>
+
+<li>
+Organismo :
+Nombre que representa al organismo consumidor, este
+dato es utilizado también para la firma del mensaje SOAP
+</li>
+
+<li>
+Tipo de Token :
+Dato utilizado para la firma del SOAP.
+</li>
+
+
+<li>
+Ingresar credenciales de Username Token :
+Habilita el ingreso de usuario y contraseña para Username Token.
+</li>
+
+<li>
+Habilitar Configuración Local :
+Permite al usuario definir los keystores y truststores que utiliza el conector. En caso de no seleccionar este control, se utiliza los certificados globales.
+</li>
+
+<li>
+Habilitar cache de Tokens :
+Permite cachear los tokens SAML pedidos a la plataforma, de manera de no volver a pedir tokens mientras se tenga uno válido.
+</li>
+
+<li>
+Alias del Keystore Organismo (Config Local) :
+Alias en donde se encuentra el certificado que se quiere utilizar para la firma del SOAP. Este alias corresponde al "Keystore Organismo" (En el caso que sea un conector con configuración local habilitada)
+</li>
+
+<li>
+Password Keystore Organismo (Config Local) :
+Password del "Keystore Organismo" (En el caso que sea un conector con configuración local habilitada)
+</li>
+
+<li>
+Password Keystore SSL (Config Local) :
+Password utilizada para acceder al certificado del keystore para el acceso por https. (En el caso que sea un conector con configuración local habilitada)
+</li>
+
+<li>
+Password Truststore (Config Local) :
+Password utilizada para acceder al certificado del trustore para el acceso por https. (En el caso que sea un conector con configuración local habilitada)
+</li>
+
+<li>
+Keystore Organismo (Config Local) :
+Keystore del Organismo utilizado para la firma del SOAP (En el caso que sea un conector con configuración local habilitada)
+</li>
+
+<li>
+Keystore SSL (Config Local) :
+Keystore utilizado para la comunicación HTTPS (En el caso que sea un conector con configuración local habilitada)
+</li>
+
+<li>
+Truststore SSL (Config Local) :
+Truststore utilizado para la comunicación HTTPS (En el caso que sea un conector con configuración local habilitada)
+</li>
+
+<li>
+WSDL :
+Archivo WSDL en donde está especificado el endpoint al cual se va a invocar al servicio y las operaciones que se pueden invocar.
+</li>
+
+<li>
+Tag :
+Atributo para filtrar el conector
+</li>
+</ul>
+
+<h:panelGroup>
+<img src="../img/download.png"/>
+<h:outputLabel value="Botón para descargar el archivo que se encuentra guardado (o sea, el que se guardó al utilizar el botón de Salvar)." style="margin-left: 12px;"/>
+</h:panelGroup>
+<br/>
+
+</body>
+  	
+</html>

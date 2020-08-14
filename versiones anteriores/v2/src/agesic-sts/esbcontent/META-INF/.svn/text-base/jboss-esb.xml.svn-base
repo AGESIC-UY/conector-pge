@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<jbossesb xmlns="http://anonsvn.labs.jboss.com/labs/jbossesb/trunk/product/etc/schemas/xml/jbossesb-1.0.1.xsd" parameterReloadSecs="5">
+<!-- 
+	<providers>
+		<jbr-provider host="${jboss.bind.address}" name="JBR-Http" protocol="http">
+			<jbr-bus busid="Http-WS" port="8889" />
+			<jbr-bus busid="Http-WS-Client-Axis" port="8891" />
+			<jbr-bus busid="Http-WS-Client" port="8890" />
+			<jbr-bus busid="Http-WS-Client-test" port="8892" />
+		</jbr-provider>
+	</providers>
+	<services>
+		<service category="AgesicPlataforma" description="Prueba sts" invmScope="GLOBAL" name="PrintSoap">
+			<listeners>
+				<jbr-listener busidref="Http-WS" is-gateway="true" name="Http-Gateway" />
+			</listeners>
+			<actions mep="RequestResponse">
+				<action class="org.jboss.soa.esb.actions.SystemPrintln" name="print-before">
+					<property name="message" value="[Agesic-STS] Servicio de prueba" />
+					<property name="printfull" value="true" />
+				</action>
+			</actions>
+		</service>
+		<service category="AgesicPlataforma" description="Prueba sts" invmScope="GLOBAL" name="TokenSignedInvoke">
+			<listeners>
+				<jbr-listener busidref="Http-WS-Client" is-gateway="true" name="Http-Gateway" />
+			</listeners>
+			<actions>
+			    <action class="uy.gub.agesic.soa.wsa.esb.actions.SetWsaPropertiesAction" name="set-wsa-properties"/>
+				<action class="uy.gub.agesic.soa.wsa.esb.actions.sts.v2.RequestSignedTokenAction" name="token">
+					<property name="alias" value="0f026f823ca3597ced3953188b1628de_be45dff3-4f56-4728-8332-77080b0c1c08" />
+					<property name="keyStoreFilePath" value="/home/apereiro/Work/clientes/agesic/STS/agesic_v2.0.keystore" />
+					<property name="keyStorePwd" value="agesic" />
+					<property name="trustStoreFilePath" value="/home/apereiro/Work/clientes/agesic/STS/agesic_v1.0.truststore" />
+					<property name="trustStorePwd" value="agesic" />
+					<property name="issuer" value="pge" />
+					<property name="policyName" value="urn:tokensimple" />
+					<property name="role" value="OU=TEST_SUBSCRIBE_PUSH,O=TEST_PE" />
+					<property name="userName" value="test-agesic" />
+					<property name="service-property" value="wsaTo" />
+				</action>
+
+				<action class="uy.gub.agesic.soa.wsa.esb.actions.sts.v2.WSInvokeAction" name="WsInvoke">
+					<property name="endpointUrl" value="http://localhost:8892" />
+					<property name="appendProperty" value="Path" />
+-->
+<!--
+					<property name="endpointUrl" value="http://localhost:8080" />
+					<property name="urlPropertyLocation" value="physicalWsaTo" />
+					<property name="SOAPActionPropertyLocation" value="wsaAction" />
+					<property name="maxConnectionsPerHost" value="10" />
+					<property name="bodyLocation" value="get-body" />
+					<property name="responseLocation" value="get-response" />
+				</action>
+			</actions>
+		</service>
+
+		<service category="AgesicPlataforma" description="Ws Test" invmScope="GLOBAL" name="Ws-Test">
+			<listeners>
+				<jbr-listener busidref="Http-WS-Client-test" is-gateway="true" name="Http-Gateway" />
+			</listeners>
+			<actions>
+                <action name="print-before" class="biz.ideasoft.soa.esb.actions.LogMessageAction">
+                    <property name="message"
+                     value="[AgesicPlataforma-STS] Message on Ws-Test"/>
+                </action>
+			</actions>
+		</service>
+	</services>
+ -->
+ </jbossesb>

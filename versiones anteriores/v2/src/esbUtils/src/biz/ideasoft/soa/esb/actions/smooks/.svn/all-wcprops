@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/repository/!svn/ver/4046/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/smooks
+END
+MessageBodyAccessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repository/!svn/ver/4046/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/smooks/MessageBodyAccessor.java
+END
+ConfigPropertiesAccessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repository/!svn/ver/4019/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/smooks/ConfigPropertiesAccessor.java
+END
+MessagePropertiesAccessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/repository/!svn/ver/4019/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/smooks/MessagePropertiesAccessor.java
+END

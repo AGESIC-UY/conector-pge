@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: 
+Implementation-Title: connector-pge-ejb
+Implementation-Version: 1.1.0
+

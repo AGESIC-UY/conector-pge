@@ -1,0 +1,20 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.rupe.acce.gub.uy/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:busquedaProveedores>
+         <!--Optional:-->
+         <criterio>
+            <!--Optional:-->
+            <codigoPais>URY</codigoPais>
+            <!--Optional:-->
+            <tipoDocumento>RUT</tipoDocumento>
+            <!--Optional:-->
+            <numeroDocumento>212981420016</numeroDocumento>
+            <!--Optional:-->
+            <nombre>?</nombre>
+         </criterio>
+         <!--Optional:-->
+         <codigoUsuario>?</codigoUsuario>
+      </ws:busquedaProveedores>
+   </soapenv:Body>
+</soapenv:Envelope>

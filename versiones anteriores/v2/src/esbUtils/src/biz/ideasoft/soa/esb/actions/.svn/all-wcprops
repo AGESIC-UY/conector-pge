@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/repository/!svn/ver/5241/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions
+END
+CBRSyncInvoker.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/repository/!svn/ver/5402/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/CBRSyncInvoker.java
+END
+SetWsaPropertiesAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repository/!svn/ver/5284/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/SetWsaPropertiesAction.java
+END
+StaticWiretapSync.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/repository/!svn/ver/5144/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/StaticWiretapSync.java
+END
+RestoreMTOMBodyAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/repository/!svn/ver/5292/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/RestoreMTOMBodyAction.java
+END
+XSLTInformation.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/repository/!svn/ver/4738/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/XSLTInformation.java
+END
+ContentBasedSyncInvoker.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/repository/!svn/ver/5139/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/ContentBasedSyncInvoker.java
+END
+SmooksContextAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/repository/!svn/ver/4019/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/SmooksContextAction.java
+END
+ContentBasedTransformer.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/repository/!svn/ver/5415/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/ContentBasedTransformer.java
+END
+ContentBasedWiretapExtended.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/repository/!svn/ver/4019/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/ContentBasedWiretapExtended.java
+END
+ContentBasedRouterExtended.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repository/!svn/ver/4019/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/ContentBasedRouterExtended.java
+END
+SaveMTOMBodyAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/repository/!svn/ver/5316/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/SaveMTOMBodyAction.java
+END
+LogMessageAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repository/!svn/ver/5402/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/LogMessageAction.java
+END
+XSLTAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/repository/!svn/ver/5292/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/XSLTAction.java
+END
+EJBProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/repository/!svn/ver/4074/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/EJBProcessor.java
+END
+MessageFilterAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/repository/!svn/ver/5402/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/MessageFilterAction.java
+END
+StaticRouterSync.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repository/!svn/ver/4019/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/StaticRouterSync.java
+END
+AbstractXPathAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/repository/!svn/ver/4555/agesic/esbUtils/src/biz/ideasoft/soa/esb/actions/AbstractXPathAction.java
+END

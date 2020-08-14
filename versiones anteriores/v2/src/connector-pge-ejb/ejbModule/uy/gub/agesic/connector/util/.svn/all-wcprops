@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repository/!svn/ver/4872/agesic/connector/trunk/connector-pge-ejb/ejbModule/uy/gub/agesic/connector/util
+END
+Props.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/repository/!svn/ver/4816/agesic/connector/trunk/connector-pge-ejb/ejbModule/uy/gub/agesic/connector/util/Props.java
+END
+Constants.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repository/!svn/ver/5370/agesic/connector/trunk/connector-pge-ejb/ejbModule/uy/gub/agesic/connector/util/Constants.java
+END
+FilesPathBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repository/!svn/ver/5240/agesic/connector/trunk/connector-pge-ejb/ejbModule/uy/gub/agesic/connector/util/FilesPathBean.java
+END
+WsdlManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/repository/!svn/ver/5374/agesic/connector/trunk/connector-pge-ejb/ejbModule/uy/gub/agesic/connector/util/WsdlManager.java
+END
+ConnectorFileManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/repository/!svn/ver/5404/agesic/connector/trunk/connector-pge-ejb/ejbModule/uy/gub/agesic/connector/util/ConnectorFileManager.java
+END
+XPathNamespaceContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/repository/!svn/ver/4800/agesic/connector/trunk/connector-pge-ejb/ejbModule/uy/gub/agesic/connector/util/XPathNamespaceContext.java
+END

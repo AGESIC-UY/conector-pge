@@ -1,0 +1,504 @@
+@import "../core/css/font-family-montserrat.css";
+
+//---------------------------- COLORS
+$white: #ffffff;
+$blue: #18589b;
+$blue-light: lighten($blue, 15%);
+$blue-text: #0064B1;
+$gray-light: #ecf0f1;
+$gray-dark: #495252;
+
+//---------------------------- SIZES
+$page-width: 930px;
+
+//---------------------------- MIXIN
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+//---------------------------- COMMON
+
+*:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+body {
+  background-color: $gray-light;
+  background-image: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.main {
+  width: 100%;
+  max-width: $page-width;
+  background-color: $white;
+  border-radius: 3px;
+  margin: 20px auto 0;
+  -webkit-box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+header {
+  width: 100%;
+  min-height: 100px;
+  margin: 0;
+  background: url('../images/logoAgesic.png') no-repeat center;
+  border-radius: 0;
+}
+
+.content {
+  padding: 0 15px 20px;
+}
+
+.title {
+  font-size: 18px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+}
+
+article {
+  margin-bottom: 30px;
+}
+
+footer {
+  color: #495252;
+  text-align: center;
+  margin-top: 20px;
+}
+
+//---------------------------- TABLE
+.table {
+  a {
+    margin: 0 3px;
+    font-weight: 400;
+    display: inline-block;
+
+    img {
+      max-width: 20px;
+    }
+  }
+
+  .td-actions {
+    min-width: 210px;
+  }
+
+  td {
+    vertical-align: middle !important;
+  }
+}
+
+.btn-custom {
+  background-color: $blue-light;
+  @include transition(all 0.3s linear);
+  @include box-shadow(0, 0, 0, rgba(0, 0, 0, 0));
+
+  &:hover,
+  &:focus {
+    color: $white;
+    @include box-shadow(0, 4px, 10px, rgba(0, 0, 0, 0.3));
+  }
+}
+
+.linebreak {
+  word-break: break-all
+}
+
+.overflow {
+  width: 10em;
+  
+  /**
+  * Required properties to achieve text-overflow
+  */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.overflow-description {
+  width: 15em;
+  
+  /**
+  * Required properties to achieve text-overflow
+  */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ellipsis { text-overflow: ellipsis; }
+
+//---------------------------- FORM ELEMENTS
+.btn-input,
+input.btn-input {
+  width: auto;
+  padding: 0 20px;
+  background-color: $blue-light;
+  background-image: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  @include transition(all 0.3s linear);
+  @include box-shadow(0, 0, 0, rgba(0, 0, 0, 0));
+
+  &:hover {
+    @include box-shadow(0, 4px, 10px, rgba(0, 0, 0, 0.3));
+  }
+}
+
+.form-control {
+  box-shadow: none;
+}
+
+select {
+  &.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    padding-right: 40px;
+    background-image: url('../images/icon-down-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    background-size: 10px;
+  }
+}
+
+.form-inline {
+  .form-group {
+    margin-right: 10px;
+  }
+}
+
+.btn-search {
+  width: 40px;
+  height: 34px;
+  padding: 0 10px;
+  text-align: inherit;
+  vertical-align: middle;
+}
+
+//---------------------------- MENU
+.navbar {
+  border-radius: 0;
+  border: none;
+  background-color: $blue;
+  color: $white;
+
+  img {
+    max-width: 20px;
+  }
+
+  .nav > li {
+    a,
+    &.user-avatar {
+      padding: 15px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    a {
+      &:focus,
+      &:hover {
+        color: $white;
+        background-color: darken($blue, 5%);
+      }
+    }
+
+    > a {
+      color: inherit;
+
+      &:focus,
+      &:hover {
+        color: $white;
+        background-color: darken($blue, 5%);
+      }
+
+      img {
+        max-width: 20px;
+      }
+    }
+
+    &.active {
+      > a {
+        background-color: darken($blue, 5%);
+      }
+    }
+
+    .btn-help {
+      padding: 15px;
+      border: none;
+      background-color: transparent;
+      background-image: none;
+
+      &:focus,
+      &:hover {
+        background-color: darken($blue, 5%);
+      }
+    }
+  }
+
+  input[type=image] {
+    max-width: 50px;
+    padding: 15px;
+
+    &:hover {
+      background-color: darken($blue, 5%);
+    }
+  }
+
+  .navbar-toggle {
+    .icon-bar {
+      background: $white;
+    }
+  }
+}
+
+// Custom Wizard
+.sw-theme-dots {
+  text-align: center;
+
+  > ul.step-anchor {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: inline-block !important;
+
+    &:before {
+      width: 60% !important;
+      left: 50% !important;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+
+    > li {
+      display: inline-block;
+      float: none;
+
+      small {
+        display: block;
+      }
+      > a {
+        &:before {
+          bottom: -5px !important;
+          left: 50% !important;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+        }
+
+        &:after {
+          bottom: -7px !important;
+          left: 50% !important;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+        }
+      }
+
+      &.active {
+        > a {
+
+        }
+      }
+    }
+  }
+
+  .sw-btn-group {
+    &.pull-center {
+      float: none;
+      margin-left: 80px;
+    }
+  }
+
+  .sw-btn-group-extra {
+    &.pull-center {
+      float: right;
+      margin-left: 0;
+    }
+  }
+}
+
+.body {
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  color: $gray-dark;
+}
+
+.login {
+  text-align: center;
+
+  ul {
+    list-style: none;
+    margin: 30px 0;
+    padding: 0;
+    display: inline-block;
+
+    li {
+      text-align: left;
+      margin-bottom: 10px;
+
+      &:last-child {
+        text-align: center;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  label {
+    color: $gray-dark;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  input[type=submit],
+  input[type=button] {
+    width: 100%;
+  }
+}
+
+//---------------------------- FORMS
+// input[type=text],
+// input[type=password],
+// textarea,
+// select {
+//   font-family: inherit;
+//   color: $gray-dark;
+//   border: 1px solid $gray-light;
+//   border-radius: 3px;
+//   padding: 4px 6px;
+//   min-height: 36px;
+//
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+//
+//   @include transition(all 0.3s linear);
+//
+//   &:focus {
+//     border-color: darken($gray-light, 10%);
+//   }
+// }
+
+//---------------------------- Tooltip
+.rich-tool-tip {
+  border-radius: 3px;
+  border: none;
+  @include box-shadow(0, 4px, 10px, rgba(0, 0, 0, 0.3));
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+//---------------------------- PANELS
+.rich-panel-header {
+  width: 100%;
+  padding: 4px 0;
+  margin: 0 0 20px 0;
+  background: transparent;
+  color: $blue-text;
+  text-transform: uppercase;
+  border-bottom: 1px solid $gray-dark;
+}
+
+.rich-panel-body {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $gray-light;
+
+  input[type=submit] {
+    margin-right: 15px;
+  }
+}
+
+.message {
+  li {
+    &.errormsg {
+      background-image: url('../images/icon-excl.svg');
+      background-size: 20px;
+      color: #D80027;
+      padding: 4px 0 4px 30px;
+    }
+  }
+}
+
+.add-margins {
+  margin: 20px 0;
+}
+
+//---------------------------- PANELS
+
+.rich-table-subheadercell {
+  color: $gray-dark;
+  background: darken($gray-light, 10%);
+  padding: 8px 4px;
+}
+
+.rich-table-cell {
+  color: $gray-dark;
+
+  a {
+    color: $blue;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  img {
+    max-width: 20px;
+  }
+}
+
+.even {
+  background-color: $white;
+}
+
+.odd {
+  background-color: $gray-light;
+}
+
+.rich-datascr-button {
+  background-color: $blue;
+  border-radius: 3px;
+  text-align: center;
+  padding: 4px 0;
+
+  img {
+    max-height: 12px;
+  }
+}
+
+//---------------------------- LOGIN
+
+.loginForm {
+  margin: auto;
+  width: 350px;
+  height: 140px;
+}

@@ -1,0 +1,3 @@
+<jbossesb-deployment>
+	<depends>uy.gub.agesic.soa.wsa.esb.logger.jms:service=Queue,name=agesic_logger_esb</depends>
+</jbossesb-deployment>
