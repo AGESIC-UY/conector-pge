@@ -1,4 +1,20 @@
-# README Agesic-conector
-Para ejecutar la version 4.0, compatible con openJDK 13:
-- Utilizar la carpeta "bin/java_13"
-- En caso de dudas consultar la documentación en la carpeta "doc/Migracion a Java 13"
+Conector PDI
+
+Descripción
+Es un componente que facilita el consumo de servicios a traves de la plataforma de Interoperabiliad
+
+Tecnologías
+Spring boot 3
+OpenJDK 13
+Wildfly 11
+Tomcat 8
+
+Organización:
+-calidad
+Plan de pruebas 
+-src
+Fuentes de la solución
+-versiones anteriores
+Fuentes de las versiones anteriores del conector
+-doc
+Documentación de la solución
