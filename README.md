@@ -7,11 +7,12 @@ Es un componente que facilita el consumo de servicios a traves de la plataforma 
 Spring boot 3,OpenJDK 13, Wildfly 11, Tomcat 8
 
 <b>Organización:</b><br/>
--calidad<br/>
-Plan de pruebas <br/>
--src<br/>
-Fuentes de la solución<br/>
--versiones anteriores<br/>
-Fuentes de las versiones anteriores del conector<br/>
--doc<br/>
-Documentación de la solución<br/>
+<ul>
+  <li>calidad<br/>
+Plan de pruebas <br/></li>
+  <li>src<br/>
+Fuentes de la solución<br/></li>
+  <li>doc<br/>
+Documentación de la solución<br/></li>
+</ul>
+
