@@ -1,4 +1,5 @@
-<b>Conector PDI</b>
+<b>Conector PDI </b>
+<b>Versión  4.0 - Spike</b> <br/>
 
 <b>Descripción</b>
 Es un componente que facilita el consumo de servicios a través de la plataforma de Interoperabiliad
