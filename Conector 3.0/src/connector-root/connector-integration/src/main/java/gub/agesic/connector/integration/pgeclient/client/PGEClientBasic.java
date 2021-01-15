@@ -42,7 +42,8 @@ import org.w3c.dom.Element;
 import gub.agesic.connector.dataaccess.entity.Configuration;
 import gub.agesic.connector.dataaccess.entity.Connector;
 import gub.agesic.connector.dataaccess.entity.ConnectorGlobalConfiguration;
-import gub.agesic.connector.integration.pgeclient.AgesicConstants;
+import gub.agesic.connector.integration.actions.ConectorRestTemplate;
+//import gub.agesic.connector.integration.pgeclient.AgesicConstants;
 import gub.agesic.connector.integration.pgeclient.AssertionManager;
 import gub.agesic.connector.integration.pgeclient.PGEFactory;
 import gub.agesic.connector.integration.pgeclient.XMLUtils;
@@ -69,6 +70,8 @@ public class PGEClientBasic implements PGEClient {
     private ConnectorService connectorService;
     @Autowired
     private PoolConnectionService poolConnectionService;
+    @Autowired
+    private ConectorRestTemplate conectortemplate;
 
     @Override
     public STSResponse requestSecurityToken(final Configuration configuration,
@@ -204,13 +207,20 @@ public class PGEClientBasic implements PGEClient {
 
             final String requestSecurityTokenResponseMessage;
             try {
-                final RequestConfig requestConfig = RequestConfig.custom()
+            	
+                /*final RequestConfig requestConfig = RequestConfig.custom()
                         .setSocketTimeout(Integer.valueOf(AgesicConstants.TIME_OUT_MILLIS))
                         .setConnectTimeout(Integer.valueOf(AgesicConstants.TIME_OUT_MILLIS))
                         .setConnectionRequestTimeout(
                                 Integer.valueOf(AgesicConstants.TIME_OUT_MILLIS))
-                        .build();
-
+                        .build();*/
+            	final RequestConfig requestConfig = RequestConfig.custom()
+                .setSocketTimeout(Integer.valueOf(conectortemplate.connectTimeout))
+                .setConnectTimeout(Integer.valueOf(conectortemplate.connectTimeout))
+                .setConnectionRequestTimeout(
+                        Integer.valueOf(conectortemplate.connectTimeout))
+                .build();
+            	//System.out.print("****************************ConectorTimeout:" + conectortemplate.connectTimeout);
                 final HttpPost httpPost = new HttpPost(url);
 
                 httpPost.setEntity(new StringEntity(requestSecurityTokenMessage));

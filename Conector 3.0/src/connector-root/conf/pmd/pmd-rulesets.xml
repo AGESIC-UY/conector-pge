@@ -460,7 +460,7 @@
 			<property name="maximumStaticImports">
 				<value>10</value>
 			</property>
-			<property name="xpath" pluginname="true">
+			<property name="xpath">
 				<value>
                   <![CDATA[
 .[count(ImportDeclaration[@Static = 'true']) > 10]
@@ -631,7 +631,7 @@
 		<priority>4</priority>
 		<properties>
 			<property name="minimum" value="35" />
-			<property name="xpath" pluginname="true">
+			<property name="xpath">
 				<value>
                   <![CDATA[
 //VariableDeclaratorId[string-length(@Image) > $minimum and not(upper-case(@Image)=@Image)]
@@ -661,7 +661,7 @@
 	<rule ref="rulesets/java/naming.xml/ShortVariable">
 		<priority>2</priority>
 		<properties>
-			<property name="xpath" pluginname="true">
+			<property name="xpath">
 				<value>
                   <![CDATA[
 //VariableDeclaratorId[string-length(@Image) < 3]

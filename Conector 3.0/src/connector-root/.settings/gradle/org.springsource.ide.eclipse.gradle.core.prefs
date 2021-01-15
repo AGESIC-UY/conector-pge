@@ -1,0 +1,5 @@
+#org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
+#Thu Jan 14 15:57:29 UYT 2021
+build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;connector-data-access;connector-integration;connector-services;connector-web;deployment;
+org.springsource.ide.eclipse.gradle.linkedresources=
+org.springsource.ide.eclipse.gradle.rootprojectloc=

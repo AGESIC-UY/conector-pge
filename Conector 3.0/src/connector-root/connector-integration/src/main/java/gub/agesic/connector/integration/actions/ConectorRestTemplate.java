@@ -56,7 +56,7 @@ public class ConectorRestTemplate implements MessageProcessor<byte[], InputStrea
 
     private final int readTimeout;
 
-    private final int connectTimeout;
+    public final int connectTimeout;
 
     @Autowired
     private PoolConnectionService poolConnectionService;

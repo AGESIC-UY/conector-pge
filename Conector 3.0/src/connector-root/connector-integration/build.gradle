@@ -67,9 +67,19 @@ task undeploy(type: Delete) {
     delete tomcatDeployment + war.archiveName
 }
 
+//C:\Users\andres.pastorini\Documents\GitHub\conector-pge\Conector 3.0\src\connector-root\connector-integration\build
+task print(){
+    doLast { 
+        println "Version: $version" 
+        println "Custom property: $buildDir" 
+    } 
+}
+
 // usage gradle connector-integration:deploy -Denvironment=develop -Dtomcat.home=complete with tomcat location
 task deploy(dependsOn: [':connector-integration:war'], type: Copy) {
     group 'deployment'
     from "$buildDir/libs/" + war.archiveName
     into tomcatDeployment
+    
 }
+
