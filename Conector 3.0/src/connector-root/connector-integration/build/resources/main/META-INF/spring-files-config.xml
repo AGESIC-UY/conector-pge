@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:int-http="http://www.springframework.org/schema/integration/http"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http-4.3.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+    <!-- INBOUND - Receive soap message -->
+    <int-http:inbound-gateway request-channel="connectorHttpInboundChannel" path="/**"
+                              supported-methods="POST" reply-channel="connectorPDIHttpResponseChannel"
+                              error-channel="connectorErrorChannel"
+                              reply-timeout="${connector.http.client.request.timeout}"
+                              mapped-request-headers="http_requestMethod,Content-Length,Accept,Connection,soapAction,Content-Type"
+                              mapped-response-headers="HTTP_RESPONSE_HEADERS"
+                              message-converters="messageConverterList">
+    </int-http:inbound-gateway>
+
+    <!-- INBOUND - log interceptor -->
+    <int:channel id="connectorHttpInboundChannel"/>
+
+    <int:header-enricher id="initialTimestampHeaderEnricher" input-channel="connectorHttpInboundChannel" output-channel="messageProcessorChannel">
+        <int:header name="initialTimestamp" ref="timestampEnricherBean" method="enrich" />
+    </int:header-enricher>
+
+    <int:channel id="messageProcessorChannel"/>
+
+    <!-- service activator -->
+    <int:service-activator input-channel="messageProcessorChannel"
+                           output-channel="connectorHeaderEnricherChannel"
+                           ref="basicMessageCoordinatorBean" method="process" requires-reply="true"/>
+
+    <int:channel id="connectorHeaderEnricherChannel"></int:channel>
+
+    <int:header-enricher input-channel="connectorHeaderEnricherChannel" output-channel="contentTypeFilter">
+        <int:header name="contentType" expression="headers['content-type']"/>
+    </int:header-enricher>
+
+    <int:channel id="contentTypeFilter"></int:channel>
+
+    <int:header-filter input-channel="contentTypeFilter" output-channel="connectorPDIHttpRequestChannel"
+                       header-names="content-type"/>
+
+    <int:channel id="connectorPDIHttpRequestChannel"/>
+
+    <int:service-activator input-channel="connectorPDIHttpRequestChannel" output-channel="connectorPDIHttpResponseChannel"
+                           ref="conectorRestTemplate" method="process"/>
+
+    <int:channel id="connectorPDIHttpResponseChannel">
+        <int:interceptors>
+            <int:wire-tap channel="connectorPDIHttpResponseLoggerChannel"/>
+        </int:interceptors>
+    </int:channel>
+
+    <int:channel id="connectorPDIHttpResponseLoggerChannel"/>
+    <int:logging-channel-adapter id="connectorPDIHttpResponseLogger" expression="'[RS-C]: '+#this" level="DEBUG"
+                                 channel="connectorPDIHttpResponseLoggerChannel" logger-name="connectorMessages"/>
+
+    <int:publish-subscribe-channel id="connectorErrorChannel"/>
+    <int:bridge input-channel="connectorErrorChannel" output-channel="errorChannel"/>
+
+    <int:service-activator input-channel="connectorErrorChannel"
+                           output-channel="outputSerializacionChannel"
+                           ref="errorHandler" requires-reply="true"/>
+
+    <int:channel id="outputSerializacionChannel"/>
+
+    <int:service-activator id="outputSerializacionBean" input-channel="outputSerializacionChannel" output-channel="connectorPDIHttpResponseChannel" 
+        requires-reply="true" ref="inputStreamOutputConverterBean" method="process"/>
+
+    <bean id="errorHandler" class="gub.agesic.connector.integration.exception.ConnectorErrorHandler"/>
+
+    <util:list id="messageConverterList">
+        <bean id="conectorMessageConverterBean" class="gub.agesic.connector.integration.support.ConectorHttpMessageConverter"/>
+    </util:list>
+
+    <bean id="WSInvokeService" class="gub.agesic.connector.integration.actions.WSInvokeService"/>
+    <bean id="basicMessageCoordinatorBean" class="gub.agesic.connector.integration.actions.BasicMessageCoordinator">
+        <constructor-arg name="wsInvokeService" ref="WSInvokeService"/>
+        <constructor-arg name="messageProcessorFactory" ref="messageProcessorFactoryBean"/>
+    </bean>
+    <bean id="messageProcessorFactoryBean" class="gub.agesic.connector.integration.actions.MessageProcessorFactory">
+        <constructor-arg name="mtomInputMessageProcessor" ref="mtomInputMessageProcessorBean"/>
+        <constructor-arg name="mtomOutputMessageProcessor" ref="mtomOutputMessageProcessorBean"/>
+        <constructor-arg name="stringInputMessageProcessor" ref="stringInputMessageProcessor"/>
+        <constructor-arg name="stringOutputMessageProcessor" ref="stringOutputMessageProcessor"/>
+    </bean>
+    <bean id="mtomInputMessageProcessorBean" class="gub.agesic.connector.integration.actions.MTOMInputMessageProcessor">
+        <constructor-arg name="tempFolderLocation" value="${java.io.tmpdir}"/>
+    </bean>
+    <bean id="mtomOutputMessageProcessorBean" class="gub.agesic.connector.integration.actions.MTOMOutputMessageProcessor">
+        <constructor-arg name="tempFolderLocation" value="${java.io.tmpdir}"/>
+    </bean>
+    <bean id="stringInputMessageProcessor" class="gub.agesic.connector.integration.actions.StringInputMessageProcessor"/>
+    <bean id="stringOutputMessageProcessor" class="gub.agesic.connector.integration.actions.StringOutputMessageProcessor"/>
+    <bean id="conectorRestTemplate" class="gub.agesic.connector.integration.actions.ConectorRestTemplate">
+        <constructor-arg name="mapper">
+            <bean id="headerMapper" class="org.springframework.integration.http.support.DefaultHttpHeaderMapper">
+                <property name="outboundHeaderNames" value="HTTP_REQUEST_HEADERS,soapAction"/>
+                <property name="inboundHeaderNames" value="HTTP_RESPONSE_HEADERS"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg name="connectTimeout" value="${connector.http.service.connection.timeout}"/>
+        <constructor-arg name="readTimeout" value="${connector.http.service.read.timeout}"/>
+    </bean>
+    <bean id="inputStreamOutputConverterBean" class="gub.agesic.connector.integration.support.InputStreamOutputConverter"/>
+    <bean id="timestampEnricherBean" class="gub.agesic.connector.integration.actions.TimestampEnricher"/>
+</beans>
