@@ -1,5 +1,5 @@
 ```
-Para ejecutar tomcat en linux se deben ejecutar:
+Para ejecutar tomcat en linux se deben ejecutar desde la carpeta bin dentro de la carbeta base de Tomcat los siguientes comendos:
 
 chmod -R 777 startup.sh
 chmod -R 777 catalina.sh
