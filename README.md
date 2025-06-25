@@ -1,5 +1,5 @@
 <b>Conector PDI </b> <br/>
-<b>Versión  5.0 - Spike</b> <br/>
+<b>Versión  5.0 </b> <br/>
 
 <b>Descripción</b>
 Es un componente que facilita el consumo de servicios a través de la plataforma de Interoperabiliad
