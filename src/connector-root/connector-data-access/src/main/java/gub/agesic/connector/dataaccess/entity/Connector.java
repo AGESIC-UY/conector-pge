@@ -1,19 +1,11 @@
 package gub.agesic.connector.dataaccess.entity;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.List;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -56,6 +48,9 @@ public class Connector extends GenericEntity implements Serializable {
     @Column(name = "ISSUER", length = 100)
     private String issuer;
 
+    @Column(name = "LOCAL_POLICY_NAME_ENABLED")
+    private boolean enableLocalPolicyName;
+
     @Column(name = "POLICY_NAME", length = 100)
     private String policyName;
 
@@ -86,11 +81,47 @@ public class Connector extends GenericEntity implements Serializable {
     @Column(name = "MULTIPLE_VERSION")
     private boolean multipleVersion;
 
-    @OneToMany(cascade = { CascadeType.ALL }, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Column(name = "SAML_VERSION", length = 10)
+    private String samlVersion;
+
+    @Column(name = "LOCAL_EXPIRATION_NOTIFICATION_ENABLED")
+    private boolean enableLocalExpirationNotification;
+
+    @Column(name = "LOCAL_EXPIRATION_NOTICE_DAYS", length = 10)
+    private Integer localExpirationNoticeDays;
+
+    @Column(name = "LOCAL_SERVICE_TIMEOUT", length = 10)
+    private Integer localServiceTimeOut;
+
+    @Column(name = "LOCAL_SERVICE_TIMEOUT_ENABLED")
+    private boolean enableLocalServiceTimeOut;
+
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<RoleOperation> roleOperations;
 
     @Transient
     private String wsdlUrlForUI;
+
+    @Transient
+    private String expDateKeystoreOrg;
+
+    @Transient
+    private String expDateKeystoreSSL;
+
+    @Transient
+    private String expDateKeystoreTruststore;
+
+    @Transient
+    private String expKeystoreOrgStatus;
+
+    @Transient
+    private String expKeystoreSSLStatus;
+
+    @Transient
+    private String expKeystoreTruststoreStatus;
+
+    @Transient
+    private String expirationStatus;
 
     public String getTag() {
         return tag;
@@ -187,6 +218,14 @@ public class Connector extends GenericEntity implements Serializable {
         this.issuer = issuer;
     }
 
+    public boolean isEnableLocalPolicyName() {
+        return enableLocalPolicyName;
+    }
+
+    public void setEnableLocalPolicyName(boolean enableLocalPolicyName) {
+        this.enableLocalPolicyName = enableLocalPolicyName;
+    }
+
     public String getPolicyName() {
         return policyName;
     }
@@ -205,7 +244,7 @@ public class Connector extends GenericEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Conector Id = " + getId() + " - Name: " + name + " - Type: " + type;
+        return "Servicio Id = " + getId() + " - Name: " + name + " - Type: " + type;
     }
 
     public UserCredentials getUserCredentials() {
@@ -290,5 +329,101 @@ public class Connector extends GenericEntity implements Serializable {
 
     public void setWsdlUrlForUI(String wsdlUrlForUI) {
         this.wsdlUrlForUI = wsdlUrlForUI;
+    }
+
+    public String getSamlVersion() {
+        return samlVersion;
+    }
+
+    public void setSamlVersion(String samlVersion) {
+        this.samlVersion = samlVersion;
+    }
+
+    public boolean isEnableLocalExpirationNotification() {
+        return enableLocalExpirationNotification;
+    }
+
+    public void setEnableLocalExpirationNotification(boolean enableLocalExpirationNotification) {
+        this.enableLocalExpirationNotification = enableLocalExpirationNotification;
+    }
+
+    public String getExpDateKeystoreOrg() {
+        return expDateKeystoreOrg;
+    }
+
+    public void setExpDateKeystoreOrg(String expDateKeystoreOrg) {
+        this.expDateKeystoreOrg = expDateKeystoreOrg;
+    }
+
+    public String getExpDateKeystoreSSL() {
+        return expDateKeystoreSSL;
+    }
+
+    public void setExpDateKeystoreSSL(String expDateKeystoreSSL) {
+        this.expDateKeystoreSSL = expDateKeystoreSSL;
+    }
+
+    public String getExpDateKeystoreTruststore() {
+        return expDateKeystoreTruststore;
+    }
+
+    public void setExpDateKeystoreTruststore(String expDateKeystoreTruststore) {
+        this.expDateKeystoreTruststore = expDateKeystoreTruststore;
+    }
+
+    public String getExpirationStatus() {
+        return expirationStatus;
+    }
+
+    public void setExpirationStatus(String expirationStatus) {
+        this.expirationStatus = expirationStatus;
+    }
+
+    public String getExpKeystoreOrgStatus() {
+        return expKeystoreOrgStatus;
+    }
+
+    public void setExpKeystoreOrgStatus(String expKeystoreOrgStatus) {
+        this.expKeystoreOrgStatus = expKeystoreOrgStatus;
+    }
+
+    public String getExpKeystoreSSLStatus() {
+        return expKeystoreSSLStatus;
+    }
+
+    public void setExpKeystoreSSLStatus(String expKeystoreSSLStatus) {
+        this.expKeystoreSSLStatus = expKeystoreSSLStatus;
+    }
+
+    public String getExpKeystoreTruststoreStatus() {
+        return expKeystoreTruststoreStatus;
+    }
+
+    public void setExpKeystoreTruststoreStatus(String expKeystoreTruststoreStatus) {
+        this.expKeystoreTruststoreStatus = expKeystoreTruststoreStatus;
+    }
+
+    public boolean isEnableLocalServiceTimeOut() {
+        return enableLocalServiceTimeOut;
+    }
+
+    public void setEnableLocalServiceTimeOut(boolean enableLocalServiceTimeOut) {
+        this.enableLocalServiceTimeOut = enableLocalServiceTimeOut;
+    }
+
+    public Integer getLocalExpirationNoticeDays() {
+        return localExpirationNoticeDays;
+    }
+
+    public void setLocalExpirationNoticeDays(Integer localExpirationNoticeDays) {
+        this.localExpirationNoticeDays = localExpirationNoticeDays;
+    }
+
+    public Integer getLocalServiceTimeOut() {
+        return localServiceTimeOut;
+    }
+
+    public void setLocalServiceTimeOut(Integer localServiceTimeOut) {
+        this.localServiceTimeOut = localServiceTimeOut;
     }
 }

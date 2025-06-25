@@ -1,0 +1,36 @@
+<xsd:schema attributeFormDefault="unqualified" 
+	targetNamespace="urn:agesic:pge:config:1.0"
+	elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="PGEConfig" type="PGEConfigType" />
+  <xsd:complexType name="PGEConfigType">
+    <xsd:sequence>
+      <xsd:element name="STSConfig" type="STSConfigType" />
+      <xsd:element name="KeyStore" type="KeyStoreType" />
+      <xsd:element name="SAMLConfig" type="SAMLConfigType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="KeyStoreType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Auth" type="AuthType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AuthType">
+    <xsd:attribute name="Key" type="xsd:string" />
+    <xsd:attribute name="Value" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="STSConfigType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Property" type="PropertyType" />
+    </xsd:sequence>
+    <xsd:attribute name="url" type="xsd:string" />
+  </xsd:complexType>
+  <xsd:complexType name="SAMLConfigType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="Property" type="PropertyType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PropertyType">
+    <xsd:attribute name="Key" type="xsd:string" />
+    <xsd:attribute name="Value" type="xsd:string" />
+  </xsd:complexType>
+</xsd:schema>

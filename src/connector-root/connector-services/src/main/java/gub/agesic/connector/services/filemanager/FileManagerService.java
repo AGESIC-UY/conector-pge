@@ -1,17 +1,16 @@
 package gub.agesic.connector.services.filemanager;
 
+import gub.agesic.connector.exceptions.ConnectorException;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import gub.agesic.connector.exceptions.ConnectorException;
-
 /**
  * Interfaz que provee métodos para el manejo de archivos en el sistema.
- * Permite: subir archivos, obtener WSDL de un Conector, crear/borrar directorio
- * de un Conector
+ * Permite: subir archivos, obtener WSDL de un Servicio, crear/borrar directorio
+ * de un Servicio
  */
 public interface FileManagerService {
 
@@ -21,8 +20,7 @@ public interface FileManagerService {
 
     void deleteConnectorDirectory(String connectorId) throws ConnectorException;
 
-    void deleteConnectorDirectoryFiles(String connectorId, boolean deleteOnlyWsdls)
-            throws ConnectorException;
+    void deleteConnectorDirectoryFiles(String connectorId, boolean deleteOnlyWsdls) throws ConnectorException;
 
     void deletePrefixFilesInTemp(String prefixName) throws ConnectorException;
 
@@ -35,6 +33,8 @@ public interface FileManagerService {
     String getGlobalConfigurationDirectory(String type) throws IOException;
 
     Path getConnectorWSDL(long id, String prefixNameConnector) throws ConnectorException;
+
+    String getCurrentTime();
 
     String getFileExtension(String filename) throws ConnectorException;
 

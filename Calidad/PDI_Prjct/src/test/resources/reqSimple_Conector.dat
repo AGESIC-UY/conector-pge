@@ -1,0 +1,6 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nov="http://novedades.sae.agesic.gub.uy/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nov:publicar/>
+   </soapenv:Body>
+</soapenv:Envelope>

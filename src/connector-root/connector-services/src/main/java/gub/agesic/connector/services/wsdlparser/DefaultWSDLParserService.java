@@ -41,7 +41,6 @@ public class DefaultWSDLParserService implements WSDLParserService {
     public static final String XSD_IMPORTS = "//schema/import";
     private static final String XSD_INCLUDE = "//schema/include";
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultWSDLParserService.class);
-    private static final String XSD_EXTENSION = ".xsd";
 
     private final FileManagerService fileManagerService;
     private final XPathParserService xPathParserService;

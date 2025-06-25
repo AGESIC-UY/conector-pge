@@ -25,8 +25,8 @@ public class ConnectorWsdlService {
     public static final String MSG = "msg";
 
     public static final String ERROR_NO_EXISTE_CONNECTOR = "ERROR: No existe un Connector con ID ";
-    public static final String ERROR_NO_EXISTE_WSDL_DEL_CONECTOR = "ERROR: No existe un WSDL para ese Conector";
-    public static final String ERROR_AL_COPIAR_WSDL_AL_RESPONSE = "Error al acceder al archivo wsdl del conectorId :";
+    public static final String ERROR_NO_EXISTE_WSDL_DEL_CONECTOR = "ERROR: No existe un WSDL para ese Servicio";
+    public static final String ERROR_AL_COPIAR_WSDL_AL_RESPONSE = "Error al acceder al archivo wsdl del servicio con Id:";
     private static final Logger LOGGER = LoggerFactory.getLogger(ConnectorWsdlService.class);
     @Autowired
     private FileManagerService fileManagerService;
@@ -84,7 +84,7 @@ public class ConnectorWsdlService {
             connectorTypeHolder = connectorService.getConnectorTypeByPort(port);
             connector = connectorService.getConnectorByPathAndPort(path, connectorTypeHolder);
         } catch (ConnectorException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.error(e.getMessage(), e);
         }
 
         if (!(connector != null && connector.isPresent())) {

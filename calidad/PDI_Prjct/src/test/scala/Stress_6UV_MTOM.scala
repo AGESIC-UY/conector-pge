@@ -6,11 +6,11 @@ class Stress_6UV_MTOM extends Simulation {
 
   val scnConsultaProveedores= new ConsultaProveedores()
 
-  setUp(scnConsultaProveedores.getScenarioMTOM("Stress_6UV_MTOM")
+  setUp(scnConsultaProveedores.getScenarioMTOMWithDuration("Stress_6UV_MTOM",75)
     inject(
     rampConcurrentUsers(0) to (6) during (15 minutes),
     constantConcurrentUsers(6) during (60 minutes))).
-    protocols(scnConsultaProveedores.getHttpProtocol()).
+    protocols(scnConsultaProveedores.getHttpProtocolMTOM()).
     assertions(
       global.failedRequests.percent.lt(1)
     )

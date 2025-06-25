@@ -1,13 +1,13 @@
-<soapenv:Envelope xmlns:ws="http://ws.rupe.acce.gub.uy/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Envelope xmlns:ws="http://novedades.sae.agesic.gub.uy/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
    <soapenv:Header>
-      <a:Action xmlns:e="http://schemas.xmlsoap.org/soap/envelope/" xmlns:a="http://www.w3.org/2005/08/addressing">http://preprodservicios.pge.red.uy/acce/consultaproveedores/prueba1/descripcion</a:Action>
+      <a:Action xmlns:e="http://schemas.xmlsoap.org/soap/envelope/" xmlns:a="http://www.w3.org/2005/08/addressing">nuevaNovedad</a:Action>
       <a:MessageID xmlns:e="http://schemas.xmlsoap.org/soap/envelope/" xmlns:a="http://www.w3.org/2005/08/addressing">uuid:35899f00-4731-405b-99e1-3fad5b9f2b3b</a:MessageID>
-      <a:To xmlns:e="http://schemas.xmlsoap.org/soap/envelope/" xmlns:a="http://www.w3.org/2005/08/addressing">http://preprodservicios.pge.red.uy/acce/consultaproveedores/prueba2</a:To>
+      <a:To xmlns:e="http://schemas.xmlsoap.org/soap/envelope/" xmlns:a="http://www.w3.org/2005/08/addressing">http://testservicios.pge.red.uy/agesic/sae/PublicacionSaeNovedades/pruebas</a:To>
       <wsse:Security soapenv:actor="agesic" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
          <saml:Assertion AssertionID="Assertion-uuid55845d5f-015f-11de-ab46-85f163fb0008" IssueInstant="2017-10-25T21:50:58Z" Issuer="Urudata" MajorVersion="1" MinorVersion="1" xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion">
             <saml:Conditions NotBefore="2017-10-25T21:35:57Z" NotOnOrAfter="2017-10-25T22:05:59Z">
                <saml:AudienceRestrictionCondition>
-                  <saml:Audience>http://preprodservicios.pge.red.uy/acce/consultaproveedores/prueba1</saml:Audience>
+                  <saml:Audience>http://testservicios.pge.red.uy/agesic/sae/PublicacionSaeNovedades/pruebas</saml:Audience>
                </saml:AudienceRestrictionCondition>
             </saml:Conditions>
             <saml:AuthenticationStatement AuthenticationInstant="2017-10-25T21:50:58Z" AuthenticationMethod="urn:oasis:names:tc:SAML:1.0:am:password">
@@ -49,6 +49,6 @@
       </wsse:Security>
    </soapenv:Header>
    <soapenv:Body>
-      <ws:descripcion/>
+      <ws:publicar/>
    </soapenv:Body>
 </soapenv:Envelope>

@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <c:set var="servletPath"
-       value="${pageContext.request.servletPath}"/> <!-- /WEB-INF/views/jsp/index.jsp -->
+       value="${pageContext.request.servletPath}"/>
 <c:set value="${fn:split(servletPath,'/')}" var="stringAux"/>
 <c:set value="${stringAux[fn:length(stringAux)-1]}" var="viewName"/>
 
@@ -63,8 +63,8 @@
                             Token.
                         </p>
                         <p>
-                            Habilitar Configuraci&oacute;n Local : Permite al usuario definir los keystores y truststores que
-                            utiliza el conector. En caso de no seleccionar este control, se utiliza los certificados globales.
+                            Habilitar Configuraci&oacute;n de Certificado Local : Permite al usuario definir los keystores y truststores que
+                            utiliza el servicio. En caso de no seleccionar este control, se utiliza los certificados globales.
                             </p>
                         <p>
                             Habilitar cache de Tokens : Permite cachear los tokens SAML pedidos a la plataforma, de manera de no
@@ -74,31 +74,31 @@
                         <p>
                             Alias del Keystore Organismo (Config Local) : Alias en donde se encuentra el certificado que se quiere
                             utilizar para la firma del SOAP. Este alias corresponde al "Keystore Organismo" (En el caso que sea un
-                            conector con configuraci&oacute;n local habilitada)
+                            servicio con configuraci&oacute;n local habilitada)
                         </p>
                         <p>
                             Password Keystore Organismo (Config Local) : Password del "Keystore Organismo" (En el caso que sea un
-                            conector con configuraci&oacute;n local habilitada)
+                            servicio con configuraci&oacute;n local habilitada)
                         </p>
                         <p>
                             Password Keystore SSL (Config Local) : Password utilizada para acceder al certificado del keystore
-                            para el acceso por https. (En el caso que sea un conector con configuraci&oacute;n local habilitada)
+                            para el acceso por https. (En el caso que sea un servicio con configuraci&oacute;n local habilitada)
                         </p>
                         <p>
                             Password Truststore (Config Local) : Password utilizada para acceder al certificado del trustore para
-                            el acceso por https. (En el caso que sea un conector con configuraci&oacute;n local habilitada)
+                            el acceso por https. (En el caso que sea un servicio con configuraci&oacute;n local habilitada)
                         </p>
                         <p>
                             Keystore Organismo (Config Local) : Keystore del Organismo utilizado para la firma del SOAP (En el
-                            caso que sea un conector con configuraci&oacute;n local habilitada)
+                            caso que sea un servicio con configuraci&oacute;n local habilitada)
                         </p>
                         <p>
                             Keystore SSL (Config Local) : Keystore utilizado para la comunicaci&oacute;n HTTPS (En el caso que sea
-                            un conector con configuraci&oacute;n local habilitada)
+                            un servicio con configuraci&oacute;n local habilitada)
                         </p>
                         <p>
                             Truststore SSL (Config Local) : Truststore utilizado para la comunicaci&oacute;n HTTPS (En el caso que
-                            sea un conector con configuraci&oacute;n local habilitada)
+                            sea un servicio con configuraci&oacute;n local habilitada)
                         </p>
                         <p>
                             WSDL : Archivo WSDL en donde est&aacute; especificado el endpoint al cual se va a invocar al servicio
@@ -106,7 +106,7 @@
                             archivos zip que contengan el wsdl junto a sus dependencias (otros archivos wsdl o xsd).
                         </p>
                         <p>
-                            Tag : Atributo para filtrar el conector
+                            Tag : Atributo para filtrar el servicio
                         </p>
 '
        var="addOrModifyFields"/>
@@ -125,44 +125,50 @@
                         <h3>Inicio</h3>
 
                         <p>
-                            En la p&aacute;gina de inicio se muestran los conectores creados en el sistema.
+                            En la p&aacute;gina de inicio se muestran los servicios creados en el sistema.
                         </p>
 
                         <p>
-                            Esta p&aacute;gina tiene dos filtros, uno por tipo de conector para poder visualizar los
-                            conectores definidos para "Test" o "Producci&oacute;n" y el otro por Tag, este atributo se le
-                            asigna a cada conector con el fin de poder filtrar y
-                            encontrar de manera r&aacute;pida los conectores relacionados con el mismo Tag.
+                            Esta p&aacute;gina tiene dos filtros, uno por tipo de servicio para poder visualizar los
+                            servicios definidos para "Test" o "Producci&oacute;n" y el otro por Tag, este atributo se le
+                            asigna a cada servicio con el fin de poder filtrar y
+                            encontrar de manera r&aacute;pida los servicios relacionados con el mismo Tag.
                         </p>
 
                         <p>
-                            En cada conector se permiten varias acciones (Ver, Editar, Borrar, obtener el WSDL y
+                            En cada servicio se permiten varias acciones (Ver, Editar, Borrar, obtener el WSDL y
                             obtener el xml de exportaci&oacute;n que luego puede ser importado por otro organismo).
                         </p>
 
                         <p>
-                            Tambi&eacute;n hay un &aacute;rea de importaci&oacute;n en donde se debe seleccionar un archivo XML
+                            Tambi&eacute;n hay un &aacute;rea de importaci&oacute;n en donde se debe seleccionar un
+                            archivo XML
                             que fue
-                            generado por la misma aplicaci&oacute;n mediante la exportaci&oacute;n de un conector. La importaci&oacute;n
+                            generado por la misma aplicaci&oacute;n mediante la exportaci&oacute;n de un servicio. La
+                            importaci&oacute;n
                             lee este archivo y crea un nuevo
-                            conector con todos los datos del conector. Vale destacar que una vez importado el
-                            conector, se debe editar el mismo para cargar las contrase&ntilde;as de los keystores y
+                            servicio con todos los datos del servicio. Vale destacar que una vez importado el
+                            servicio, se debe editar el mismo para cargar las contrase&ntilde;as de los keystores y
                             truststores, en el caso de estar utilizando
-                            configuraci&oacute;n local. Esto es necesario ya que las contrase&ntilde;as no forman parte de la
+                            configuraci&oacute;n local. Esto es necesario ya que las contrase&ntilde;as no forman parte
+                            de la
                             exportaci&oacute;n, por razones de seguridad.
                         </p>
                     </c:when>
                     <c:when test="${viewName == 'viewConnector.jsp'}">
 
-                        <h3>Ver un conector</h3>
+                        <h3>Ver un servicio</h3>
 
                         <p>
-                            Se muestra los datos del Conector, permitiendo bajar los archivos y obtener el XML para la exportaci&oacute;n.
+                            Se muestra los datos del Servicio, permitiendo bajar los archivos y obtener el XML para la
+                            exportaci&oacute;n.
                         </p>
 
                         <p>
-                            Al exportar un conector, vale destacar que en caso de utilizar la configuraci&oacute;n local, las
-                            contraseñas de los keystores y truststores no son incluidas en la exportaci&oacute;n, por razones de
+                            Al exportar un servicio, vale destacar que en caso de utilizar la configuraci&oacute;n
+                            local, las
+                            contraseñas de los keystores y truststores no son incluidas en la exportaci&oacute;n, por
+                            razones de
                             seguridad.
                         </p>
 
@@ -170,29 +176,35 @@
 
                         <p>
                                 ${addOrModifyFields}
-                            Bot&oacute;n para descargar el archivo que se encuentra guardado (o sea, el que se guard&oacute; al
+                            Bot&oacute;n para descargar el archivo que se encuentra guardado (o sea, el que se guard&oacute;
+                            al
                             utilizar el bot&oacute;n de Salvar).
                         </p>
 
                     </c:when>
 
                     <c:when test="${esAlta == true && (viewName == 'edit.jsp' || viewName == 'edit2.jsp')}">
-                        <h3>Nuevo Conector</h3>
+                        <h3>Nuevo Servicio</h3>
 
                         <p>
-                            Todos los datos del conector son requeridos.
-                            En el ingreso de datos si no se ingresa uno de los campos requeridos al momento de apretar el bot&oacute;n
-                            salvar, se volver&aacute; a mostrar la misma p&aacute;gina indicando cual es el campo en el cual no se
+                            Todos los datos del servicio son requeridos.
+                            En el ingreso de datos si no se ingresa uno de los campos requeridos al momento de apretar
+                            el bot&oacute;n
+                            salvar, se volver&aacute; a mostrar la misma p&aacute;gina indicando cual es el campo en el
+                            cual no se
                             ingresaron
-                            datos. Si se da este caso y se hab&iacute;a seleccionado un archivo, para cualquiera de los campos
+                            datos. Si se da este caso y se hab&iacute;a seleccionado un archivo, para cualquiera de los
+                            campos
                             Wsdl,
-                            Keystore Organismo, Keystore SSL o Trustore SSL , este se perder&aacute; y se tendr&aacute; que volver
+                            Keystore Organismo, Keystore SSL o Trustore SSL , este se perder&aacute; y se tendr&aacute;
+                            que volver
                             a seleccionar
                             el o los archivos.
                         </p>
 
                         <p>
-                            La combinaci&oacute;n "Nombre" - "Tipo" tiene que ser &uacute;nica en el sistema, as&iacute; como
+                            La combinaci&oacute;n "Nombre" - "Tipo" tiene que ser &uacute;nica en el sistema, as&iacute;
+                            como
                             tambi&eacute;n la combinaci&oacute;n
                             "Path" - "Tipo".
                         </p>
@@ -201,18 +213,24 @@
 
                         <p>
                                 ${addOrModifyFields}
-                            Al lado del campo de entrada para seleccionar el archivo WSDL, hay un bot&oacute;n de "refresh". Ese
-                            hace que se cargue el archivo WSDL y se actualicen las operaciones del conector con las operaciones
-                            especificadas en dicho WSDL. Dicho archivo no es guardado hasta que no se guarden los cambios.
+                            Al lado del campo de entrada para seleccionar el archivo WSDL, hay un bot&oacute;n de
+                            "refresh". Ese
+                            hace que se cargue el archivo WSDL y se actualicen las operaciones del servicio con las
+                            operaciones
+                            especificadas en dicho WSDL. Dicho archivo no es guardado hasta que no se guarden los
+                            cambios.
                         </p>
 
                         <p>
-                            Bot&oacute;n que permite cancelar la subida de un archivo, de manera de poder seleccionar otro.
+                            Bot&oacute;n que permite cancelar la subida de un archivo, de manera de poder seleccionar
+                            otro.
                         </p>
                         <p>
-                            Bot&oacute;n que permite cargar el archivo WSDL y actualiza las operaciones del conector con las
+                            Bot&oacute;n que permite cargar el archivo WSDL y actualiza las operaciones del servicio con
+                            las
                             operaciones
-                            especificadas en dicho WSDL. Notar que dicho archivo no es guardado hasta que no se guarden los
+                            especificadas en dicho WSDL. Notar que dicho archivo no es guardado hasta que no se guarden
+                            los
                             cambios.
                         </p>
 
@@ -223,22 +241,28 @@
                         <h3>Edici&oacute;n</h3>
 
                         <p>
-                            En la edici&oacute;n se muestran los datos del conector, permitiendo su modificaci&oacute;n (a excepci&oacute;n
-                            del "Nombre y "Tipo" que no pueden ser modificados luego de creado el servicio). Adem&aacute;s se
-                            permite sobrescribir un archivo (ya sea un keystore, truststore, wsdl) al seleccionar uno nuevo.
+                            En la edici&oacute;n se muestran los datos del servicio, permitiendo su modificaci&oacute;n
+                            (a excepci&oacute;n
+                            del "Nombre y "Tipo" que no pueden ser modificados luego de creado el servicio). Adem&aacute;s
+                            se
+                            permite sobrescribir un archivo (ya sea un keystore, truststore, wsdl) al seleccionar uno
+                            nuevo.
                         </p>
 
                         <p>
-                            La pantalla tambi&eacute;n permite borrar el conector (utilizando el bot&oacute;n de Borrar) y pasar
-                            el conector a producci&oacute;n (bot&oacute;n Pasar a Producci&oacute;n). Esta &uacute;ltima
-                            funcionalidad se encuentra habilitada para los conectores de tipo Test, y lo que hace es crear un
-                            conector en Producci&oacute;n copiando todos los datos del conector de Test.
+                            La pantalla tambi&eacute;n permite borrar el servicio (utilizando el bot&oacute;n de Borrar)
+                            y pasar
+                            el servicio a producci&oacute;n (bot&oacute;n Pasar a Producci&oacute;n). Esta &uacute;ltima
+                            funcionalidad se encuentra habilitada para los servicios de tipo Test, y lo que hace es
+                            crear un
+                            servicio en Producci&oacute;n copiando todos los datos del servicio de Test.
                         </p>
 
                         <p>
-                            Los conectores de Producci&oacute;n no tienen habilitado el bot&oacute;n de Pasar a Producci&oacute;n,
-                            pero en caso que hayan sido creados a partir de un conector de Testeo, se muestra el bot&oacute;n de
-                            Test Asociado, de manera de poder navegar desde el conector de Producci&oacute;n a Testeo.
+                            Los servicios de Producci&oacute;n no tienen habilitado el bot&oacute;n de Pasar a Producci&oacute;n,
+                            pero en caso que hayan sido creados a partir de un servicio de Testeo, se muestra el bot&oacute;n
+                            de
+                            Test Asociado, de manera de poder navegar desde el servicio de Producci&oacute;n a Testeo.
                         </p>
 
                         ${fieldsDescription}
@@ -246,24 +270,31 @@
                         <p>
                                 ${addOrModifyFields}
                         <p>
-                            Bot&oacute;n para descargar el archivo que se encuentra guardado (o sea, el que se guard&oacute; al
+                            Bot&oacute;n para descargar el archivo que se encuentra guardado (o sea, el que se guard&oacute;
+                            al
                             utilizar el bot&oacute;n de Salvar).
                         </p>
                         <p>
-                            Bot&oacute;n que permite cancelar la subida de un archivo, de manera de poder seleccionar otro.
+                            Bot&oacute;n que permite cancelar la subida de un archivo, de manera de poder seleccionar
+                            otro.
                         </p>
                         <p>
-                            Bot&oacute;n para validar el Keystore que se encuentra guardado. Notar que el bot&oacute;n solo
-                            aparece una vez que se haya salvado el conector con un archivo Keystore.
+                            Bot&oacute;n para validar el Keystore que se encuentra guardado. Notar que el bot&oacute;n
+                            solo
+                            aparece una vez que se haya salvado el servicio con un archivo Keystore.
                         </p>
                         <p>
-                            Bot&oacute;n para ver informaci&oacute;n de el Keystore/Trustore que se encuentra guardado. Notar que
-                            el bot&oacute;n solo aparece una vez que se haya salvado el conector con alg&uacute;n Keystore o
+                            Bot&oacute;n para ver informaci&oacute;n de el Keystore/Trustore que se encuentra guardado.
+                            Notar que
+                            el bot&oacute;n solo aparece una vez que se haya salvado el servicio con alg&uacute;n
+                            Keystore o
                             Truststore.
                         </p>
                         <p>
-                            Bot&oacute;n que permite cargar el archivo WSDL y actualiza las operaciones del conector con las
-                            operaciones especificadas en dicho WSDL. Notar que dicho archivo no es guardado hasta que no se
+                            Bot&oacute;n que permite cargar el archivo WSDL y actualiza las operaciones del servicio con
+                            las
+                            operaciones especificadas en dicho WSDL. Notar que dicho archivo no es guardado hasta que no
+                            se
                             guarden los cambios.
                         </p>
 
@@ -273,25 +304,29 @@
                         <h3>Configuraci&oacute;n Global</h3>
 
                         <p>
-                            Permite definir la configuraci&oacute;n de keystores y truststores que utilizan los conectores que
+                            Permite definir la configuraci&oacute;n de keystores y truststores que utilizan los
+                            servicios que
                             tienen habilitada la opci&oacute;n de Configuraci&oacute;n Global.
                         </p>
 
                         ${fieldsDescription}
 
                         <p>
-                            Alias del Keystore Organismo : Alias en donde se encuentra el certificado que se quiere utilizar para
+                            Alias del Keystore Organismo : Alias en donde se encuentra el certificado que se quiere
+                            utilizar para
                             la firma del SOAP. Este alias corresponde al "Keystore Organismo"
                         </p>
                         <p>
                             Password Keystore Organismo : Password del "Keystore Organismo"
                         </p>
                         <p>
-                            Password Keystore SSL : Password utilizada para acceder al certificado del keystore para el acceso por
+                            Password Keystore SSL : Password utilizada para acceder al certificado del keystore para el
+                            acceso por
                             https.
                         </p>
                         <p>
-                            Password Truststore : Password utilizada para acceder al certificado del trustore para el acceso por
+                            Password Truststore : Password utilizada para acceder al certificado del trustore para el
+                            acceso por
                             https.
                         </p>
                         <p>
@@ -304,19 +339,24 @@
                             Truststore SSL : Truststore utilizado para la comunicaci&oacute;n HTTPS
                         </p>
                         <p>
-                            Bot&oacute;n para descargar el archivo que se encuentra guardado (o sea, el que se guard&oacute; al
+                            Bot&oacute;n para descargar el archivo que se encuentra guardado (o sea, el que se guard&oacute;
+                            al
                             utilizar el bot&oacute;n de Salvar).
                         </p>
                         <p>
-                            Bot&oacute;n que permite cancelar la subida de un archivo, de manera de poder seleccionar otro.
+                            Bot&oacute;n que permite cancelar la subida de un archivo, de manera de poder seleccionar
+                            otro.
                         </p>
                         <p>
-                            Bot&oacute;n para validar el Keystore que se encuentra guardado. Notar que el bot&oacute;n solo
+                            Bot&oacute;n para validar el Keystore que se encuentra guardado. Notar que el bot&oacute;n
+                            solo
                             aparece una vez que se haya salvado la config. global con un archivo Keystore.
                         </p>
                         <p>
-                            Bot&oacute;n para ver informaci&oacute;n de el Keystore/Trustore que se encuentra guardado. Notar que
-                            el bot&oacute;n solo aparece una vez que se haya salvado la config. global con alg&uacute;n Keystore o
+                            Bot&oacute;n para ver informaci&oacute;n de el Keystore/Trustore que se encuentra guardado.
+                            Notar que
+                            el bot&oacute;n solo aparece una vez que se haya salvado la config. global con alg&uacute;n
+                            Keystore o
                             Truststore.
                         </p>
 

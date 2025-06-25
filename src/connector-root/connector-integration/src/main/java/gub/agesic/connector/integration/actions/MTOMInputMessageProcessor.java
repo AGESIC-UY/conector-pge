@@ -18,6 +18,7 @@ import javax.mail.util.ByteArrayDataSource;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
@@ -34,6 +35,7 @@ import org.springframework.messaging.support.MessageBuilder;
 public class MTOMInputMessageProcessor implements MessageProcessor<InputStream, String> {
 
     private static final String MULTIPART_RELATED = "multipart/related";
+    private static final Logger LOGGER = Logger.getLogger("connectorMessages");
 
     private final String tempFolderLocation;
 
@@ -51,6 +53,9 @@ public class MTOMInputMessageProcessor implements MessageProcessor<InputStream, 
             final String folderId = UUID.randomUUID().toString();
             final String soapMessage = processMtomMessage(mtomMessage, folderId);
 
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("[MTOM-IN] " + soapMessage);
+            }
             return MessageBuilder.withPayload(soapMessage).copyHeaders(message.getHeaders())
                     .setHeader(MTOMMessageProcessorConstants.FOLDER_ID_HEADER, folderId)
                     .setHeader(MTOMMessageProcessorConstants.MTOM_PARTS_HEADER,

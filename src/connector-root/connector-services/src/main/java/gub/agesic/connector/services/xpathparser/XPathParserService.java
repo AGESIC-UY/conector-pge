@@ -1,25 +1,21 @@
 package gub.agesic.connector.services.xpathparser;
 
-import java.nio.file.Path;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-
+import gub.agesic.connector.exceptions.ConnectorException;
 import gub.agesic.connector.pojo.SoapVersionInfo;
 import org.springframework.web.multipart.MultipartFile;
 import org.w3c.dom.Node;
 
-/**
- * Interfaz que provee métodos para el parseo de archivos a través de XPath.
- */
-
-import gub.agesic.connector.exceptions.ConnectorException;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.nio.file.Path;
+import java.util.List;
 
 public interface XPathParserService {
 
     boolean getBooleanNodeValue(final Node node);
 
     String getStringNodeValue(final Node node);
+
+    Integer getIntegerNodeValue(final Node node);
 
     String getNamedItemValue(final Node node, final String namedItem);
 
@@ -28,7 +24,7 @@ public interface XPathParserService {
     Node getXPathResultNode(final String filterExpression, final Node nodeSource);
 
     Node getXPathResultNode(final String filterExpression, final Node nodeSource,
-            final int itemPos);
+                            final int itemPos);
 
     List<Node> getXPathResultNodeList(final String filterExpression, final Node nodeSource);
 

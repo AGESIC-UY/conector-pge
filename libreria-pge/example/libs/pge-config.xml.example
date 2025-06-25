@@ -1,0 +1,73 @@
+<PGEConfig xmlns="urn:agesic:pge:config:1.0" >
+	<STSConfig url="https://testservicios.pge.red.uy:6051/TrustServer/SecurityTokenServiceProtected">
+		<Property Key="SSLContextInitializer" Value="uy.gub.agesic.pge.core.ssl.SSLContextInitializerCXF"/>
+		<Property Key="Role" Value="ou=rupe,o=acce"/>
+	    <Property Key="Policy" Value="urn:tokensimple"/>
+		<Property Key="Issuer" Value="Agesic"/>
+		<Property Key="Username" Value="prueba"/>
+		<!-- Timeout de la invocacion al STS en milisegudos-->
+		<Property Key="STSTimeOut" Value="5000"/>
+		<!-- Timeout del token SAML que se envia al STS en milisegundos -->
+		<Property Key="TokenTimeOut" Value="950000"/>
+
+		<Property Key="WsaTo" Value=""/>
+		<!-- SAML version "1.1" | "1.2" -->
+        <Property Key="SAMLVersion" Value="1.1"/>
+        <!-- SOAP version "1.1" | "1.2" | "multiple" -->
+        <Property Key="SOAPVersion" Value="1.1"/>
+        <!-- It is cache token enabled "0": Disabled | "1": Enabled -->
+        <Property Key="CacheTokenEnabled" Value="0"/>
+	</STSConfig>
+	<KeyStore>
+		<!-- 
+			Los path soportan tanto la ruta absoluta o el formato URL
+			Ej.
+				file:///path_to_keystore
+				jar:///path_to_keystore
+			o un resource
+			Ej.
+				uy/gub/agesic/keystore.jks
+		 -->
+		<!-- Ruta a la keysore del Organismo  -->
+		<Auth Key="KeyStoreURL" Value="keystore/agesictesting_v4.keystore"/>
+		<!-- 
+			Password encritada (ver: https://community.jboss.org/wiki/PicketLinkConfigurationMaskPassword) 
+			de la keystore, puede ser en texto plano tambien  
+		-->
+		<Auth Key="KeyStorePass" Value="MASK-Vw6Vao6Mc/E="/>
+		<!-- Alias del certificado del organismo en la keystore -->
+		<Auth Key="KeyStoreAlias" Value="0f026f823ca3597ced3953188b1628de_be45dff3-4f56-4728-8332-77080b0c1c08"/>
+		<!-- Keystore para la conexion SSL -->
+  		<Auth Key="SSLKeyStoreURL" Value="keystore/agesictesting_v4.keystore"/>
+  		<!-- 
+			Password encritada (ver: https://community.jboss.org/wiki/PicketLinkConfigurationMaskPassword) 
+			de la keystore, puede ser en texto plano tambien  
+		-->
+  		<Auth Key="SSLKeyStorePass" Value="MASK-Vw6Vao6Mc/E="/>
+  		<!-- truststore para los certificados de confianza -->
+		<Auth Key="TrustStoreURL" Value="keystore/agesictesting_v2.0.truststore"/>
+		<!-- 
+			Password encritada (ver: https://community.jboss.org/wiki/PicketLinkConfigurationMaskPassword) 
+			de la keystore, puede ser en texto plano tambien  
+		-->
+  		<Auth Key="TrustStorePass" Value="MASK-Vw6Vao6Mc/E="/>
+  		<!-- 
+  			Valores utilizados para la encriptacion de las claves, debe ser el mismo para todas
+  			las claves. 
+  		 -->
+  		<Auth Key="salt" Value="saltword"/>
+        <Auth Key="iterationCount" Value="117"/>
+  	</KeyStore>
+  	<SAMLConfig>
+  	    <Property Key="SAML1NameIDFormat" Value="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress" />
+  	    <Property Key="SAML1ConfirmationMethod" Value="urn:oasis:names:tc:SAML:1.0:cm:bearer" />
+  	    <Property Key="SAML1AuthenticationMethod" Value="urn:oasis:names:tc:SAML:1.0:am:password" />
+
+  	    <Property Key="SAML2NameIDFormat" Value="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" />
+  	    <Property Key="SAML2ConfirmationMethod" Value="urn:oasis:names:tc:SAML:2.0:cm:bearer" />
+  	    <Property Key="SAML2AuthnContext" Value="urn:oasis:names:tc:SAML:2.0:ac:classes:X509" />
+
+  	    <Property Key="SignatureAlgorithm" Value="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+  	    <Property Key="SignatureCanonicalizationAlgorithm" Value="http://www.w3.org/2001/10/xml-exc-c14n#" />
+  	</SAMLConfig>
+</PGEConfig>

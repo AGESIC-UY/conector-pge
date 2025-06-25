@@ -1,16 +1,14 @@
 package gub.agesic.connector.services.connectorparser;
 
-import java.nio.file.Path;
-
-import org.springframework.ui.Model;
-
-/**
- * Interfaz que provee métodos para importar y exportar conectores.
- */
-
 import gub.agesic.connector.dataaccess.entity.Connector;
 import gub.agesic.connector.exceptions.ConnectorException;
+import org.springframework.ui.Model;
 
+import java.nio.file.Path;
+
+/**
+ * Interfaz que provee métodos para importar y exportar servicios.
+ */
 public interface ConnectorParserService {
 
     Path exportConnectorData(Connector connector) throws ConnectorException;

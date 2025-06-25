@@ -1,6 +1,5 @@
 package gub.agesic.connector.web.interceptor;
 
-import gub.agesic.connector.web.servlet3.MyWebInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -29,7 +28,7 @@ public class FileUploadExceptionAdvice {
 
         if (outputFlashMap != null) {
             outputFlashMap.put(CSS, DANGER);
-            outputFlashMap.put(MSG, "No se pudo subir el fichero. Formato no soportado.");
+            outputFlashMap.put(MSG, "No se pudo subir el fichero.");
         }
 
         return new ModelAndView(viewName);

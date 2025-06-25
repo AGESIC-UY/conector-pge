@@ -1,29 +1,23 @@
-apply plugin: 'java'
 apply plugin: 'war'
 
-def tomcatHome = System.properties['tomcat.home']
-def tomcatDeployment = tomcatHome + '/webapps'
-
-def wildflyHome = System.properties['wildfly.home']
-def wildflyDeployment = wildflyHome + '/standalone/deployments'
-
 repositories {
-    mavenCentral()
-    mavenLocal()
     flatDir {
         dirs 'libs'
     }
 }
 
-def springIntegrationVersion = '4.3.12.RELEASE'
+def httpClientVersion = '4.5.3'
 def commonsIoVersion = '2.6'
 def mailVersion = '1.4'
 def cxfVersion = '3.2.1'
 def mockitoVersion = '1.9.5'
-def hamcrestVersion = '1.3'
 def wss4jVersion = '1.6.19'
 def openSamlVersion = '2.6.4'
-def servletApiVersion = "3.1.0"
+def soapApiVersion = '1.4.0'
+def jaxwsApiVersion = '2.3.1'
+def jwsApiVersion = '1.1'
+def saajImplVersion = '1.5.1'
+def annotationVersion = '1.3.2'
 
 sourceSets {
     integrationTest {
@@ -36,17 +30,20 @@ sourceSets {
 
 dependencies {
     compile project(':connector-services')
-    compile "org.springframework.integration:spring-integration-http:$springIntegrationVersion"
-    compile "org.springframework.integration:spring-integration-jmx:$springIntegrationVersion"
-    compile "org.apache.httpcomponents:httpclient:4.5.3"
+    compile "org.springframework.integration:spring-integration-http:$springVersion"
+    compile "org.springframework.integration:spring-integration-jmx:$springVersion"
+    compile "org.apache.httpcomponents:httpclient:$httpClientVersion"
     compile "commons-io:commons-io:$commonsIoVersion"
     compile "org.opensaml:opensaml:$openSamlVersion"
     compile "org.apache.ws.security:wss4j:$wss4jVersion"
     compile "javax.mail:mail:$mailVersion"
-    compileOnly group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
-    compile group: 'javax.xml.soap', name: 'javax.xml.soap-api', version: '1.4.0'
-    compile group: 'com.sun.xml.messaging.saaj', name: 'saaj-impl', version: '1.5.1'
-    testCompile "junit:junit:4.12"
+    compile "javax.xml.soap:javax.xml.soap-api:$soapApiVersion"
+    compile "javax.xml.ws:jaxws-api:$jaxwsApiVersion"
+    compile "javax.jws:javax.jws-api:$jwsApiVersion"
+    compile "com.sun.xml.messaging.saaj:saaj-impl:$saajImplVersion"
+    compileOnly "javax.annotation:javax.annotation-api:$annotationVersion"
+
+    testCompile "junit:junit:$junitVersion"
     testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
     testCompile "org.apache.cxf:cxf-core:$cxfVersion"
     testCompile "org.apache.cxf:cxf-rt-frontend-jaxws:$cxfVersion"
@@ -56,13 +53,13 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-test{
+test {
     exclude '**/*IntegTest.class'
-    reports.html.destination = file ("$reports.html.destination/unit")
+    reports.html.destination = file("$reports.html.destination/unit")
     reports.junitXml.destination = file("$reports.junitXml.destination/unit")
 }
 
-task integrationTest(type: Test){
+task integrationTest(type: Test) {
     include '**/*IntegTest.class'
     reports.html.destination = file("$reports.html.destination/integration")
     reports.junitXml.destination = file("$reports.junitXml.destination/integration")
@@ -78,27 +75,32 @@ def filesToCopy = copySpec {
     from "$buildDir/libs/${war.archiveFileName.get()}"
 }
 
-// usage gradle connector-integration:deploy -Denvironment=develop -Dtomcat.home=complete with tomcat location -Dwildfly.home=complete with wildfly location
-task deploy(type: Copy) {
-    print("Copy $filesToCopy to $wildflyDeployment\n")
-    copy {
-        with filesToCopy
-        into wildflyDeployment
-    }
-    def newName = "ROOT.war"
-    print("Copy $filesToCopy to $tomcatDeployment and rename it as $newName\n")
-    copy {
-        with filesToCopy
-        into tomcatDeployment
-        rename { newName }
+// Copy war to server
+task copyWarFile {
+    dependsOn build
+    doLast {
+        if (wildflyDeployment.startsWith("null")) {
+            print("Wildfly Home not found. Define gradle connector-integration:deploy -Denvironment=develop -Dwildfly.home='complete with wildfly location'")
+        } else {
+            print("Copy $filesToCopy to $wildflyDeployment\n")
+            copy {
+                with filesToCopy
+                into wildflyDeployment
+            }
+        }
+
+        if (tomcatDeployment.startsWith("null")) {
+            print("Tomcat Home not found. Define gradle connector-integration:deploy -Denvironment=develop -Dtomcat.home='complete with tomcat location'")
+        } else {
+            def newName = "ROOT.war"
+            print("Copy $filesToCopy to $tomcatDeployment and rename it as $newName\n")
+            copy {
+                with filesToCopy
+                into tomcatDeployment
+                rename { newName }
+            }
+        }
     }
 }
 
-// usage gradle connector-web:undeploy -Denvironment=develop -Dtomcat.home=complete with tomcat location -Dwildfly.home=complete with wildfly location
-//task undeploy(type: Delete) {
-//    [wildflyDeployment, tomcatDeployment].each { dest ->
-//        def pathToFile = "$dest/${ war.archiveFileName.get() }"
-//        print("Delete $pathToFile\n")
-//        delete pathToFile
-//    }
-//}
+tasks.build.finalizedBy copyWarFile

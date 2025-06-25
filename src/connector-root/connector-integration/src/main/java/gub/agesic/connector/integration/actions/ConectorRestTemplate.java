@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -16,9 +18,15 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import javax.net.ssl.SSLContext;
 
+import gub.agesic.connector.dataaccess.entity.Connector;
+import gub.agesic.connector.dataaccess.repository.ConnectorTypeHolder;
+import gub.agesic.connector.dataaccess.repository.GlobalConfigurationRepository;
+import gub.agesic.connector.services.dbaccess.ConnectorService;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
@@ -45,6 +53,8 @@ import gub.agesic.connector.dataaccess.entity.Configuration;
 import gub.agesic.connector.exceptions.ConnectorException;
 import gub.agesic.connector.integration.services.PoolConnectionService;
 
+import static gub.agesic.connector.integration.actions.WSInvokeService.REGEX_PATH;
+
 /**
  * @author guzman.llambias
  */
@@ -54,23 +64,50 @@ public class ConectorRestTemplate implements MessageProcessor<byte[], InputStrea
 
     private final HeaderMapper<HttpHeaders> mapper;
 
-    private final int readTimeout;
+    private int readTimeout;
 
-    private final int connectTimeout;
+    @Autowired
+    private ConnectorService connectorService;
 
     @Autowired
     private PoolConnectionService poolConnectionService;
 
-    public ConectorRestTemplate(final HeaderMapper<HttpHeaders> mapper, final int readTimeout,
-            final int connectTimeout) {
+    public ConectorRestTemplate(final HeaderMapper<HttpHeaders> mapper) {
         this.mapper = mapper;
-        this.readTimeout = readTimeout;
-        this.connectTimeout = connectTimeout;
     }
 
     @Override
     public Message<InputStream> process(final Message<byte[]> message)
             throws MessageProcessorException {
+
+        final Optional<Connector> connector;
+        final ConnectorTypeHolder connectorTypeHolder;
+
+        try {
+            // Search path and port from url
+            final String path = getPathFromUrl(message);
+            final String port = getPortFromUrl(message);
+
+            connectorTypeHolder = connectorService.getConnectorTypeByPort(port);
+            connector = connectorService.getConnectorByPathAndPort(path, connectorTypeHolder);
+        } catch (final ConnectorException exception) {
+            throw new MessageProcessorException("No se pudo obtener la configuracion del servicio",
+                    exception);
+        }
+
+        if (connector.isPresent()) {
+            Connector conn = connector.get();
+            if (conn.isEnableLocalServiceTimeOut()) {
+                this.readTimeout = conn.getLocalServiceTimeOut();
+            } else {
+                try {
+                    this.readTimeout = connectorService.getGlobalConfigurationByType(conn.getType()).getServiceTimeOut();
+                } catch (final NoSuchElementException e) {
+                    throw new MessageProcessorException(
+                            "No existe ninguna configuración global para el ambiente seleccionado. Es necesaria una para definir el timeout a utilizar.");
+                }
+            }
+        }
 
         final HttpHeaders headers = new HttpHeaders();
         mapper.fromHeaders(message.getHeaders(), headers);
@@ -98,7 +135,7 @@ public class ConectorRestTemplate implements MessageProcessor<byte[], InputStrea
                 httpClient);
         factory.setHttpClient(httpClient);
         factory.setReadTimeout(readTimeout);
-        factory.setConnectTimeout(connectTimeout);
+        factory.setConnectTimeout(readTimeout);
 
         final HttpEntity<byte[]> entity = new HttpEntity<byte[]>(message.getPayload(), headers);
         final RestTemplate restTemplate = new RestTemplate(factory);
@@ -161,6 +198,30 @@ public class ConectorRestTemplate implements MessageProcessor<byte[], InputStrea
             throw new MessageProcessorException("Error al configurar conexion ssl", exception);
         }
 
+    }
+
+    private String getPathFromUrl(final Message<byte[]> message) {
+        final String url = getUrlFromMessageHeader(message);
+        // Search by url after application context.
+        return url.replaceFirst(REGEX_PATH, "$5");
+    }
+    private String getUrlFromMessageHeader(final Message<byte[]> message) {
+        // Getting the path from message
+        return (String) message.getHeaders().get(org.springframework.integration.http.HttpHeaders.REQUEST_URL);
+    }
+
+    private String getPortFromUrl(final Message<byte[]> message) throws MessageProcessorException {
+        final String url = getUrlFromMessageHeader(message);
+
+        try {
+            // Getting the port from url string
+            return String.valueOf(new URL(url).getPort());
+        } catch (final MalformedURLException e) {
+            // Throw business exception
+            final String portError = "No se pudo obtener correctamente el puerto de la URL.";
+            log.error(portError);
+            throw new MessageProcessorException(portError, e);
+        }
     }
 
     private KeyStore prepareKeystore(final String keystorePath, final String keystorePassword)

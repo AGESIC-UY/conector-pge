@@ -32,7 +32,7 @@ public class RoleOperation extends GenericEntity {
     }
 
     public RoleOperation(final String role, final String operationInputName,
-            final String operationFromWSDL, final String wsaAction) {
+                         final String operationFromWSDL, final String wsaAction) {
         this.role = role;
         this.operationInputName = operationInputName;
         this.operationFromWSDL = operationFromWSDL;

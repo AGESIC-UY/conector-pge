@@ -37,7 +37,7 @@ public class WsdlFilesFetcher {
 
         } catch (Exception e) {
             LOGGER.error(e);
-            throw new MessageProcessorException("El XSD solicitado no esta asociado al conector");
+            throw new MessageProcessorException("El XSD solicitado no esta asociado al servicio", e);
         }
     }
 

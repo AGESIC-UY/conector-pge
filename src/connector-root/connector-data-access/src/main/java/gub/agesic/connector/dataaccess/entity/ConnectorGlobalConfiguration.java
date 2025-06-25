@@ -1,14 +1,10 @@
 package gub.agesic.connector.dataaccess.entity;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -25,6 +21,15 @@ public class ConnectorGlobalConfiguration extends Configuration implements Seria
 
     @Column(name = "STS_GLOBAL_URL", length = 512)
     private String stsGlobalUrl;
+
+    @Transient
+    private String host;
+
+    @Transient
+    private String port;
+
+    @Transient
+    private String portSsl;
 
     public String getType() {
         return type;
@@ -48,5 +53,29 @@ public class ConnectorGlobalConfiguration extends Configuration implements Seria
 
     public void setStsGlobalUrl(final String stsGlobalUrl) {
         this.stsGlobalUrl = stsGlobalUrl;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+    public String getPortSsl() {
+        return portSsl;
+    }
+
+    public void setPortSsl(String portSsl) {
+        this.portSsl = portSsl;
     }
 }

@@ -1,10 +1,6 @@
 package gub.agesic.connector.web.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -15,8 +11,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "gub.agesic.connector.web.controller" })
-@Import(value = { LoginSecurityConfig.class })
+@ComponentScan({"gub.agesic.connector.web.controller"})
+@Import(value = {LoginSecurityConfig.class})
 @PropertySource("file:${connector.web.configLocation}/connector-web.properties")
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 

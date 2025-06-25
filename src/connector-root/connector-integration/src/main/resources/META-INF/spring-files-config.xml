@@ -141,8 +141,6 @@
                 <property name="inboundHeaderNames" value="HTTP_RESPONSE_HEADERS"/>
             </bean>
         </constructor-arg>
-        <constructor-arg name="connectTimeout" value="${connector.http.service.connection.timeout}"/>
-        <constructor-arg name="readTimeout" value="${connector.http.service.read.timeout}"/>
     </bean>
     <bean id="inputStreamOutputConverterBean"
           class="gub.agesic.connector.integration.support.InputStreamOutputConverter"/>

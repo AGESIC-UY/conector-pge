@@ -12,6 +12,7 @@ import javax.mail.internet.ParseException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
@@ -30,6 +31,7 @@ import gub.agesic.connector.integration.support.ConnectorUtils;
 public class MTOMOutputMessageProcessor implements MessageProcessor<String, byte[]> {
 
     private static final String BOUNDARY_ATTRIBUTE = "boundary";
+    private static final Logger LOGGER = Logger.getLogger("connectorMessages");
 
     private final String tempFolderLocation;
 
@@ -49,6 +51,9 @@ public class MTOMOutputMessageProcessor implements MessageProcessor<String, byte
             final byte[] mtomMessage = buildBinaryMtomMessage(message.getPayload(), folderId,
                     boundary, parts);
 
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("[MTOM-OUT] " + message.getPayload());
+            }
             cleanTempFiles(parts, folderId);
 
             return MessageBuilder.createMessage(mtomMessage, message.getHeaders());

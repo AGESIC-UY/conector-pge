@@ -11,7 +11,7 @@ html {
 body {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 12px;
-    margin: 0px;
+    margin: 0;
     background: #002727 url(../img/bg.jpg) top left fixed;
 }
 
@@ -25,10 +25,9 @@ h1 {
 }
 
 .header {
-    margin: auto;
     width: 950px;
     height: 103px;
-    margin-top: 20px;
+    margin: 20px auto auto;
     background: url(../img/top.png) top center no-repeat;
     -moz-border-radius-topleft: 15px;
     -webkit-border-top-left-radius: 15px;
@@ -45,35 +44,15 @@ input[type=submit], input[type=button] {
     -moz-background-clip: border;
     -moz-background-origin: padding;
     -moz-background-size: auto auto;
-    background-attachment: scroll;
-    background-color: transparent;
-    background: url(../img/bt.png);
-    border: none;
-    background-position: center center;
-    background-repeat: repeat-x;
-    border-top-color: -moz-use-text-color;
-    border-top-style: none;
-    border-top-width: medium;
+    background: transparent url(../img/bt.png) repeat-x scroll center center;
+    border-style: none;
+    border-top: medium -moz-use-text-color;
     color: #FFFFFF;
     font-size: 8pt;
     height: 38px;
     padding-bottom: 4px;
     width: 120px;
 }
-
-/*input[type=text], input[type=password], textarea, select {
-    font-size: 12px;
-    padding-left: 1px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    background-image: none;
-    border: none;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #000;
-    background-color: #FFF;
-    padding: 2px;
-}*/
 
 select {
     font-size: 13px;
@@ -100,7 +79,6 @@ select {
 
 .rich-table {
     width: 100%;
-    background-color: none;
     background: none;
     border-collapse: collapse;
     border-left: medium none;
@@ -135,7 +113,6 @@ select {
 }
 
 .message {
-    padding: 5px;
     list-style: none;
     border: 0;
     background: none;
@@ -478,13 +455,13 @@ table.radio input[type=radio] {
 
 .dr-table-row {
     color: #FFF;
-    background-color: none;
+    background: none;
     font-size: 12px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 .dr-table-cell {
-    background-color: none;
+    background: none;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     color: #fff;
 }
@@ -492,7 +469,7 @@ table.radio input[type=radio] {
 .rich-mpnl-mask-div {
     background-color: #000;
     opacity: .4;
-    filter: alpha (opacity=40);
+    filter: alpha(opacity=40);
 }
 
 .rich-mpnl-header {
@@ -500,7 +477,6 @@ table.radio input[type=radio] {
     color: #FFF;
     border: none;
     text-align: center;
-    color: #FFF;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 12px;
     height: 24px;
@@ -543,17 +519,11 @@ table.radio input[type=radio] {
 
 }
 
-rich-table-row odd {
-    background-color: none;
+.even {
     background: none;
 }
 
-.even {
-    background-color: none;
-}
-
 .dr-table {
-    background-color: none;
     background: none;
     color: #FFF;
 }
@@ -572,16 +542,6 @@ td.action {
 .rich-panel-body {
     color: white;
     padding: 1px;
-}
-
-#j_id20:j_id79 {
-    background: none repeat scroll 0 0 transparent;
-    color: white;
-}
-
-rich-panel-body {
-       background: none repeat scroll 0 0 transparent;
-       color: white;
 }
 
 .rich-panel {

@@ -1,19 +1,13 @@
-apply plugin: 'java'
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
 def hibernateVersion = '5.2.11.Final'
-def derbyVersion = '10.13.1.1'
-def springDataVersion = '1.11.8.RELEASE'
 
+def springDataVersion = '1.11.8.RELEASE'
+def derbyVersion = '10.13.1.1'
+def jaxbVersion = '2.3.1'
 
 dependencies {
     compile "org.apache.derby:derbyclient:" + derbyVersion
-    compile "org.hibernate:hibernate-core:" + hibernateVersion
-    compile "org.hibernate:hibernate-c3p0:" + hibernateVersion
+    compile "org.hibernate:hibernate-core:$hibernateVersion"
+    compile "org.hibernate:hibernate-c3p0:$hibernateVersion"
     compile "org.springframework.data:spring-data-jpa:$springDataVersion"
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    compile "javax.xml.bind:jaxb-api:$jaxbVersion"
 }

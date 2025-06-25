@@ -1,10 +1,6 @@
 package gub.agesic.connector.dataaccess.config;
 
-import java.beans.PropertyVetoException;
-import java.util.HashMap;
-
-import javax.naming.NamingException;
-
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,25 +14,26 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import java.beans.PropertyVetoException;
+import java.util.HashMap;
 
 @Configuration
-@PropertySource({ "classpath:application.properties" })
+@PropertySource({"classpath:application.properties"})
 @PropertySource("file:${connector.web.configLocation}/connector.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entManagerFactory", transactionManagerRef = "transactionManager", basePackages = {
-        "gub.agesic.connector.dataaccess.repository" })
+@EnableJpaRepositories(entityManagerFactoryRef = "entManagerFactory", basePackages = {
+        "gub.agesic.connector.dataaccess.repository"})
 public class ConnectorDBConfig {
     @Autowired
     private Environment environment;
 
     @Primary
     @Bean
-    public LocalContainerEntityManagerFactoryBean entManagerFactory() throws NamingException {
+    public LocalContainerEntityManagerFactoryBean entManagerFactory() {
         final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean
-                .setPackagesToScan(new String[] { "gub.agesic.connector.dataaccess.entity" });
+                .setPackagesToScan("gub.agesic.connector.dataaccess.entity");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
@@ -55,8 +52,7 @@ public class ConnectorDBConfig {
     public ComboPooledDataSource dataSource() {
         final ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
-            dataSource
-                    .setDriverClass(environment.getProperty("spring.datasource.driver-class-name"));
+            dataSource.setDriverClass(environment.getProperty("spring.datasource.driver-class-name"));
         } catch (final PropertyVetoException e) {
             e.printStackTrace();
         }
@@ -78,10 +74,9 @@ public class ConnectorDBConfig {
 
     @Primary
     @Bean
-    public PlatformTransactionManager transactionManager() throws NamingException {
+    public PlatformTransactionManager transactionManager() {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entManagerFactory().getObject());
         return transactionManager;
     }
-
 }

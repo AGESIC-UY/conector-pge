@@ -1,22 +1,11 @@
 package gub.agesic.connector.services.filemanager;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileVisitOption;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.zip.ZipEntry;
-
+import gub.agesic.connector.exceptions.ConnectorException;
+import gub.agesic.connector.services.xpathparser.XPathParserService;
+import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.model.ZipParameters;
+import net.lingala.zip4j.util.Zip4jConstants;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.io.FileUtils;
@@ -33,16 +22,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import gub.agesic.connector.exceptions.ConnectorException;
-import gub.agesic.connector.services.xpathparser.XPathParserService;
-import net.lingala.zip4j.core.ZipFile;
-import net.lingala.zip4j.exception.ZipException;
-import net.lingala.zip4j.model.FileHeader;
-import net.lingala.zip4j.model.ZipParameters;
-import net.lingala.zip4j.util.Zip4jConstants;
+import java.io.*;
+import java.nio.file.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
 
 @Configuration
-@PropertySource("classpath:connector-pge.properties")
 @Service
 public class DefaultFileManagerService implements FileManagerService {
 
@@ -53,16 +41,14 @@ public class DefaultFileManagerService implements FileManagerService {
     public static final String XML = ".xml";
     public static final String WSDL = ".wsdl";
     public static final List<String> ALLOWED_EXTENSIONS = Arrays.asList(ZIP, WSDL);
-    private static final String TEMPDIR = "java.io.tmpdir";
-
-    public static final String ERROR_WSDL_NO_ENCONTRADO_PARA_CONECTOR = "ERROR: No se encontró ningún WSDL para el conector con ID: ";
+    public static final String ERROR_WSDL_NO_ENCONTRADO_PARA_CONECTOR = "ERROR: No se encontró ningún WSDL para el servicio con ID: ";
     public static final String ERROR_NO_SE_PUDO_CREAR_EL_DIRECTORIO = "ERROR: No se pudo crear el directorio ";
     public static final String ERROR_NO_SE_PUDO_BORRAR_EL_DIRECTORIO = "ERROR: No se pudo borrar el directorio ";
-    public static final String ERROR_NO_SE_PUDO_OBTENER_EL_CONECTOR = "ERROR: No se pudo obtener el conector.";
+    public static final String ERROR_NO_SE_PUDO_OBTENER_EL_CONECTOR = "ERROR: No se pudo obtener el servicio.";
     public static final String ERROR_NO_SE_PUDO_CAMBIAR_EXTENSION_XML_A_WSDL = "ERROR: No se pudo cambiar la extensión XML a WSDL.";
     public static final String ERROR_NO_SE_PUDIERON_BORRAR_LOS_ARCHIVOS_DEL_DIRECTORIO = "ERROR: No se pudieron borrar los archivos del directorio ";
-    public static final String ERROR_NO_SE_BORRARON_LOS_ARCHIVOS_TEMPORALES_ASOCIADOS_AL_CONECTOR = "ERROR: No se borraron los archivos temporales asociados al Conector";
-    public static final String ERROR_NO_SE_PUDO_MOVER_LOS_ARCHIVOS_AL_DIRECTORIO_DEL_CONECTOR = "ERROR: No se pudo mover los archivos al directorio del Conector";
+    public static final String ERROR_NO_SE_BORRARON_LOS_ARCHIVOS_TEMPORALES_ASOCIADOS_AL_CONECTOR = "ERROR: No se borraron los archivos temporales asociados al Servicio";
+    public static final String ERROR_NO_SE_PUDO_MOVER_LOS_ARCHIVOS_AL_DIRECTORIO_DEL_CONECTOR = "ERROR: No se pudo mover los archivos al directorio del Servicio";
     public static final String ERROR_SELECCIONE_UN_ARCHIVO_PARA_SUBIR = "ERROR: Seleccione un archivo para subir.";
     public static final String ERROR_INTERNO_AL_CERRAR_STREAM = "ERROR: Hubo un error interno al cerrar el stream.";
     public static final String ERROR_NO_ERA_UN_ARCHIVO_ZIP = "ERROR: No era un archivo ZIP";
@@ -70,19 +56,20 @@ public class DefaultFileManagerService implements FileManagerService {
     public static final String ERROR_NO_SE_PUDO_ELIMINAR_ZIP = "ERROR: No se pudo eliminar el ZIP subido";
     public static final String ERROR_NO_SE_PUDO_SUBIR_ARCHIVO = "ERROR: No se pudo subir el archivo.";
     public static final String ERROR_NO_SE_PUDO_AGREGAR_PREFIJO_A_ARCHIVOS = "ERROR: No se pudo agregar el prefijo a los archivos.";
-    public static final String ERROR_NO_SE_PUDO_OBTENER_EL_XSD = "ERROR: No se pudo obtener el xsd asociado al WSDL.";
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultFileManagerService.class);
     public static final String ERROR_ARCHIVO_SIN_EXTENSION = "Error: archivo sin extensión: ";
+
+    private static final String TEMPDIR = "java.io.tmpdir";
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultFileManagerService.class);
 
     public final String globalConfigurationFolderPrefix = "globalConfiguration_";
     public final String uploadFolder;
     public final String uploadTempFolder;
+
     private final XPathParserService xPathParserService;
 
     @Autowired
     public DefaultFileManagerService(@Value("${uploadFolder}") final String uploadFolder,
-            final XPathParserService xPathParserService) {
+                                     final XPathParserService xPathParserService) {
         super();
         this.xPathParserService = xPathParserService;
         if (uploadFolder.endsWith(FILE_SEPARATOR)) {
@@ -102,8 +89,7 @@ public class DefaultFileManagerService implements FileManagerService {
     public void changeExtensionXMLToWSDL(final long connectorId) throws ConnectorException {
         DirectoryStream<Path> res = null;
         try {
-            res = Files.newDirectoryStream(Paths.get(uploadFolder + connectorId),
-                    path -> isXML(path));
+            res = Files.newDirectoryStream(Paths.get(uploadFolder + connectorId), this::isXML);
             for (final Path xmlPath : res) {
                 if (xPathParserService.isWSDLFile(xmlPath)) {
                     final File xmlFile = xmlPath.toFile();
@@ -126,8 +112,7 @@ public class DefaultFileManagerService implements FileManagerService {
                     res.close();
                 }
             } catch (final IOException e) {
-                final String errorMessage = ERROR_INTERNO_AL_CERRAR_STREAM;
-                LOGGER.error(errorMessage, e);
+                LOGGER.error(ERROR_INTERNO_AL_CERRAR_STREAM, e);
             }
         }
     }
@@ -162,7 +147,7 @@ public class DefaultFileManagerService implements FileManagerService {
 
     @Override
     public void deleteConnectorDirectoryFiles(final String connectorId,
-            final boolean deleteOnlyWsdls) throws ConnectorException {
+                                              final boolean deleteOnlyWsdls) throws ConnectorException {
         final Path destinationFolderPath = Paths.get(uploadFolder + connectorId);
         try {
             if (destinationFolderPath.toFile().isDirectory()) {
@@ -193,7 +178,7 @@ public class DefaultFileManagerService implements FileManagerService {
                     .collect(Collectors.toList());
 
             for (final Path path : filesInDirectory) {
-                LOGGER.debug("Archivo " + path + " eliminado !");
+                LOGGER.debug("Archivo " + path + " eliminado!");
                 Files.deleteIfExists(path);
             }
         } catch (final IOException e) {
@@ -229,7 +214,7 @@ public class DefaultFileManagerService implements FileManagerService {
         DirectoryStream<Path> res = null;
         try {
             if (prefixNameConnector == null) {
-                res = Files.newDirectoryStream(Paths.get(uploadFolder + id), path -> isWSDL(path));
+                res = Files.newDirectoryStream(Paths.get(uploadFolder + id), this::isWSDL);
             } else {
                 res = Files.newDirectoryStream(Paths.get(uploadTempFolder),
                         path -> (path.getFileName().toString().startsWith(prefixNameConnector)
@@ -258,8 +243,7 @@ public class DefaultFileManagerService implements FileManagerService {
                     res.close();
                 }
             } catch (final IOException e) {
-                final String errorMessage = ERROR_INTERNO_AL_CERRAR_STREAM;
-                LOGGER.error(errorMessage, e);
+                LOGGER.error(ERROR_INTERNO_AL_CERRAR_STREAM, e);
             }
         }
     }
@@ -282,8 +266,7 @@ public class DefaultFileManagerService implements FileManagerService {
                     res.close();
                 }
             } catch (final IOException e) {
-                final String errorMessage = ERROR_INTERNO_AL_CERRAR_STREAM;
-                LOGGER.error(errorMessage, e);
+                LOGGER.error(ERROR_INTERNO_AL_CERRAR_STREAM, e);
             }
         }
     }
@@ -333,9 +316,8 @@ public class DefaultFileManagerService implements FileManagerService {
 
     @Override
     public void moveTempFilesToConnectorDirectory(final String prefixNameConnector,
-            final Path connectorDirectoryPath) throws ConnectorException {
+                                                  final Path connectorDirectoryPath) throws ConnectorException {
         try {
-
             final List<Path> filesInDirectory = Files.list(Paths.get(uploadTempFolder))
                     .filter(Files::isRegularFile)
                     .filter(file -> file.getFileName().toString().startsWith(prefixNameConnector))
@@ -343,9 +325,8 @@ public class DefaultFileManagerService implements FileManagerService {
 
             Path destinationFilePath;
             for (final Path path : filesInDirectory) {
-                destinationFilePath = Paths.get(
-                        connectorDirectoryPath + FILE_SEPARATOR + getFilenameWithoutDate(path));
-                Files.move(path, destinationFilePath);
+                destinationFilePath = Paths.get(connectorDirectoryPath + FILE_SEPARATOR + getFilenameWithoutDate(path));
+                Files.move(path, destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
             }
         } catch (final IOException e) {
             final String errorMessage = ERROR_NO_SE_PUDO_MOVER_LOS_ARCHIVOS_AL_DIRECTORIO_DEL_CONECTOR;
@@ -374,7 +355,7 @@ public class DefaultFileManagerService implements FileManagerService {
                         //Evitar ficheros ocultos
                         if (!fileName.startsWith(".")) {
                             Path fileToCreate = outputPath.resolve(prefixName + fileName);
-                                Files.copy(zf.getInputStream(entry), fileToCreate);
+                            Files.copy(zf.getInputStream(entry), fileToCreate);
                         }
                     }
 
@@ -455,44 +436,33 @@ public class DefaultFileManagerService implements FileManagerService {
     }
 
     @Override
-    public Path getConnectorFile(final long id, final String fileName) throws ConnectorException {
+    public Path getConnectorFile(final long id, final String fileName) {
         return FileUtils.getFile(uploadFolder + id, fileName).toPath();
     }
 
     @Override
     public MultipartFile getConnectorWSDLNewFile(final long id, final String prefixNameConnector)
             throws ConnectorException {
-        FileItem fileItem = null;
         final Path filePath = getConnectorWSDL(id, prefixNameConnector);
         final File file = filePath.toFile();
-        InputStream inputStream = null;
-        OutputStream outputStream = null;
+
+        FileItem fileItem;
+        InputStream inputStream;
+        OutputStream outputStream;
+
         try {
             fileItem = new DiskFileItem(file.getName(), Files.probeContentType(file.toPath()),
                     false, file.getName(), (int) file.length(), file.getParentFile());
             inputStream = new FileInputStream(file);
             outputStream = fileItem.getOutputStream();
             IOUtils.copy(inputStream, outputStream);
-            final MultipartFile multipartWsdl = new CommonsMultipartFile(fileItem);
-            return multipartWsdl;
+            CommonsMultipartFile commonsMultipartFile = new CommonsMultipartFile(fileItem);
+            inputStream.close();
+            outputStream.close();
+            return commonsMultipartFile;
         } catch (final IOException ex) {
-            final String errorMessage = "ERROR: No se pudo encontrar el wsld " + filePath;
+            final String errorMessage = "ERROR: No se pudo encontrar el wsdl " + filePath;
             throw new ConnectorException(errorMessage, ex);
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (final IOException exception) {
-                    throw new ConnectorException("Ocurrió un error interno inesperado", exception);
-                }
-            }
-            if (outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (final IOException exception) {
-                    throw new ConnectorException("Ocurrió un error interno inesperado", exception);
-                }
-            }
         }
     }
 
@@ -503,8 +473,8 @@ public class DefaultFileManagerService implements FileManagerService {
             throw new ConnectorException("Could not find directory of WSDL and Schemas");
         }
 
-        final ArrayList<File> filesToZip = new ArrayList<File>();
-        for (final File file : fileDirectory.listFiles()) {
+        final ArrayList<File> filesToZip = new ArrayList<>();
+        for (final File file : Objects.requireNonNull(fileDirectory.listFiles())) {
             if (isWSDLorXSDFile(file)) {
                 filesToZip.add(file);
             }
@@ -515,14 +485,13 @@ public class DefaultFileManagerService implements FileManagerService {
         parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
 
         try {
-            final String zipFilePath = System.getProperty(TEMPDIR) + FILE_SEPARATOR
-                    + UUID.randomUUID() + ".zip";
+            final String zipFilePath = System.getProperty(TEMPDIR) + FILE_SEPARATOR + UUID.randomUUID() + ".zip";
             final ZipFile zipFile = new ZipFile(zipFilePath);
             zipFile.addFiles(filesToZip, parameters);
 
             return new File(zipFilePath);
-        } catch (final ZipException zipex) {
-            throw new ConnectorException("Error trying to zip wsdl and xml schema files", zipex);
+        } catch (final ZipException e) {
+            throw new ConnectorException("Error trying to zip wsdl and xml schema files", e);
         }
     }
 

@@ -2,17 +2,16 @@
 
 <body>
 <section class="main">
-    <header></header>
     <%@include file="navbar.jsp" %>
 
     <c:choose>
         <c:when test="${esAlta == true}">
             <c:set var="subtitle"
-                   value="Alta de Conector"/>
+                   value="Alta de Servicio"/>
         </c:when>
         <c:otherwise>
             <c:set var="subtitle"
-                   value="Editar Conector"/>
+                   value="Editar Servicio"/>
         </c:otherwise>
     </c:choose>
 
@@ -27,7 +26,7 @@
                             <small>Subir WSDL o ZIP</small>
                         </a></li>
                         <li><a href="#step-2">Paso 2
-                            <small>Completar informaci&oacute;n Conector</small>
+                            <small>Completar informaci&oacute;n del Servicio</small>
                         </a></li>
                     </ul>
                     <div id="step-1" class="">
@@ -59,7 +58,7 @@
                                         <c:when test="${connector.id != null}">
                                             <input type="submit" class="btn-input"
                                                    value="Mantener archivos"
-                                                   onclick="mantainFiles()"/>
+                                                   onclick="maintainFiles()"/>
                                         </c:when>
                                     </c:choose>
                                 </p>
@@ -93,8 +92,8 @@
 </script>
 
 <script>
-    function mantainFiles() {
-        <c:set var="formAction" value="${pageContext.request.contextPath}/connectors/add/uploadFile"/>;
+    function maintainFiles() {
+        <c:set var="formAction" value="${pageContext.request.contextPath}/connectors/add/uploadFile"/>
         document.getElementById('uploaded_file').required = false;
     }
 </script>

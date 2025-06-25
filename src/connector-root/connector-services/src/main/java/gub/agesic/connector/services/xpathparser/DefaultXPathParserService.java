@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.xml.xpath.XPathExpression;
 import org.springframework.xml.xpath.XPathExpressionFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -47,6 +44,20 @@ public class DefaultXPathParserService implements XPathParserService {
     @Override
     public String getStringNodeValue(final Node node) {
         return node == null ? "" : node.getNodeValue();
+    }
+
+    @Override
+    public Integer getIntegerNodeValue(final Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            try {
+                return Integer.parseInt(node.getNodeValue());
+            } catch (NumberFormatException e) {
+                LOGGER.error(e.getMessage(), e);
+                return 0;
+            }
+        }
     }
 
     @Override
@@ -103,21 +114,13 @@ public class DefaultXPathParserService implements XPathParserService {
         try {
             source = new FileInputStream(file);
             doc = factory.newDocumentBuilder().parse(source);
-            return doc.getDocumentElement();
+            Element docElement = doc.getDocumentElement();
+            source.close();
+            return docElement;
         } catch (IOException | ParserConfigurationException | SAXException e) {
             final String errorMessage = "ERROR: No se pudo parsear el WSDL";
             LOGGER.error(errorMessage, e);
             throw new ConnectorException(errorMessage, e);
-        } finally {
-            if (source != null) {
-                try {
-                    source.close();
-                } catch (final IOException exception) {
-                    final String errorMessage = ERROR_INTERNO_AL_CERRAR_STREAM;
-                    LOGGER.error(errorMessage, exception);
-                    throw new ConnectorException("ERROR: Ocurrió un error inesperado", exception);
-                }
-            }
         }
     }
 
@@ -152,18 +155,18 @@ public class DefaultXPathParserService implements XPathParserService {
 
     /**
      * Posibles ressultados:
-     *
+     * <p>
      * - Version Soap 1.1 (por defecto)
-     *      prefix = "undefined"
-     *      version = "1.1"
-     *
+     * prefix = "undefined"
+     * version = "1.1"
+     * <p>
      * - Version Soap 1.2
-     *      prefix = [Se obtiene de parsear el nodo que se pasa como parámetro]
-     *      version = "1.2"
-     *
+     * prefix = [Se obtiene de parsear el nodo que se pasa como parámetro]
+     * version = "1.2"
+     * <p>
      * - Version Soap 1.1 y Soap 1.2 (multiple)
-     *      prefix = [Se obtiene de parsear el nodo que se pasa como parámetro, corresponde a Soap 1.2]
-     *      version = "multiple"
+     * prefix = [Se obtiene de parsear el nodo que se pasa como parámetro, corresponde a Soap 1.2]
+     * version = "multiple"
      */
     @Override
     public SoapVersionInfo soapVersionInfo(final Node nodeSource) {

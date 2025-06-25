@@ -7,37 +7,37 @@
 <spring:url value="/connectors/connector/${connector.id}/keystoreSsl" var="keystoreSsl"/>
 <spring:url value="/connectors/connector/${connector.id}/truststore" var="truststore"/>
 <spring:url value="/connectors/connector/${connector.id}/wsdl" var="wsdl"/>
+
 <body onload="initializeRequired();">
 <section class="main">
-    <header></header>
     <%@include file="navbar.jsp" %>
 
     <c:choose>
         <c:when test="${esAlta == true}">
             <c:set var="subtitle"
-                   value="Alta de Conector"/>
+                   value="Alta de Servicio"/>
         </c:when>
         <c:otherwise>
             <c:set var="subtitle"
-                   value="Editar Conector"/>
+                   value="Editar Servicio"/>
         </c:otherwise>
     </c:choose>
 
     <div class="content">
         <h2 class="title">${subtitle}</h2>
-        <article class="">
+        <article class="content">
             <div id="smartwizard">
                 <ul>
                     <li><a href="#step-1">Paso 1
                         <small>Subir WSDL o ZIP</small>
                     </a></li>
                     <li><a href="#step-2">Paso 2
-                        <small>Completar informaci&oacute;n Conector</small>
+                        <small>Completar informaci&oacute;n del Servicio</small>
                     </a></li>
                 </ul>
                 <div>
                     <div id="step-2" class="">
-                        <h2>Informaci&oacute;n del Conector</h2>
+                        <h3 class="text-center">Informaci&oacute;n del Servicio</h3>
                         <c:choose>
                             <c:when test="${esAlta == true}">
                                 <c:set var="formAction"
@@ -55,11 +55,13 @@
                             <input type="text" name="prefixNameConnector" value="${prefixNameConnector}" hidden/>
                             <input type="text" name="multipleVersion" value="${connector.multipleVersion}" hidden/>
                             <div class="form-group col-sm-12 d-table">
-                                <form:label class="control-label col-sm-2 d-table-cell" for="name" path="name">Nombre *</form:label>
+                                <form:label class="control-label col-sm-2 d-table-cell" for="name"
+                                            path="name">Nombre *</form:label>
                                 <div class="col-sm-10 d-table-cell">
                                     <form:input class="form-control" type="text" name="name"
                                                 value="${connector.name}"
-                                                placeholder="Nombre conector" path="name" required="required" maxlength="100"/>
+                                                placeholder="Nombre del servicio" path="name" required="required"
+                                                maxlength="100"/>
                                 </div>
                             </div>
                             <div class="form-group col-sm-12 d-table">
@@ -80,6 +82,24 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-12 d-table">
+                                <form:label class="control-label col-sm-2 d-table-cell" for="samlVersion"
+                                            path="samlVersion">Versi&oacute;n SAML<c:if
+                                        test="${esAlta == true}"> *</c:if></form:label>
+                                <div class="col-sm-10 d-table-cell">
+                                    <form:select class="form-control" type="text" name="type" id="samlVersion"
+                                                 path="samlVersion">
+                                        <option value="1.1"
+                                                <c:if test="${connector.samlVersion == '1.1'}">selected</c:if>
+                                        >1.1
+                                        </option>
+                                        <option value="2.0"
+                                                <c:if test="${connector.samlVersion == '2.0'}">selected</c:if>
+                                        >2.0
+                                        </option>
+                                    </form:select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12 d-table">
                                 <form:label class="control-label col-sm-2 d-table-cell" for="description"
                                             path="description">Descripci&oacute;n</form:label>
                                 <div class="col-sm-10 d-table-cell">
@@ -91,7 +111,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-12 d-table">
-                                <form:label class="control-label col-sm-2 d-table-cell" for="path" path="path">Path *</form:label>
+                                <form:label class="control-label col-sm-2 d-table-cell" for="path"
+                                            path="path">Path *</form:label>
                                 <div class="col-sm-10 d-table-cell">
                                     <form:input class="form-control" type="text" name="path" path="path"
                                                 value="${connector.path}"
@@ -101,7 +122,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-12 d-table">
-                                <form:label class="control-label col-sm-2 d-table-cell" for="url" path="url">Url *</form:label>
+                                <form:label class="control-label col-sm-2 d-table-cell" for="url"
+                                            path="url">Url *</form:label>
                                 <div class="col-sm-10 d-table-cell">
                                     <form:input class="form-control" type="text" name="url" path="url"
                                                 value="${connector.url}" onkeypress="removeWhitespaces(this)"
@@ -112,7 +134,8 @@
 
                             <c:if test="${connector.multipleVersion == true}">
                                 <div class="form-group col-sm-12 d-table">
-                                    <form:label class="control-label col-sm-2 d-table-cell" for="urlV2" path="urlV2">Url Soap 1.2 *</form:label>
+                                    <form:label class="control-label col-sm-2 d-table-cell" for="urlV2"
+                                                path="urlV2">Url Soap 1.2 *</form:label>
                                     <div class="col-sm-10 d-table-cell">
                                         <form:input class="form-control" type="text" name="urlV2" path="urlV2"
                                                     value="${connector.urlV2}" onkeypress="removeWhitespaces(this)"
@@ -123,7 +146,8 @@
                             </c:if>
 
                             <div class="form-group col-sm-12 d-table">
-                                <form:label class="control-label col-sm-2 d-table-cell" for="wsaTo" path="wsaTo">wsa:To *</form:label>
+                                <form:label class="control-label col-sm-2 d-table-cell" for="wsaTo"
+                                            path="wsaTo">wsa:To *</form:label>
                                 <div class="col-sm-10 d-table-cell">
                                     <form:input class="form-control" type="text" name="wsaTo" path="wsaTo"
                                                 value="${connector.wsaTo}" onkeypress="removeWhitespaces(this)"
@@ -141,7 +165,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-12 d-table">
-                                <form:label class="control-label col-sm-2 d-table-cell" for="issuer" path="issuer">Organismo *</form:label>
+                                <form:label class="control-label col-sm-2 d-table-cell" for="issuer"
+                                            path="issuer">Organismo *</form:label>
                                 <div class="col-sm-10 d-table-cell">
                                     <form:input class="form-control" type="text" name="issuer" path="issuer"
                                                 value="${connector.issuer}"
@@ -149,7 +174,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-12 d-table">
-                                <label class="control-label col-sm-2 d-table-cell" for="enter_token_credentials">Ingresar credenciales de
+                                <label class="control-label col-sm-2 d-table-cell" for="enter_token_credentials">Ingresar
+                                    credenciales de
                                     Username
                                     Token</label>
                                 <div class="col-sm-2 d-table-cell w-input">
@@ -161,13 +187,37 @@
                                 <div class="col-sm-8"></div>
                             </div>
                             <div class="form-group col-sm-12 d-table">
-                                <label class="control-label col-sm-2 d-table-cell" for="enableLocalConfiguration">Habilitar Configuraci&oacute;n
-                                    Local</label>
+                                <label class="control-label col-sm-2 d-table-cell" for="enableLocalConfiguration">Habilitar
+                                    Configuraci&oacute;n
+                                    de Certificado Local</label>
                                 <div class="col-sm-2 d-table-cell w-input">
-                                    <form:checkbox class="form-control" name="enableLocalConfiguration"
-                                                   path="enableLocalConfiguration"
-                                                   id="enable_local_configuration"
-                                                   onclick="toggleEnableConfigurations();"/>
+
+                                    <c:choose>
+                                        <c:when test="${isGlobalConfigurationEnabled == false}">
+                                            <form:checkbox class="form-control" name="enableLocalConfiguration"
+                                                           path="enableLocalConfiguration"
+                                                           id="enable_local_configuration"
+                                                           onclick="toggleEnableConfigurations();"
+                                                           style="visibility: hidden;"/>
+                                            <input type="checkbox"
+                                                   class="form-control"
+                                                   disabled checked
+                                                   style="position: absolute;top: 35%;"/>
+
+                                            <span data-toggle="tooltip" data-placement="bottom"
+                                                  title="No se ha definido la configuraci&oacute;n global para '${connector.type}'. Se debe definir una configuraci&oacute;n local."
+                                                  style="position: absolute;right: -20px;top: 35%;">
+                                                <i class="fa fa-question-circle"></i>
+                                            </span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <form:checkbox class="form-control" name="enableLocalConfiguration"
+                                                           path="enableLocalConfiguration"
+                                                           id="enable_local_configuration"
+                                                           onclick="toggleEnableConfigurations();"/>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </div>
                                 <div class="col-sm-8"></div>
                             </div>
@@ -196,10 +246,110 @@
                                     STS
                                     local</label>
                                 <div class="col-sm-2 d-table-cell w-input">
-                                    <form:checkbox class="form-control" name="enableSTSLocal"
-                                                   path="enableSTSLocal"
-                                                   id="enable_sts_local"
-                                                   onclick="toggleEnableSTSLocalUrl();"/>
+                                    <c:choose>
+                                        <c:when test="${isGlobalConfigurationEnabled == false}">
+                                            <form:checkbox class="form-control" name="enableSTSLocal"
+                                                           path="enableSTSLocal"
+                                                           id="enable_sts_local"
+                                                           onclick="toggleEnableSTSLocalUrl();"
+                                                           style="visibility: hidden;"/>
+                                            <input type="checkbox"
+                                                   class="form-control"
+                                                   disabled checked
+                                                   style="position: absolute;top: 35%;"/>
+
+                                            <span data-toggle="tooltip" data-placement="bottom"
+                                                  title="No se ha definido la configuraci&oacute;n global para '${connector.type}'. Se debe definir una configuraci&oacute;n local."
+                                                  style="position: absolute;right: -20px;top: 35%;">
+                                                    <i class="fa fa-question-circle"></i>
+                                                </span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <form:checkbox class="form-control" name="enableSTSLocal"
+                                                           path="enableSTSLocal"
+                                                           id="enable_sts_local"
+                                                           onclick="toggleEnableSTSLocalUrl();"/>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                                <div class="col-sm-8"></div>
+                            </div>
+                            <div class="form-group col-sm-12 d-table">
+                                <label class="control-label col-sm-2 d-table-cell" for="enableLocalPolicyName">Usar Tipo
+                                    de Token Local</label>
+
+                                <div class="col-sm-2 d-table-cell w-input">
+                                    <c:choose>
+                                        <c:when test="${isGlobalConfigurationEnabled == false}">
+                                            <form:checkbox class="form-control" name="enableLocalPolicyName"
+                                                           path="enableLocalPolicyName"
+                                                           id="enable_local_policy_name"
+                                                           onclick="toggleEnableLocalPolicyName();"
+                                                           style="visibility: hidden;"/>
+                                            <input type="checkbox"
+                                                   class="form-control"
+                                                   disabled checked
+                                                   style="position: absolute;top: 35%;"/>
+
+                                            <span data-toggle="tooltip" data-placement="bottom"
+                                                  title="No se ha definido la configuraci&oacute;n global para '${connector.type}'. Se debe definir una configuraci&oacute;n local."
+                                                  style="position: absolute;right: -20px;top: 35%;">
+                                                    <i class="fa fa-question-circle"></i>
+                                                </span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <form:checkbox class="form-control" name="enableLocalPolicyName"
+                                                           path="enableLocalPolicyName"
+                                                           id="enable_local_policy_name"
+                                                           onclick="toggleEnableLocalPolicyName();"/>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+
+                                <div class="col-sm-8"></div>
+                            </div>
+                            <div class="form-group col-sm-12 d-table">
+                                <label class="control-label col-sm-2 d-table-cell"
+                                       for="enableLocalExpirationNotification">Habilitar notificaci&oacute;n local de
+                                    vencimiento</label>
+                                <div class="col-sm-2 d-table-cell w-input">
+                                    <form:checkbox class="form-control" name="enableLocalExpirationNotification"
+                                                   path="enableLocalExpirationNotification"
+                                                   id="enableLocalExpirationNotification"
+                                                   onclick="toggleEnableLocalExpirationNotification();"/>
+                                </div>
+                                <div class="col-sm-8"></div>
+                            </div>
+
+                            <div class="form-group col-sm-12 d-table">
+                                <label class="control-label col-sm-2 d-table-cell"
+                                       for="enableLocalServiceTimeOut">Habilitar Timeout local en milisegundos</label>
+                                <div class="col-sm-2 d-table-cell w-input">
+                                    <c:choose>
+                                        <c:when test="${isGlobalConfigurationEnabled == false}">
+                                            <form:checkbox class="form-control" name="enableLocalServiceTimeOut"
+                                                           path="enableLocalServiceTimeOut"
+                                                           id="enableLocalServiceTimeOut"
+                                                           onclick="toggleEnableLocalTimeout();"
+                                                           style="visibility: hidden;"/>
+                                            <input type="checkbox"
+                                                   class="form-control"
+                                                   disabled checked
+                                                   style="position: absolute;top: 35%;"/>
+
+                                            <span data-toggle="tooltip" data-placement="bottom"
+                                                  title="No se ha definido la configuraci&oacute;n global para '${connector.type}'. Se debe definir una configuraci&oacute;n local."
+                                                  style="position: absolute;right: -20px;top: 35%;">
+                                                    <i class="fa fa-question-circle"></i>
+                                                </span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <form:checkbox class="form-control" name="enableLocalServiceTimeOut"
+                                                           path="enableLocalServiceTimeOut"
+                                                           id="enableLocalServiceTimeOut"
+                                                           onclick="toggleEnableLocalTimeout();"/>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="col-sm-8"></div>
                             </div>
@@ -231,7 +381,8 @@
                                 </div>
                             </div>
 
-                            <div id="enable_local_configuration_div" class="ml-10" <c:if test="${connector.enableLocalConfiguration == false}">style="display: none;"</c:if>>
+                            <div id="enable_local_configuration_div" class="ml-10"
+                                 <c:if test="${connector.enableLocalConfiguration == false}">style="display: none;"</c:if>>
                                 <div class="form-group col-sm-12 d-table">
                                     <form:label class="control-label col-sm-2 d-table-cell" for="alias_issuer_keystore"
                                                 path="localConfiguration.aliasKeystore">Alias del Keystore
@@ -245,7 +396,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-12 d-table">
-                                    <form:label class="control-label col-sm-2 d-table-cell" for="password_issuer_keystore"
+                                    <form:label class="control-label col-sm-2 d-table-cell"
+                                                for="password_issuer_keystore"
                                                 path="localConfiguration.passwordKeystoreOrg">Password Keystore
                                         Organismo *</form:label>
                                     <div class="col-sm-10 d-table-cell">
@@ -253,7 +405,20 @@
                                                     name="localConfiguration.passwordKeystoreOrg"
                                                     path="localConfiguration.passwordKeystoreOrg"
                                                     value="${connector.localConfiguration.passwordKeystoreOrg}"
-                                                    placeholder="Password Keystore Organismo" autocomplete="off" maxlength="50"/>
+                                                    placeholder="Password Keystore Organismo" autocomplete="off"
+                                                    maxlength="50"/>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12 d-table">
+                                    <form:label class="control-label col-sm-2 d-table-cell" for="alias_issuer_keystore_ssl"
+                                                path="localConfiguration.aliasKeystoreSSL">Alias del Keystore
+                                        SSL *</form:label>
+                                    <div class="col-sm-10 d-table-cell">
+                                        <form:input class="form-control" type="text" id="aliasKeystoreSSL"
+                                                    name="localConfiguration.aliasKeystoreSSL"
+                                                    path="localConfiguration.aliasKeystoreSSL"
+                                                    value="${connector.localConfiguration.aliasKeystoreSSL}"
+                                                    placeholder="Alias del Keystore SSL" maxlength="100"/>
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-12 d-table">
@@ -265,7 +430,8 @@
                                                     name="localConfiguration.passwordKeystoreSsl"
                                                     path="localConfiguration.passwordKeystoreSsl"
                                                     value="${connector.localConfiguration.passwordKeystoreSsl}"
-                                                    placeholder="Password Keystore SSL" autocomplete="off" maxlength="50"/>
+                                                    placeholder="Password Keystore SSL" autocomplete="off"
+                                                    maxlength="50"/>
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-12 d-table">
@@ -277,7 +443,8 @@
                                                     name="localConfiguration.passwordKeystore"
                                                     path="localConfiguration.passwordKeystore"
                                                     value="${connector.localConfiguration.passwordKeystore}"
-                                                    placeholder="Password Truststore" autocomplete="off" maxlength="50"/>
+                                                    placeholder="Password Truststore" autocomplete="off"
+                                                    maxlength="50"/>
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-12 d-table">
@@ -291,17 +458,45 @@
                                         <input hidden="hidden"
                                                value="${connector.localConfiguration.dirKeystoreOrg}"/>
                                         <c:if test="${esAlta == false && not empty connector.localConfiguration.dirKeystoreOrg}">
-                                            <a href="${keystoreOrg}"><img style="height:25px"
-                                                                          src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
-                                                                          alt="Descargar Keystore Organismo"
-                                                                          title="Descargar Keystore Organismo"></a>
+                                            <a href="${keystoreOrg}" class="pl-0 btn btn-link btn-xs active"
+                                               role="button">
+                                                <img width="12px"
+                                                     height="10px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
+                                                     alt="Descargar Keystore Organismo"
+                                                     title="Descargar Keystore Organismo">
+                                                Descargar
+                                            </a>
+                                            <button type="button" class="btn btn-link btn-xs" data-toggle="modal"
+                                                    data-target="#keystore_modal_keystoreOrgFile">
+                                                <img width="12px"
+                                                     height="10px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-search.svg"
+                                                     alt="Ver detalles Keystore Organismo"
+                                                     title="Ver detalles Keystore Organismo">
+                                                Ver detalles
+                                            </button>
+                                            <c:if test="${connector.expKeystoreOrgStatus == 'EXPIRE_SOON'}">
+                                                <img width="20px"
+                                                     height="20px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-exp-warn.svg"
+                                                     alt="Certificado pr&oacute;ximo a vencer"
+                                                     title="Certificado pr&oacute;ximo a vencer"/>
+                                            </c:if>
 
-                                            <a href="#"><img style="height:25px"
-                                                             src="${pageContext.request.contextPath}/resources/images/icon-search.svg"
-                                                             alt="Ver detalles keystore"
-                                                             data-toggle="modal"
-                                                             data-target="#keystore_modal_keystoreOrgFile"
-                                                             title="Ver detalles keystore"></a>
+                                            <c:if test="${connector.expKeystoreOrgStatus == 'EXPIRED'}">
+                                                <img width="20px"
+                                                     height="20px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-exp-error.svg"
+                                                     alt="Certificado vencido" title="Certificado vencido"/>
+                                            </c:if>
+                                            <c:if test="${not empty connector.expDateKeystoreOrg}">
+                                                <p class="help-block"><strong>V&aacute;lido
+                                                    hasta:</strong> ${connector.expDateKeystoreOrg}</p>
+                                            </c:if>
+                                            <p class="help-block linebreak">
+                                                <strong>Ruta:</strong> ${connector.localConfiguration.dirKeystoreOrg}
+                                            </p>
                                         </c:if>
                                     </div>
                                 </div>
@@ -316,16 +511,45 @@
                                         <input hidden="hidden"
                                                value="${connector.localConfiguration.dirKeystoreSsl}"/>
                                         <c:if test="${esAlta == false && not empty connector.localConfiguration.dirKeystoreSsl}">
-                                            <a href="${keystoreSsl}"><img style="height:25px"
-                                                                          src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
-                                                                          alt="Descargar Keystore SSL"
-                                                                          title="Descargar Keystore SSL"></a>
-                                            <a href="#"><img style="height:25px"
-                                                             src="${pageContext.request.contextPath}/resources/images/icon-search.svg"
-                                                             data-toggle="modal"
-                                                             data-target="#keystore_modal_keystoreSSLFile"
-                                                             alt="Ver detalles keystore"
-                                                             title="Ver detalles keystore"></a>
+                                            <a href="${keystoreSsl}" class="pl-0 btn btn-link btn-xs active"
+                                               role="button">
+                                                <img width="12px"
+                                                     height="10px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
+                                                     alt="Descargar Keystore SSL"
+                                                     title="Descargar Keystore SSL">
+                                                Descargar
+                                            </a>
+                                            <button type="button" class="btn btn-link btn-xs" data-toggle="modal"
+                                                    data-target="#keystore_modal_keystoreSSLFile">
+                                                <img width="12px"
+                                                     height="10px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-search.svg"
+                                                     alt="Ver detalles Keystore SSL"
+                                                     title="Ver detalles Keystore SSL">
+                                                Ver detalles
+                                            </button>
+                                            <c:if test="${connector.expKeystoreSSLStatus == 'EXPIRE_SOON'}">
+                                                <img width="20px"
+                                                     height="20px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-exp-warn.svg"
+                                                     alt="Certificado pr&oacute;ximo a vencer"
+                                                     title="Certificado pr&oacute;ximo a vencer"/>
+                                            </c:if>
+
+                                            <c:if test="${connector.expKeystoreSSLStatus == 'EXPIRED'}">
+                                                <img width="20px"
+                                                     height="20px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-exp-error.svg"
+                                                     alt="Certificado vencido" title="Certificado vencido"/>
+                                            </c:if>
+                                            <c:if test="${not empty connector.expDateKeystoreSSL}">
+                                                <p class="help-block"><strong>V&aacute;lido
+                                                    hasta:</strong> ${connector.expDateKeystoreSSL}</p>
+                                            </c:if>
+                                            <p class="help-block linebreak">
+                                                <strong>Ruta:</strong> ${connector.localConfiguration.dirKeystoreSsl}
+                                            </p>
                                         </c:if>
                                     </div>
                                 </div>
@@ -340,16 +564,46 @@
                                         <input hidden="hidden"
                                                value="${connector.localConfiguration.dirKeystore}"/>
                                         <c:if test="${esAlta == false && not empty connector.localConfiguration.dirKeystore}">
-                                            <a href="${truststore}"><img style="height:25px"
-                                                                         src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
-                                                                         alt="Descargar Truststore"
-                                                                         title="Descargar Truststore"></a>
-                                            <a href="#"><img
-                                                    style="height:25px"
-                                                    src="${pageContext.request.contextPath}/resources/images/icon-search.svg"
-                                                    alt="Ver detalles Truststore"
-                                                    data-toggle="modal" data-target="#keystore_modal_keystoreFile"
-                                                    title="Ver detalles Truststore"></a>
+                                            <a href="${truststore}" class="pl-0 btn btn-link btn-xs active"
+                                               role="button">
+                                                <img width="12px"
+                                                     height="10px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
+                                                     alt="Descargar Truststore"
+                                                     title="Descargar Truststore">
+                                                Descargar
+                                            </a>
+                                            <button type="button" class="btn btn-link btn-xs" data-toggle="modal"
+                                                    data-target="#keystore_modal_keystoreFile">
+                                                <img width="12px"
+                                                     height="10px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-search.svg"
+                                                     alt="Ver detalles Truststore"
+                                                     title="Ver detalles Truststore">
+                                                Ver detalles
+                                            </button>
+
+                                            <c:if test="${connector.expKeystoreTruststoreStatus == 'EXPIRE_SOON'}">
+                                                <img width="20px"
+                                                     height="20px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-exp-warn.svg"
+                                                     alt="Certificado pr&oacute;ximo a vencer"
+                                                     title="Certificado pr&oacute;ximo a vencer"/>
+                                            </c:if>
+
+                                            <c:if test="${connector.expKeystoreTruststoreStatus == 'EXPIRED'}">
+                                                <img width="20px"
+                                                     height="20px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-exp-error.svg"
+                                                     alt="Certificado vencido" title="Certificado vencido"/>
+                                            </c:if>
+
+                                            <c:if test="${not empty connector.expDateKeystoreTruststore}">
+                                                <p class="help-block"><strong>V&aacute;lido
+                                                    hasta:</strong> ${connector.expDateKeystoreTruststore}</p>
+                                            </c:if>
+                                            <p class="help-block linebreak">
+                                                <strong>Ruta:</strong> ${connector.localConfiguration.dirKeystore}</p>
                                         </c:if>
                                     </div>
                                 </div>
@@ -359,9 +613,13 @@
                                                     path="localConfiguration.dirKeystore">WSDL
                                         </form:label>
                                         <div class="col-sm-10 d-table-cell">
-                                            <a href="${wsdl}"><img height="25px"
-                                                                   src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
-                                                                   alt="Descargar WSDL" title="Descargar WSDL"></a>
+                                            <a href="${wsdl}" class="pl-0 btn btn-link btn-xs active" role="button">
+                                                <img width="12px"
+                                                     height="10px"
+                                                     src="${pageContext.request.contextPath}/resources/images/icon-down-arrow.svg"
+                                                     alt="Descargar WSDL" title="Descargar WSDL">
+                                                Descargar
+                                            </a>
                                         </div>
                                     </div>
                                 </c:if>
@@ -369,7 +627,7 @@
 
                             <div id="enable_sts_local_url_div"
                                  <c:if test="${connector.enableSTSLocal == false}">style="display: none;"</c:if>>
-                                <div class="form-group col-sm-12 d-table">
+                                <div class="form-group col-sm-12 d-table mt-10">
                                     <form:label class="control-label col-sm-2 d-table-cell" for="sts_local_url"
                                                 path="stsLocalUrl">URL STS Local *</form:label>
                                     <div class="col-sm-10 d-table-cell">
@@ -383,8 +641,89 @@
                                 </div>
                             </div>
 
+                            <div id="enable_local_policy_name_div"
+                                 <c:if test="${connector.enableLocalPolicyName == false}">style="display: none;"</c:if>>
+
+                                <div class="form-group col-sm-12 d-table">
+                                    <form:label class="control-label col-sm-2 d-table-cell" for="policy_name"
+                                                path="policyName">Tipo de token local *</form:label>
+                                    <div class="col-sm-10 d-table-cell">
+                                        <form:input class="form-control" type="text" id="policyName"
+                                                    name="policyName"
+                                                    path="policyName"
+                                                    value="${connector.policyName}"
+                                                    onkeypress="removeWhitespaces(this)"
+                                                    placeholder="Tipo de token local" maxlength="100"
+                                                    style="width: 97%; display: inline"/>
+
+                                        <span data-toggle="tooltip" data-placement="bottom"
+                                              title="El campo Tipo de token debe contener el valor &#8217;urn:tokensimple&#8217; para testing y &#8217;urn:std15&#8217; para producci&oacute;n, si se utiliza SAML1.1. En caso que se utilice SAML2.0, para ambos ambientes corresponde &#8217;urn:std15&#8217;."><i
+                                                class="fa fa-question-circle"></i></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="enable_local_timeout_div"
+                                 <c:if test="${connector.enableLocalServiceTimeOut != true}">style="display: none;"</c:if>>
+
+                                <div class="form-group col-sm-12 d-table">
+                                    <form:label class="control-label col-sm-2 d-table-cell"
+                                                for="localServiceTimeOut"
+                                                path="localServiceTimeOut">Timeout en milisegundos *</form:label>
+                                    <div class="col-sm-10 d-table-cell">
+                                        <form:input class="form-control" type="text" id="localServiceTimeOut"
+                                                    name="localServiceTimeOut"
+                                                    path="localServiceTimeOut"
+                                                    value="${connector.localServiceTimeOut}"
+                                                    placeholder="Tiempo de espera en milisegundos." pattern="[0-9]{1,6}"
+                                                    style="width: 97%; display: inline"/>
+
+                                        <span data-toggle="tooltip" data-placement="bottom"
+                                              title="El campo Timeout en milisegundos determina el tiempo de espera de respuesta del servicio.">
+                                            <i class="fa fa-question-circle"></i>
+                                        </span>
+
+                                        <p class="help-block linebreak">
+                                            Introduzca entre 1 y 6 d&iacute;gitos
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="enable_local_expiration_notice_days_div"
+                                 <c:if test="${connector.enableLocalExpirationNotification != true}">style="display: none;"</c:if>>
+
+                                <div class="form-group col-sm-12 d-table">
+                                    <form:label class="control-label col-sm-2 d-table-cell"
+                                                for="localExpirationNoticeDays"
+                                                path="localExpirationNoticeDays">D&iacute;as previos al aviso *</form:label>
+                                    <div class="col-sm-10 d-table-cell">
+                                        <form:input class="form-control" type="text" id="localExpirationNoticeDays"
+                                                    name="localExpirationNoticeDays"
+                                                    path="localExpirationNoticeDays"
+                                                    value="${connector.localExpirationNoticeDays}"
+                                                    placeholder="Dias previos al aviso" pattern="[0-9]{1,3}"
+                                                    style="width: 97%; display: inline"/>
+
+                                        <span data-toggle="tooltip" data-placement="bottom"
+                                              title="El campo D&iacute;as previos al aviso determina con cuantos d&iacute;as de antelaci&oacute;n se muestra la notificaci&oacute;n del vencimiento de los certificados."><i
+                                                class="fa fa-question-circle"></i></span>
+
+                                        <p class="help-block linebreak">
+                                            Introduzca entre 1 y 3 d&iacute;gitos
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="form-group col-sm-12 d-table">
-                                <form:label class="control-label col-sm-2 d-table-cell" for="tag" path="tag">TAG</form:label>
+                                <form:label class="control-label col-sm-2 d-table-cell" for="tag"
+                                            path="tag">TAG</form:label>
                                 <div class="col-sm-10 d-table-cell">
                                     <form:input class="form-control" type="text" name="tag" path="tag"
                                                 value="${connector.tag}"
@@ -399,144 +738,159 @@
 
                                     <c:if test="${connector.multipleVersion == true}">
 
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs" role="tablist" style="margin-left:17px">
-                                            <li role="presentation" class="active"><a href="#one" aria-controls="one" role="tab" data-toggle="tab">Soap 1.1</a></li>
-                                            <li role="presentation"><a href="#two" aria-controls="two" role="tab" data-toggle="tab">Soap 1.2</a></li>
-                                        </ul>
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist" style="margin-left:17px">
+                                        <li role="presentation" class="active"><a href="#one" aria-controls="one"
+                                                                                  role="tab" data-toggle="tab">Soap
+                                            1.1</a></li>
+                                        <li role="presentation"><a href="#two" aria-controls="two" role="tab"
+                                                                   data-toggle="tab">Soap 1.2</a></li>
+                                    </ul>
 
-                                        <!-- Tab panes -->
-                                        <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane active" id="one">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="one">
 
-                                    </c:if>
-                                                <table <c:if test="${connector.multipleVersion == true}">class="w-100"</c:if>>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <table class="table-role-op" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                    <colgroup span="3"></colgroup>
-                                                                    <thead>
+                                            </c:if>
+                                            <table
+                                                    <c:if test="${connector.multipleVersion == true}">class="w-100"</c:if>>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table class="table-role-op" border="0" cellpadding="0"
+                                                               cellspacing="0" width="100%">
+                                                            <colgroup span="3"></colgroup>
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Rol</th>
+                                                                <th>wsa:Action</th>
+                                                                <th>Operaci&oacute;n
+                                                                </th>
+                                                            </tr>
+
+                                                            <c:forEach var="operation"
+                                                                       items="${connector.roleOperations}"
+                                                                       varStatus="i">
+
+                                                                <c:if test="${operation.soapVersion == '1.1'}">
+
+                                                                    <input type="text"
+                                                                           name="roleOperations[${i.index}].soapVersion"
+                                                                           value="${operation.soapVersion}" hidden/>
+
                                                                     <tr>
-                                                                        <th>Rol</th>
-                                                                        <th>wsa:Action</th>
-                                                                        <th>Operaci&oacute;n
-                                                                        </th>
+                                                                        <td>
+                                                                            <div class="col-sm-12">
+                                                                                <input class="form-control" type="text"
+                                                                                       name="roleOperations[${i.index}].role"
+                                                                                       value="${operation.role}"/>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="col-sm-12">
+                                                                                <input class="form-control" type="text"
+                                                                                       name="roleOperations[${i.index}].wsaAction"
+                                                                                       value="${operation.wsaAction}"/>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="col-sm-12">
+                                                                                <input class="form-control" type="text"
+                                                                                       name="roleOperations[${i.index}].operationFromWSDL"
+                                                                                       value="${operation.operationFromWSDL}"
+                                                                                       readonly/>
+                                                                            </div>
+                                                                        </td>
+                                                                        <input type="text"
+                                                                               name="roleOperations[${i.index}].operationInputName"
+                                                                               value="${operation.operationInputName}"
+                                                                               hidden/>
                                                                     </tr>
 
-                                                                    <c:forEach var="operation" items="${connector.roleOperations}"
-                                                                               varStatus="i">
+                                                                </c:if>
 
-                                                                        <c:if test="${operation.soapVersion == '1.1'}">
+                                                            </c:forEach>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
 
-                                                                            <input type="text" name="roleOperations[${i.index}].soapVersion" value="${operation.soapVersion}" hidden/>
-
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <div class="col-sm-12">
-                                                                                        <input class="form-control" type="text"
-                                                                                               name="roleOperations[${i.index}].role"
-                                                                                               value="${operation.role}"/>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div class="col-sm-12">
-                                                                                        <input class="form-control" type="text"
-                                                                                               name="roleOperations[${i.index}].wsaAction"
-                                                                                               value="${operation.wsaAction}"/>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div class="col-sm-12">
-                                                                                        <input class="form-control" type="text"
-                                                                                               name="roleOperations[${i.index}].operationFromWSDL"
-                                                                                               value="${operation.operationFromWSDL}" readonly/>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <input type="text"
-                                                                                       name="roleOperations[${i.index}].operationInputName"
-                                                                                       value="${operation.operationInputName}" hidden/>
-                                                                            </tr>
-
-                                                                        </c:if>
-
-                                                                    </c:forEach>
-                                                                    </thead>
-                                                                    <tbody></tbody>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-
-                                    <c:if test="${connector.multipleVersion == true}">
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane" id="two">
-                                                <table class="w-100">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <table class="table-role-op" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                <colgroup span="3"></colgroup>
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Rol</th>
-                                                                    <th>wsa:Action</th>
-                                                                    <th>Operaci&oacute;n
-                                                                    </th>
-                                                                </tr>
-
-                                                                <c:forEach var="operation" items="${connector.roleOperations}"
-                                                                           varStatus="i">
-
-                                                                    <c:if test="${operation.soapVersion == '1.2'}">
-
-                                                                        <input type="text" name="roleOperations[${i.index}].soapVersion" value="${operation.soapVersion}" hidden/>
-
-                                                                        <tr>
-                                                                            <td>
-                                                                                <div class="col-sm-12">
-                                                                                    <input class="form-control" type="text"
-                                                                                           name="roleOperations[${i.index}].role"
-                                                                                           value="${operation.role}"/>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div class="col-sm-12">
-                                                                                    <input class="form-control" type="text"
-                                                                                           name="roleOperations[${i.index}].wsaAction"
-                                                                                           value="${operation.wsaAction}"/>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div class="col-sm-12">
-                                                                                    <input class="form-control" type="text"
-                                                                                           name="roleOperations[${i.index}].operationFromWSDL"
-                                                                                           value="${operation.operationFromWSDL}" readonly/>
-                                                                                </div>
-                                                                            </td>
-                                                                            <input type="text"
-                                                                                   name="roleOperations[${i.index}].operationInputName"
-                                                                                   value="${operation.operationInputName}" hidden/>
-                                                                        </tr>
-
-                                                                    </c:if>
-
-                                                                </c:forEach>
-                                                                </thead>
-                                                                <tbody></tbody>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            <c:if test="${connector.multipleVersion == true}">
                                         </div>
+                                        <div role="tabpanel" class="tab-pane" id="two">
+                                            <table class="w-100">
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table class="table-role-op" border="0" cellpadding="0"
+                                                               cellspacing="0" width="100%">
+                                                            <colgroup span="3"></colgroup>
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Rol</th>
+                                                                <th>wsa:Action</th>
+                                                                <th>Operaci&oacute;n
+                                                                </th>
+                                                            </tr>
+
+                                                            <c:forEach var="operation"
+                                                                       items="${connector.roleOperations}"
+                                                                       varStatus="i">
+
+                                                                <c:if test="${operation.soapVersion == '1.2'}">
+
+                                                                    <input type="text"
+                                                                           name="roleOperations[${i.index}].soapVersion"
+                                                                           value="${operation.soapVersion}" hidden/>
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="col-sm-12">
+                                                                                <input class="form-control" type="text"
+                                                                                       name="roleOperations[${i.index}].role"
+                                                                                       value="${operation.role}"/>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="col-sm-12">
+                                                                                <input class="form-control" type="text"
+                                                                                       name="roleOperations[${i.index}].wsaAction"
+                                                                                       value="${operation.wsaAction}"/>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="col-sm-12">
+                                                                                <input class="form-control" type="text"
+                                                                                       name="roleOperations[${i.index}].operationFromWSDL"
+                                                                                       value="${operation.operationFromWSDL}"
+                                                                                       readonly/>
+                                                                            </div>
+                                                                        </td>
+                                                                        <input type="text"
+                                                                               name="roleOperations[${i.index}].operationInputName"
+                                                                               value="${operation.operationInputName}"
+                                                                               hidden/>
+                                                                    </tr>
+
+                                                                </c:if>
+
+                                                            </c:forEach>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                     </c:if>
 
                                 </div>
                             </div>
-
 
                             <c:forEach var="keystoreModalData" items="${keystoreModalDataColl}">
                                 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
@@ -545,7 +899,8 @@
                                     <div class="modal-dialog modal-sm" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <button type="button" class="close" data-dismiss="modal">&times;
+                                                </button>
                                                 <h4 class="modal-title"
                                                     id="keystoreModalLabel_${keystoreModalData.nombre}">${keystoreModalData.nombreModal}</h4>
                                             </div>
@@ -600,10 +955,11 @@
                         </c:choose>
                         <div class="form-group align-right" style="padding-top: 10px;">
                             <div class="col-sm-3" style="padding-left: 8px;">
-                                <form:form action="${cancelUrl}"
+                                <form:form id="cancelContainer" action="${cancelUrl}"
                                            method="post"
                                            enctype="multipart/form-data">
-                                    <input type="text" name="prefixNameConnector" value="${prefixNameConnector}" hidden/>
+                                    <input type="text" name="prefixNameConnector" value="${prefixNameConnector}"
+                                           hidden/>
                                     <input type="submit" value="Cancelar" class="btn-input">
                                 </form:form>
                             </div>
@@ -624,26 +980,29 @@
                                     <input type="submit" value="Borrar" class="btn-input" data-toggle="modal"
                                            data-target="#delete_confirmation_${connector.id}">
                                 </div>
-                                <c:if test="${connector.type == 'Testing'}">
-                                    <div class="col-sm-4" style="padding-right: 0; text-align: right;">
-                                        <form:form action="${testToProdUrl}"
-                                                   method="get"
-                                                   enctype="multipart/form-data">
-                                            <input type="submit" value="Pasar a Producci&oacute;n" class="btn-input">
-                                        </form:form>
-                                    </div>
-                                </c:if>
+<%--                                Ocultar botón Pasar a Producción por el momento y luego definir bien la logica a seguir--%>
+<%--                                <c:if test="${connector.type == 'Testing'}">--%>
+<%--                                    <div class="col-sm-4" style="padding-right: 0; text-align: right;">--%>
+<%--                                        <form:form id="toProdContainer" action="${testToProdUrl}"--%>
+<%--                                                   method="get"--%>
+<%--                                                   enctype="multipart/form-data">--%>
+<%--                                            <input type="submit" value="Pasar a Producci&oacute;n" class="btn-input">--%>
+<%--                                        </form:form>--%>
+<%--                                    </div>--%>
+<%--                                </c:if>--%>
                                 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
                                      id="delete_confirmation_${connector.id}"
                                      aria-labelledby="delete_confirmation_${connector.id}">
                                     <div class="modal-dialog modal-sm" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="gridSystemModalLabel">&iquest;Seguro que desea borrar
-                                                    el conector?</h4>
+                                                <h4 class="modal-title" id="gridSystemModalLabel">&iquest;Seguro que
+                                                    desea borrar
+                                                    el servicio?</h4>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">No
+                                                </button>
                                                 <button type="button" class="btn btn-danger"
                                                         onclick="location.href='${deleteUrl}'">Si
                                                 </button>
@@ -652,6 +1011,27 @@
                                     </div>
                                 </div>
                             </c:if>
+
+                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+                                 id="expiration_alert">
+                                <div class="modal-dialog modal-md" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="">Revise la fecha de expiraci&oacuten de los
+                                                certificados</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p id="certOrg"></p>
+                                            <p id="certSSL"></p>
+                                            <p id="certTrust"></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -667,7 +1047,6 @@
 
         // Step show event
         $("#smartwizard").on("showStep", function (e, anchorObject, stepNumber, stepDirection, stepPosition) {
-            //alert("You are on step "+stepNumber+" now");
             if (stepPosition === 'first') {
                 $("#prev-btn").addClass('disabled');
             } else if (stepPosition === 'final') {
@@ -698,26 +1077,63 @@
 
 <script>
     function initializeRequired() {
-        var esAlta = '<c:out value="${esAlta}"/>';
-        var enableUserCredentials = '<c:out value="${connector.enableUserCredentials}"/>';
-        var enableLocalConfiguration = '<c:out value="${connector.enableLocalConfiguration}"/>';
-        var enableSTSLocal = '<c:out value="${connector.enableSTSLocal}"/>';
-        if (enableUserCredentials == "true") {
+        const esAlta = '<c:out value="${esAlta}"/>';
+        const enableLocalConfiguration = '<c:out value="${connector.enableLocalConfiguration}"/>';
+        const isGlobalConfigurationEnabled = '<c:out value="${isGlobalConfigurationEnabled}"/>';
+        if (esAlta === "false") {
+            const expKeystoreOrgStatus = '<c:out value="${connector.expKeystoreOrgStatus}"/>';
+            const expKeystoreSSLStatus = '<c:out value="${connector.expKeystoreSSLStatus}"/>';
+            const expKeystoreTruststoreStatus = '<c:out value="${connector.expKeystoreTruststoreStatus}"/>';
+
+            if (enableLocalConfiguration === "true" && (expKeystoreOrgStatus === "EXPIRED" || expKeystoreOrgStatus === "EXPIRE_SOON" ||
+                expKeystoreSSLStatus === "EXPIRED" || expKeystoreSSLStatus === "EXPIRE_SOON" ||
+                expKeystoreTruststoreStatus === "EXPIRED" || expKeystoreTruststoreStatus === "EXPIRE_SOON")) {
+                $('#certOrg').append("Keystore Organismo: ").append(expKeystoreOrgStatus === "EXPIRED" ? "<b class=\"text-danger\">Expirado.</b>" : (expKeystoreOrgStatus === "EXPIRE_SOON" ? "<b class=\"text-warning\">Expira Pronto.</b>" : "<b class=\"text-success\">OK.</b>"));
+                $('#certSSL').append("Keystore SSL: ").append(expKeystoreSSLStatus === "EXPIRED" ? "<b class=\"text-danger\">Expirado.</b>" : (expKeystoreSSLStatus === "EXPIRE_SOON" ? "<b class=\"text-warning\">Expira Pronto.</b>" : "<b class=\"text-success\">OK.</b>"));
+                $('#certTrust').append("Truststore SSL: ").append(expKeystoreTruststoreStatus === "EXPIRED" ? "<b class=\"text-danger\">Expirado.</b>" : (expKeystoreTruststoreStatus === "EXPIRE_SOON" ? "<b class=\"text-warning\">Expira Pronto.</b>" : "<b class=\"text-success\">OK.</b>"));
+                $('#expiration_alert').modal('show')
+            }
+        } else {
+            //If there is no global configuration defined, it is mandatory to define a local configuration.
+            if (isGlobalConfigurationEnabled === "false" && !$('#enable_local_configuration').prop('checked')) {
+                $("#enable_local_configuration").trigger('click');
+                $("#enable_local_policy_name").trigger('click');
+                $("#enable_sts_local").trigger('click');
+                $("#enableLocalServiceTimeOut").trigger('click');
+            }
+        }
+
+        const enableUserCredentials = '<c:out value="${connector.enableUserCredentials}"/>';
+        const enableSTSLocal = '<c:out value="${connector.enableSTSLocal}"/>';
+        const enableLocalPolicyName = '<c:out value="${connector.enableLocalPolicyName}"/>';
+        const enableLocalExpirationNotification = '<c:out value="${connector.enableLocalExpirationNotification}"/>';
+        const enableLocalServiceTimeOut = '<c:out value="${connector.enableLocalServiceTimeOut}"/>';
+        if (enableUserCredentials === "true") {
             toggleRequiredUserCredentials();
         }
-        if (enableLocalConfiguration == "true") {
+        if (enableLocalConfiguration === "true") {
             toggleRequiredConfigurations();
         }
-        if (enableSTSLocal == "true") {
+        if (enableSTSLocal === "true") {
             toggleRequiredSTSLocal();
         }
-        if (esAlta == "false") {
+        if (enableLocalPolicyName === "true") {
+            toggleRequiredLocalPolicyName();
+        }
+        if (enableLocalExpirationNotification === "true") {
+            toggleRequiredLocalExpirationNoticeDays();
+        }
+        if (enableLocalServiceTimeOut === "true") {
+            toggleRequiredLocalServiceTimeOut();
+        }
+        if (esAlta === "false") {
             $("#type").prop('disabled', true);
         }
     }
-    ;
+
     function toggleRequiredConfigurations() {
         toggleRequiredNotRequired('aliasKeystore');
+        toggleRequiredNotRequired('aliasKeystoreSSL');
         toggleRequiredNotRequired('passwordKeystoreOrg');
         toggleRequiredNotRequired('passwordKeystoreSsl');
         toggleRequiredNotRequired('passwordKeystore');

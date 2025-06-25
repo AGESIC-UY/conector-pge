@@ -471,12 +471,16 @@ label.control-label {
     margin-top: 0px;
 }
 
-.info-container > div, #enable_local_configuration_div > div {
+.info-container > div, #view-connector #enable_local_configuration_div > div, #form_info_conector #enable_local_configuration_div > div {
     margin: 5px 0;
 }
 
 .info-container > div label {
     margin-bottom: 0;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
 }
 
 .ml-9 {
@@ -485,6 +489,14 @@ label.control-label {
 
 .ml-10 {
     margin-left: -10px;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.pl-0 {
+    padding-left: 0;
 }
 
 #form_info_conector label.control-label {

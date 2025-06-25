@@ -1,23 +1,20 @@
 
 
+import com.typesafe.config._
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
 import io.gatling.http.Predef._
 import io.gatling.http.protocol.HttpProtocolBuilder
-import com.typesafe.config._
 
 import scala.concurrent.duration._
 
 class ConsultaProveedores extends Simulation {
 
-  //val feeder = csv("urlsRuteadores.csv").circular
-  //val feeder = csv("urlsConectoresDesc.csv").circular
- // val feederMTOM = csv("urlsConectoresMTOM.csv").circular
-  val feeder = csv("urlsTST.csv").circular
- // val feeder = csv("urlsMockDescripcion.csv").circular
- // val feederMTOM = csv("urlsMockDescargaMTOM.csv").circular
- // val feeder = csv("urlsDataPower.csv").circular
- // val feederMTOM = csv("urlsMockEnvioMTOM.csv").circular
+
+  val feeder = csv("urlsConectoresDesc.csv").circular
+  val feederRuteo = csv("urlsRuteadores.csv").circular
+  val feederMTOM = csv("urlsConectoresMTOM.csv").circular
+  val feederRuteoMTOM = csv("urlsRuteadoresMTOM.csv").circular
 
   //Object for loading configurations
   object config {
@@ -39,14 +36,12 @@ class ConsultaProveedores extends Simulation {
   val httpProtocolMTOM = http
     .inferHtmlResources()
     .acceptEncodingHeader("gzip,deflate")
-    .connectionHeader("close")
     .contentTypeHeader("""multipart/related; type="application/xop+xml"; start="<rootpart@soapui.org>"; start-info="text/xml"; boundary="----=_Part_0_27477334.1513187882246"""")
     .userAgentHeader("Apache-HttpClient/4.1.1 (java 1.5)")
 
-
   val headersMTOM = Map(
     "MIME-Version" -> "1.0",
-    "SOAPAction" -> """"http://servicios.pge.red.uy/agesic/artee/EnviarExpediente/ServicioEnviarExpediente/EnviarExpediente"""")
+    "SOAPAction" -> "")
 
 
   object service {
@@ -57,7 +52,7 @@ class ConsultaProveedores extends Simulation {
           .headers(headers_0)
           .body(RawFileBody(config.filename)))
         .pause(config.p seconds)
-      }
+    }
   }
 
 
@@ -65,17 +60,39 @@ class ConsultaProveedores extends Simulation {
   object serviceMTOM {
     val invocation = group("SOAP_invocation") {
       exitBlockOnFail {
-     //   feed(feeder)
-          exec(http("EnviarExpediente")
-//            .post("${endpoint}")
-            .post("http://10.255.15.39:10002/Ruteo/EnviarExpediente.svc")
+        feed(feederMTOM)
+          .exec(http("EnviarExpediente")
+            .post("${endpoint}")
+            //.post("http://10.255.4.17:9800/SAENovedades/consulta")
             .headers(headersMTOM)
             .body(RawFileBody(config.filenameMTOM))
-            //.check(regex("54555111605784"))
             .check(status.is(200))
           )
           .pause(config.p seconds)
       }
+
+    }
+  }
+
+  object serviceRuteo {
+    val invocation = group("SOAP_invocation") {
+      feed(feederRuteo)
+        .exec(http("ConsultaProveedores")
+          .post("${endpoint}")
+          .headers(headers_0)
+          .body(RawFileBody(config.filename)))
+        .pause(config.p seconds)
+    }
+  }
+
+  object serviceRuteoMTOM {
+    val invocation = group("SOAP_invocation") {
+      feed(feederRuteoMTOM)
+        .exec(http("ConsultaProveedores")
+          .post("${endpoint}")
+          .headers(headers_0)
+          .body(RawFileBody(config.filenameMTOM)))
+        .pause(config.p seconds)
     }
   }
 
@@ -115,6 +132,13 @@ class ConsultaProveedores extends Simulation {
     return scn
   }
 
+  def getScenarioWithDuration(name : String, duration : Int): ScenarioBuilder ={
+    val scn = scenario(name).during(duration minutes){
+      exec(service.invocation)
+    }
+    return scn
+  }
+
   /**
     * @return httpProtocol
     */
@@ -132,6 +156,7 @@ class ConsultaProveedores extends Simulation {
   def getHttpProtocolMTOM(): HttpProtocolBuilder ={
     return httpProtocolMTOM
   }
+
 
   /**
     * Scenario for MTOM tests
@@ -168,4 +193,39 @@ class ConsultaProveedores extends Simulation {
       exec(serviceMTOM.invocation)}
     return scn
   }
+
+  def getScenarioRuteo(name : String): ScenarioBuilder ={
+    val scn = scenario(name).forever(){
+      exec(serviceRuteo.invocation)
+    }
+    return scn
+  }
+
+  def getScenarioRuteo(name : String, iterations : Int): ScenarioBuilder ={
+    val scn = scenario(name).repeat(iterations){
+      exec(serviceRuteo.invocation)}
+    return scn
+  }
+
+  def getScenarioRuteoMTOM(name : String, iterations : Int): ScenarioBuilder ={
+    val scn = scenario(name).repeat(iterations){
+      exec(serviceRuteoMTOM.invocation)}
+    return scn
+  }
+
+  def getScenarioRuteoWithDuration(name : String, duration : Int): ScenarioBuilder ={
+    val scn = scenario(name).during(duration minutes){
+      exec(serviceRuteo.invocation)
+    }
+    return scn
+  }
+
+  def getScenarioRuteoMTOMWithDuration(name : String, duration : Int): ScenarioBuilder ={
+    val scn = scenario(name).during(duration minutes){
+      exec(serviceRuteoMTOM.invocation)
+    }
+    return scn
+  }
+
+
 }

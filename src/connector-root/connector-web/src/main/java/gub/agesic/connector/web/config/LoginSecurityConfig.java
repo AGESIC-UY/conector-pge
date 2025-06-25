@@ -1,5 +1,6 @@
 package gub.agesic.connector.web.config;
 
+import gub.agesic.connector.exceptions.ConnectorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -8,8 +9,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
-import gub.agesic.connector.exceptions.ConnectorException;
 
 /**
  * Created by adriancur on 06/12/17.
@@ -30,10 +29,8 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(final AuthenticationManagerBuilder authenticationMgr)
-            throws Exception {
-        authenticationMgr.inMemoryAuthentication().withUser(USERNAME).password(userPassword)
-                .roles(USERROLE);
+    public void configureGlobal(final AuthenticationManagerBuilder authenticationMgr) throws Exception {
+        authenticationMgr.inMemoryAuthentication().withUser(USERNAME).password(userPassword).roles(USERROLE);
     }
 
     @Override
@@ -48,7 +45,7 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
                     .usernameParameter("username").passwordParameter("password").and().logout()
                     .logoutSuccessUrl("/loginPage?logout").and().csrf().disable();
         } catch (final Exception e) {
-            throw new ConnectorException(e.getMessage());
+            throw new ConnectorException(e.getMessage(), e);
         }
 
     }

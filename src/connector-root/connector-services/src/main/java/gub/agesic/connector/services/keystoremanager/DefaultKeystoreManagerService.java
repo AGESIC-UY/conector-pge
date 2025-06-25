@@ -1,5 +1,18 @@
 package gub.agesic.connector.services.keystoremanager;
 
+import gub.agesic.connector.dataaccess.entity.*;
+import gub.agesic.connector.dataaccess.enums.EnvironmentType;
+import gub.agesic.connector.exceptions.ConnectorException;
+import gub.agesic.connector.services.dbaccess.ConnectorService;
+import gub.agesic.connector.services.filemanager.FileManagerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,310 +21,326 @@ import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateExpiredException;
-import java.security.cert.CertificateNotYetValidException;
-import java.security.cert.X509Certificate;
+import java.security.cert.*;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Enumeration;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import gub.agesic.connector.dataaccess.entity.Certificado;
-import gub.agesic.connector.dataaccess.entity.Configuration;
-import gub.agesic.connector.dataaccess.entity.Connector;
-import gub.agesic.connector.dataaccess.entity.ConnectorGlobalConfiguration;
-import gub.agesic.connector.dataaccess.entity.ConnectorLocalConfiguration;
-import gub.agesic.connector.dataaccess.entity.KeystoreModalData;
-import gub.agesic.connector.exceptions.ConnectorException;
-import gub.agesic.connector.services.dbaccess.ConnectorService;
-import gub.agesic.connector.services.filemanager.FileManagerService;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class DefaultKeystoreManagerService implements KeystoreManagerService {
 
-    public static final String KEYSTORE = ".keystore";
-    public static final String TRUSTSTORE = ".truststore";
-    public static final String KEYSTORE_TRUSTSTORE_FILENAME = "keystoreFile" + TRUSTSTORE;
-    public static final String KEYSTORE_ORG_FILENAME = "keystoreOrgFile" + KEYSTORE;
-    public static final String KEYSTORE_SSL_FILENAME = "keystoreSSLFile" + KEYSTORE;
-    private static final Logger LOGGER = LoggerFactory
-            .getLogger(DefaultKeystoreManagerService.class);
+    public static final List<String> ALLOWED_CERTIFICATE_EXTENSION = Collections.unmodifiableList(Arrays.asList(".keystore", ".truststore", ".pfx"));
+    public static final String KEYSTORE_TRUSTSTORE_FILENAME = "keystoreFile";
+    public static final String KEYSTORE_ORG_FILENAME = "keystoreOrgFile";
+    public static final String KEYSTORE_SSL_FILENAME = "keystoreSSLFile";
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultKeystoreManagerService.class);
+
+    private final Environment environment;
     private final ConnectorService connectorService;
     private final FileManagerService fileManagerService;
 
     @Autowired
-    public DefaultKeystoreManagerService(final ConnectorService connectorService,
-            final FileManagerService fileManagerService) {
+    public DefaultKeystoreManagerService(Environment environment, final @Lazy ConnectorService connectorService,
+                                         final FileManagerService fileManagerService) {
+        this.environment = environment;
         this.connectorService = connectorService;
         this.fileManagerService = fileManagerService;
     }
 
-    private void checkCertificateExpirationDate(final Certificate certificate,
-            final String keystore) throws ConnectorException {
-        final X509Certificate castedCertificate = (X509Certificate) certificate;
-        try {
-            castedCertificate.checkValidity();
-        } catch (final CertificateExpiredException e) {
-            final String errorMessage = "ERROR: Ha caducado el Certificado dentro del keystore: "
-                    + keystore + ".\n Es necesario construir uno nuevo.";
-            LOGGER.error(errorMessage, e);
-            throw new ConnectorException(errorMessage, e);
-        } catch (final CertificateNotYetValidException e) {
-            final String errorMessage = "ERROR: El Certificado dentro del keystore: " + keystore
-                    + " aún no es válido.\n Es necesario construir uno nuevo.";
-            LOGGER.error(errorMessage, e);
-            throw new ConnectorException(errorMessage, e);
-        }
-    }
-
     @Override
-    public void checkCertificateExpirationDate(final Path keystorePath, final Path newFilePath,
-            final String keystorePassword) throws ConnectorException {
-
-        final KeyStore ks = loadKeystore(keystorePath, newFilePath, keystorePassword);
-        Enumeration<String> aliases;
-        try {
-            aliases = ks.aliases();
-        } catch (final KeyStoreException exception) {
-            final String errorMessage = "ERROR: Ocurri� un error interno al leer el keystore: "
-                    + keystorePath.getFileName();
-            LOGGER.error(errorMessage, exception);
-            throw new ConnectorException(errorMessage, exception);
-        }
-
-        if (!aliases.hasMoreElements()) {
-            final String errorMessage = "ERROR: No se encontraron certificados en el keystore: "
-                    + keystorePath.getFileName();
+    public Date getCertificateExpirationDate(final Path path,
+                                             final String alias,
+                                             final String password) throws ConnectorException {
+        if (alias == null) {
+            final String errorMessage = "Alias no definida para el Keystore: " + path.getFileName();
             LOGGER.error(errorMessage);
-            throw new ConnectorException(errorMessage);
+            throw new ConnectorException("Alias no definida");
         }
 
-        Certificate certificate;
-        try {
-            certificate = ks.getCertificate(aliases.nextElement());
-        } catch (final KeyStoreException exception) {
-            final String errorMessage = "ERROR: Ocurri� un error interno al leer el keystore: "
-                    + keystorePath.getFileName();
-            LOGGER.error(errorMessage, exception);
-            throw new ConnectorException(errorMessage, exception);
-        }
-
-        checkCertificateExpirationDate(certificate, keystorePath.getFileName().toString());
-    }
-
-    @Override
-    public void checkCertificateExpirationDate(final Path keystorePath, final String aliasKeystore,
-            final Path newFilePath, final String keystorePassword) throws ConnectorException {
-        final KeyStore ks = loadKeystore(keystorePath, newFilePath, keystorePassword);
+        final KeyStore ks = loadKeystore(path, password);
 
         final Certificate certificate;
         try {
-            certificate = ks.getCertificate(aliasKeystore);
+            certificate = ks.getCertificate(alias);
         } catch (final KeyStoreException e) {
-            final String errorMessage = "ERROR: No se pudo obtener el certificado de ese keystore: "
-                    + keystorePath.getFileName() + ".\n Es posible que el alias \"" + aliasKeystore
-                    + "\" no sea el adecuado.";
+            final String errorMessage = "El KeyStore no pudo ser cargado";
             LOGGER.error(errorMessage, e);
             throw new ConnectorException(errorMessage, e);
         }
 
         if (certificate == null) {
-            final String errorMessage = "ERROR: No existe un certificado dentro del keystore: "
-                    + keystorePath.getFileName() + ".\n Es posible que el alias: \"" + aliasKeystore
-                    + "\" no sea el adecuado.";
+            final String errorMessage = "No existe un certificado dentro del keystore: " + path.getFileName() + "para el alias: \"" + alias;
             LOGGER.error(errorMessage);
-            throw new ConnectorException(errorMessage);
-        } else {
-            checkCertificateExpirationDate(certificate, keystorePath.getFileName().toString());
+            throw new ConnectorException("Sin certificado (" + alias + ")");
         }
+
+        final X509Certificate castedCertificate = (X509Certificate) certificate;
+        LOGGER.error("fecha de expiracion " + castedCertificate.getNotAfter());
+
+        return castedCertificate.getNotAfter();
     }
 
-    private KeyStore loadKeystore(final Path keystorePath, final Path newFilePath,
-            final String keystorePassword) throws ConnectorException {
+    /*
+    * Load file into keystore using provided password
+    * */
+    public KeyStore loadKeystore(final Path filePath, final String keystorePassword) throws ConnectorException {
         final KeyStore ks;
         try {
             ks = KeyStore.getInstance(KeyStore.getDefaultType());
         } catch (final KeyStoreException e) {
-            final String errorMessage = "ERROR: Al obtener el keystore: "
-                    + keystorePath.getFileName();
+            final String errorMessage = "ERROR: Al cargar el manejador del KeyStore";
             LOGGER.error(errorMessage, e);
             throw new ConnectorException(errorMessage, e);
         }
-        try (FileInputStream fis = new FileInputStream(newFilePath.toString())) {
+
+        String fileName = getKeystoreName(String.valueOf(filePath.getFileName()));
+
+        try (FileInputStream fis = new FileInputStream(filePath.toString())) {
             ks.load(fis, keystorePassword.toCharArray());
             return ks;
         } catch (final FileNotFoundException e) {
-            final String errorMessage = "ERROR: No se encontró el keystore: "
-                    + keystorePath.getFileName();
+            final String errorMessage = "ERROR: No se encontró el keystore: " + filePath.getFileName();
             LOGGER.error(errorMessage, e);
             throw new ConnectorException(errorMessage, e);
         } catch (final IOException e) {
-            final String errorMessage = "ERROR: No se pudo parsear el keystore: "
-                    + keystorePath.getFileName()
-                    + ".\n Es posible que la clave introducida sea errónea";
-            LOGGER.error(errorMessage, e);
-            throw new ConnectorException(errorMessage, e);
+            // Verificar el mensaje de error para capturar el problema de contraseña incorrecta
+            if (e.getMessage().contains("Keystore was tampered with, or password was incorrect")) {
+                final String errorMessage = "ERROR: La contraseña del " + fileName + " es incorrecta";
+                LOGGER.error(errorMessage, e);
+                throw new ConnectorException(errorMessage, e);
+            } else {
+                final String errorMessage = "ERROR: No se pudo parsear el " + fileName;
+                LOGGER.error(errorMessage, e);
+                throw new ConnectorException(errorMessage, e);
+            }
         } catch (final CertificateException e) {
-            final String errorMessage = "ERROR: La contraseña es inválida para el certificado dentro del keystore: "
-                    + keystorePath.getFileName();
+            final String errorMessage = "ERROR: Certificado inválido en " + fileName;
             LOGGER.error(errorMessage, e);
             throw new ConnectorException(errorMessage, e);
         } catch (final NoSuchAlgorithmException e) {
-            final String errorMessage = "ERROR: El algoritmo no es el adecuado para el keystore: "
-                    + keystorePath.getFileName();
+            final String errorMessage = "ERROR: El algoritmo no es adecuado para el " + fileName;
             LOGGER.error(errorMessage, e);
             throw new ConnectorException(errorMessage, e);
         }
     }
 
+    private String getKeystoreName(String fileName) {
+        if (fileName.contains(KEYSTORE_ORG_FILENAME)) {
+            return "Keystore Organismo";
+        } else if (fileName.contains(KEYSTORE_SSL_FILENAME)) {
+            return "Keystore SSL";
+        } else if (fileName.contains(KEYSTORE_TRUSTSTORE_FILENAME)) {
+            return "Truststore";
+        } else {
+            return "";
+        }
+    }
+
     @Override
-    public Path getConnectorKeystore(final long id, final String keystoreName)
-            throws ConnectorException {
+    public void uploadFileAndLoadKeystore(MultipartFile file, String fileName, String filePassword) throws ConnectorException {
+        String fileExtension = fileManagerService.getFileExtension(file.getOriginalFilename());
+        Path filePath = fileManagerService.getFilePathInUploadTempFolder(fileName + fileExtension);
+        // Copiar fichero a la carpeta temporal (temp/)
+        fileManagerService.uploadFileToPath(file, filePath);
+        // Cargar fichero al KeyStore. Se chequea el password
+        loadKeystore(filePath, filePassword);
+    }
+
+    @Override
+    public Path getConnectorKeystore(final long id,
+                                     final String keystoreName) throws ConnectorException {
         final Connector connector = connectorService.getConnector(id);
         final ConnectorLocalConfiguration localConfiguration = connector.getLocalConfiguration();
         if (localConfiguration != null) {
             return getKeystorePath(keystoreName, localConfiguration);
         }
-        final String errorMessage = "ERROR: No se encontró el Keystore deseado para el conector: "
-                + id;
+        final String errorMessage = "ERROR: No se encontró el Keystore deseado para el servicio: " + id;
         LOGGER.error(errorMessage);
         throw new ConnectorException(errorMessage);
     }
 
     @Override
-    public Path getGlobalConfigurationKeystore(final String type, final String keystoreName)
-            throws ConnectorException {
-        final ConnectorGlobalConfiguration globalConfiguration = connectorService
-                .getGlobalConfigurationByType(type);
+    public Path getGlobalConfigurationKeystore(final String type,
+                                               final String keystoreName) throws ConnectorException {
+        final ConnectorGlobalConfiguration globalConfiguration = connectorService.getGlobalConfigurationByType(type);
         if (globalConfiguration != null) {
             return getKeystorePath(keystoreName, globalConfiguration);
         }
-        final String errorMessage = "ERROR: No se encontró el Keystore " + keystoreName
-                + " para el ambiente " + type;
+        final String errorMessage = "ERROR: No se encontró el Keystore " + keystoreName + " para el ambiente " + type;
         LOGGER.error(errorMessage);
         throw new ConnectorException(errorMessage);
     }
 
-    private Path getKeystorePath(final String keystoreName, final Configuration configuration)
+    private Path getKeystorePath(final String keystoreName,
+                                 final Configuration configuration)
             throws ConnectorException {
         switch (keystoreName) {
-        case KEYSTORE_ORG_FILENAME:
-            return Paths.get(configuration.getDirKeystoreOrg());
-        case KEYSTORE_SSL_FILENAME:
-            return Paths.get(configuration.getDirKeystoreSsl());
-        case KEYSTORE_TRUSTSTORE_FILENAME:
-            return Paths.get(configuration.getDirKeystore());
-        default:
-            break;
+            case KEYSTORE_ORG_FILENAME:
+                return Paths.get(configuration.getDirKeystoreOrg());
+            case KEYSTORE_SSL_FILENAME:
+                return Paths.get(configuration.getDirKeystoreSsl());
+            case KEYSTORE_TRUSTSTORE_FILENAME:
+                return Paths.get(configuration.getDirKeystore());
+            default:
+                break;
         }
         throw new ConnectorException("No se encontró un Keystore con el nombre " + keystoreName);
     }
 
     @Override
-    public void setGlobalConfigurationKeystoresFilePaths(
-            final ConnectorGlobalConfiguration globalConfiguration) throws ConnectorException {
+    public void setGlobalConfigurationKeystoresFilePaths(final ConnectorGlobalConfiguration globalConfiguration,
+                                                         MultipartFile keystoreOrgFile,
+                                                         MultipartFile keystoreSSLFile,
+                                                         MultipartFile keystoreTruststoreFile) throws ConnectorException {
         final String globalConfigurationDirectoryPath;
         try {
-            globalConfigurationDirectoryPath = fileManagerService
-                    .getGlobalConfigurationDirectory(globalConfiguration.getType());
+            globalConfigurationDirectoryPath = fileManagerService.getGlobalConfigurationDirectory(globalConfiguration.getType());
         } catch (final IOException e) {
-            final String errorMessage = "ERROR: No se pudo obtener la carpeta de Configuración Global para el ambiente "
-                    + globalConfiguration.getType();
+            final String errorMessage = "ERROR: No se pudo obtener la carpeta de Configuración Global para el ambiente " + globalConfiguration.getType();
             LOGGER.error(errorMessage, e);
             throw new ConnectorException(errorMessage, e);
         }
-        globalConfiguration
-                .setDirKeystore(globalConfigurationDirectoryPath + KEYSTORE_TRUSTSTORE_FILENAME);
-        globalConfiguration
-                .setDirKeystoreOrg(globalConfigurationDirectoryPath + KEYSTORE_ORG_FILENAME);
-        globalConfiguration
-                .setDirKeystoreSsl(globalConfigurationDirectoryPath + KEYSTORE_SSL_FILENAME);
+
+        ConnectorGlobalConfiguration currentGlobalConfiguration = new ConnectorGlobalConfiguration();
+        try {
+            currentGlobalConfiguration = connectorService.getGlobalConfigurationByType(globalConfiguration.getType());
+        } catch (NoSuchElementException e) {
+            LOGGER.info("No existe ninguna configuración global para el ambiente seleccionado. Se crea una por defecto.");
+        }
+
+        String filePath;
+        String fileExtension;
+        if (keystoreTruststoreFile.getOriginalFilename().isEmpty()) {
+            // if no file was uploaded, use current file path
+            filePath = currentGlobalConfiguration.getDirKeystore();
+        } else {
+            // update the file name keeping the extension
+            fileExtension = fileManagerService.getFileExtension(keystoreTruststoreFile.getOriginalFilename());
+            filePath = globalConfigurationDirectoryPath + KEYSTORE_TRUSTSTORE_FILENAME + fileExtension;
+        }
+        globalConfiguration.setDirKeystore(filePath);
+
+        if (keystoreOrgFile.getOriginalFilename().isEmpty()) {
+            // if no file was uploaded, use current file path
+            filePath = currentGlobalConfiguration.getDirKeystoreOrg();
+        } else {
+            // update the file name keeping the extension
+            fileExtension = fileManagerService.getFileExtension(keystoreOrgFile.getOriginalFilename());
+            filePath = globalConfigurationDirectoryPath + KEYSTORE_ORG_FILENAME + fileExtension;
+        }
+        globalConfiguration.setDirKeystoreOrg(filePath);
+
+        if (keystoreSSLFile.getOriginalFilename().isEmpty()) {
+            // if no file was uploaded, use current file path
+            filePath = currentGlobalConfiguration.getDirKeystoreSsl();
+        } else {
+            // update the file name keeping the extension
+            fileExtension = fileManagerService.getFileExtension(keystoreSSLFile.getOriginalFilename());
+            filePath = globalConfigurationDirectoryPath + KEYSTORE_SSL_FILENAME + fileExtension;
+        }
+        globalConfiguration.setDirKeystoreSsl(filePath);
     }
 
     @Override
-    public void setKeystoresFilePaths(final Connector connector) {
+    public void setKeystoresFilePaths(final Connector connector,
+                                      MultipartFile keystoreOrgFile,
+                                      MultipartFile keystoreSSLFile,
+                                      MultipartFile keystoreTruststoreFile) throws ConnectorException {
         if (connector.isEnableLocalConfiguration()) {
-            final ConnectorLocalConfiguration localConfiguration = connector
-                    .getLocalConfiguration();
-            final String connectorDirectoryPath = fileManagerService
-                    .getConnectorDirectory(String.valueOf(connector.getId()));
-            localConfiguration
-                    .setDirKeystore(connectorDirectoryPath + KEYSTORE_TRUSTSTORE_FILENAME);
-            localConfiguration.setDirKeystoreOrg(connectorDirectoryPath + KEYSTORE_ORG_FILENAME);
-            localConfiguration.setDirKeystoreSsl(connectorDirectoryPath + KEYSTORE_SSL_FILENAME);
+            final ConnectorLocalConfiguration localConfiguration = connector.getLocalConfiguration();
+            final String connectorDirectoryPath = fileManagerService.getConnectorDirectory(String.valueOf(connector.getId()));
+
+            String filePath;
+            String fileExtension;
+            if (keystoreTruststoreFile == null) {
+                // on import
+                filePath = connectorDirectoryPath + KEYSTORE_TRUSTSTORE_FILENAME;
+            } else if (keystoreTruststoreFile.getOriginalFilename().isEmpty()) {
+                // if no file was uploaded, use current file path
+                filePath = localConfiguration.getDirKeystore();
+            } else {
+                // update the file name keeping the extension
+                fileExtension = fileManagerService.getFileExtension(keystoreTruststoreFile.getOriginalFilename());
+                filePath = connectorDirectoryPath + KEYSTORE_TRUSTSTORE_FILENAME + fileExtension;
+            }
+            localConfiguration.setDirKeystore(filePath);
+
+            if (keystoreOrgFile == null) {
+                // on import
+                filePath = connectorDirectoryPath + KEYSTORE_ORG_FILENAME;
+            } else if (keystoreOrgFile.getOriginalFilename().isEmpty()) {
+                // if no file was uploaded, use current file path
+                filePath = localConfiguration.getDirKeystoreOrg();
+            } else {
+                // update the file name keeping the extension
+                fileExtension = fileManagerService.getFileExtension(keystoreOrgFile.getOriginalFilename());
+                filePath = connectorDirectoryPath + KEYSTORE_ORG_FILENAME + fileExtension;
+            }
+            localConfiguration.setDirKeystoreOrg(filePath);
+
+            if (keystoreSSLFile == null) {
+                // on import
+                filePath = connectorDirectoryPath + KEYSTORE_SSL_FILENAME;
+            } else if (keystoreSSLFile.getOriginalFilename().isEmpty()) {
+                // if no file was uploaded, use current file path
+                filePath = localConfiguration.getDirKeystoreSsl();
+            } else {
+                // update the file name keeping the extension
+                fileExtension = fileManagerService.getFileExtension(keystoreSSLFile.getOriginalFilename());
+                filePath = connectorDirectoryPath + KEYSTORE_SSL_FILENAME + fileExtension;
+            }
+            localConfiguration.setDirKeystoreSsl(filePath);
+
             connector.setLocalConfiguration(localConfiguration);
         }
     }
 
     @Override
-    public void uploadKeystoresConnector(final Connector connector,
-            final MultipartFile keystoreOrgFile, final MultipartFile keystoreSSLFile,
-            final MultipartFile keystoreTrustoreFile) throws ConnectorException {
-        final ConnectorLocalConfiguration localConfiguration = connector.getLocalConfiguration();
+    public void uploadKeystoresByConfiguration(final Configuration configuration,
+                                               final MultipartFile keystoreOrgFile,
+                                               final MultipartFile keystoreSSLFile,
+                                               final MultipartFile keystoreTruststoreFile) throws ConnectorException {
+        Path newFilePath;
 
-        uploadKeystore(keystoreTrustoreFile, Paths.get(localConfiguration.getDirKeystore()));
-        uploadKeystoreAndCheckExpirationDate(keystoreOrgFile, localConfiguration.getAliasKeystore(),
-                Paths.get(localConfiguration.getDirKeystoreOrg()),
-                localConfiguration.getPasswordKeystoreOrg());
-        uploadKeystoreAndCheckExpirationDateSSL(keystoreSSLFile,
-                Paths.get(localConfiguration.getDirKeystoreSsl()),
-                localConfiguration.getPasswordKeystoreSsl());
+        // Truststore SSL
+        if (!keystoreTruststoreFile.getOriginalFilename().isEmpty()) {
+            newFilePath = Paths.get(configuration.getDirKeystore());
+            // Check extension
+            uploadKeystore(keystoreTruststoreFile, newFilePath);
+            // Check password and load into KeyStore
+            loadKeystore(newFilePath, configuration.getPasswordKeystore());
+        }
+
+        // Keystore Org
+        if (!keystoreOrgFile.getOriginalFilename().isEmpty()) {
+            newFilePath = Paths.get(configuration.getDirKeystoreOrg());
+            // Check extension
+            uploadKeystore(keystoreOrgFile, newFilePath);
+            // Check password and load into KeyStore
+            loadKeystore(newFilePath, configuration.getPasswordKeystoreOrg());
+        }
+
+        // Keystore SSL
+        if (!keystoreSSLFile.getOriginalFilename().isEmpty()) {
+            newFilePath = Paths.get(configuration.getDirKeystoreSsl());
+            // Check extension
+            uploadKeystore(keystoreSSLFile, newFilePath);
+            // Check password and load into KeyStore
+            loadKeystore(newFilePath, configuration.getPasswordKeystoreSsl());
+        }
     }
 
-    @Override
-    public void uploadKeystoresGlobalConfiguration(
-            final ConnectorGlobalConfiguration globalConfiguration,
-            final MultipartFile keystoreOrgFile, final MultipartFile keystoreSSLFile,
-            final MultipartFile keystoreTrustoreFile) throws ConnectorException {
-
-        uploadKeystore(keystoreTrustoreFile, Paths.get(globalConfiguration.getDirKeystore()));
-        uploadKeystoreAndCheckExpirationDate(keystoreOrgFile,
-                globalConfiguration.getAliasKeystore(),
-                Paths.get(globalConfiguration.getDirKeystoreOrg()),
-                globalConfiguration.getPasswordKeystoreOrg());
-        uploadKeystoreAndCheckExpirationDateSSL(keystoreSSLFile,
-                Paths.get(globalConfiguration.getDirKeystoreSsl()),
-                globalConfiguration.getPasswordKeystoreSsl());
-    }
-
-    private void uploadKeystoreAndCheckExpirationDate(final MultipartFile keystoreFile,
-            final String aliasKeystore, final Path newFilePath, final String keystorePassword)
-            throws ConnectorException {
-        final Path keystorePath = uploadKeystore(keystoreFile, newFilePath);
-        checkCertificateExpirationDate(keystorePath, aliasKeystore, newFilePath, keystorePassword);
-    }
-
-    private void uploadKeystoreAndCheckExpirationDateSSL(final MultipartFile keystoreFile,
-            final Path newFilePath, final String keystorePassword) throws ConnectorException {
-        final Path keystorePath = uploadKeystore(keystoreFile, newFilePath);
-        checkCertificateExpirationDate(keystorePath, newFilePath, keystorePassword);
-    }
-
-    private Path uploadKeystore(final MultipartFile keystoreFile, final Path newFilePath)
-            throws ConnectorException {
-        if (!keystoreFile.isEmpty() && !"".equals(keystoreFile.getOriginalFilename())) {
-            final String fileExtension = fileManagerService
-                    .getFileExtension(keystoreFile.getOriginalFilename());
-
-            if (!(KEYSTORE.equals(fileExtension) || TRUSTSTORE.equals(fileExtension))) {
-                final String errorMessage = "ERROR: El archivo "
-                        + keystoreFile.getOriginalFilename() + " tiene extensión " + fileExtension
-                        + ". Debe tener extensión: " + KEYSTORE + " o " + TRUSTSTORE;
-                LOGGER.error(errorMessage);
-                throw new ConnectorException(errorMessage);
-            } else {
-                return fileManagerService.uploadFileToPath(keystoreFile, newFilePath);
-            }
+    /*
+    * Check extension and copy file to local filesystem
+    * */
+    private Path uploadKeystore(final MultipartFile file,
+                                final Path path) throws ConnectorException {
+        if (!file.isEmpty() && !file.getOriginalFilename().isEmpty()) {
+            checkFileExtension(file);
+            return fileManagerService.uploadFileToPath(file, path);
         } else {
-            if (fileManagerService.existsFile(newFilePath)) {
-                return newFilePath;
+            if (fileManagerService.existsFile(path)) {
+                return path;
             } else {
                 final String errorMessage = "ERROR: Debe subir un archivo de Keystore";
                 LOGGER.error(errorMessage);
@@ -320,26 +349,40 @@ public class DefaultKeystoreManagerService implements KeystoreManagerService {
         }
     }
 
-    private String getKeystorePass(final String keystoreName, final Configuration configuration)
-            throws ConnectorException {
+    public void checkFileExtension(final MultipartFile file) throws ConnectorException {
+        final String fileExtension = fileManagerService.getFileExtension(file.getOriginalFilename());
+        if (!ALLOWED_CERTIFICATE_EXTENSION.contains(fileExtension)) {
+            List<String> extensions = ALLOWED_CERTIFICATE_EXTENSION.stream().map(e -> "[" + e + "]").collect(Collectors.toList());
+            String errorMessage = String.format("ERROR: El archivo %s tiene extensión %s. \n Debe tener una de las siguientes extensiones: %s",
+                    file.getOriginalFilename(),
+                    fileExtension,
+                    String.join(", ", extensions));
+            LOGGER.error(errorMessage);
+            throw new ConnectorException(errorMessage);
+        }
+    }
+
+    private String getKeystorePass(final String keystoreName,
+                                   final Configuration configuration) throws ConnectorException {
         switch (keystoreName) {
-        case KEYSTORE_ORG_FILENAME:
-            return configuration.getPasswordKeystoreOrg();
-        case KEYSTORE_SSL_FILENAME:
-            return configuration.getPasswordKeystoreSsl();
-        case KEYSTORE_TRUSTSTORE_FILENAME:
-            return configuration.getPasswordKeystore();
-        default:
-            break;
+            case KEYSTORE_ORG_FILENAME:
+                return configuration.getPasswordKeystoreOrg();
+            case KEYSTORE_SSL_FILENAME:
+                return configuration.getPasswordKeystoreSsl();
+            case KEYSTORE_TRUSTSTORE_FILENAME:
+                return configuration.getPasswordKeystore();
+            default:
+                break;
         }
         throw new ConnectorException("No se encontró un Keystore con el nombre " + keystoreName);
     }
 
     @Override
     public KeystoreModalData getConnectorKeystoreData(final Connector connector,
-            final String keystoreName, final String nombreModal) throws ConnectorException {
+                                                      final String keystoreName,
+                                                      final String nombreModal) throws ConnectorException {
 
-        // Determino que configuracion esta utilizando el conector y cargo el
+        // Determino que configuracion esta utilizando el servicio y cargo el
         // filepath asociado
         final Configuration config;
         final Path filePath;
@@ -355,18 +398,23 @@ public class DefaultKeystoreManagerService implements KeystoreManagerService {
         // Cargo la keystore
         KeyStore ks = null;
         try {
-            ks = loadKeystore(filePath, filePath, getKeystorePass(keystoreName, config));
+            ks = loadKeystore(filePath, getKeystorePass(keystoreName, config));
         } catch (final ConnectorException exception) {
+
+            // ===== CHECK THIS ========
             /*
              * En caso que no se pueda leer el keystore, no se carga la
-             * informaci�n del keystore. Por ejemplo, al importar un conector
-             * con configuraci�n local, el archivo xml no tiene la contrase�a,
+             * información del keystore. Por ejemplo, al importar un servicio
+             * con configuración local, el archivo xml no tiene la contrasena,
              * por lo que no se puede levantar el keystore
              */
             if (!(exception.getCause() instanceof IOException)) {
                 throw exception;
             }
+            // ==========================
         }
+
+        String stringExpirationDateKeystore = "", stringExpirationDateKeystoreSSL = "", stringExpirationDateTruststore = "";
 
         // Comienzo a armar el objeto data para mostrar en el modal
         final KeystoreModalData ksmd = new KeystoreModalData();
@@ -379,28 +427,75 @@ public class DefaultKeystoreManagerService implements KeystoreManagerService {
             } else {
                 aliases = ks.aliases();
             }
-            while (aliases.hasMoreElements()) {
 
+            // Obtener las alias
+            String aliasKeystore = connector.getLocalConfiguration().getAliasKeystore();
+            String aliasKeystoreSSL = connector.getLocalConfiguration().getAliasKeystoreSSL();
+            String aliasTruststore;
+            if (connector.getType().equals(EnvironmentType.TESTING.getName())) {
+                aliasTruststore = environment.getProperty("connector.truststore.alias.test");
+            } else {
+                aliasTruststore = environment.getProperty("connector.truststore.alias.prod");
+            }
+
+            while (aliases.hasMoreElements()) {
                 // Comienzo a armar el objeto data del certificado para mostrar
                 // en el modal.
                 final Certificado cert = new Certificado();
 
                 final String alias = aliases.nextElement();
-                final X509Certificate castedCertificate = (X509Certificate) ks
+                final X509Certificate castedCertificate = (X509Certificate) Objects.requireNonNull(ks)
                         .getCertificate(alias);
 
                 cert.setAlias(alias);
                 cert.setFechaCreacion(new SimpleDateFormat("dd-MM-yyyy")
                         .format(castedCertificate.getNotBefore()));
-                cert.setFechaVencimiento(
-                        new SimpleDateFormat("dd-MM-yyyy").format(castedCertificate.getNotAfter()));
+                String stringExpirationDate = new SimpleDateFormat("dd-MM-yyyy").format(castedCertificate.getNotAfter());
+                cert.setFechaVencimiento(stringExpirationDate);
                 cert.setProveedor(castedCertificate.getIssuerDN().getName());
                 cert.setTipo(castedCertificate.getType());
 
                 ksmd.getCertificados().add(cert);
+
+                if (keystoreName.equals(KEYSTORE_ORG_FILENAME) && alias.equals(aliasKeystore)) {
+                    stringExpirationDateKeystore = stringExpirationDate;
+                } else if (keystoreName.equals(KEYSTORE_SSL_FILENAME) && alias.equals(aliasKeystoreSSL)) {
+                    stringExpirationDateKeystoreSSL = stringExpirationDate;
+                } else if (keystoreName.equals(KEYSTORE_TRUSTSTORE_FILENAME) && alias.equals(aliasTruststore)) {
+                    stringExpirationDateTruststore = stringExpirationDate;
+                }
             }
-            ksmd.setNombre(keystoreName.substring(0, keystoreName.indexOf(".")));
+
+            ksmd.setNombre(keystoreName);
             ksmd.setNombreModal(nombreModal);
+
+            // Verificar si se encontro fecha de expiracion asociada al alias
+            if (keystoreName.equals(KEYSTORE_ORG_FILENAME)) {
+                if (stringExpirationDateKeystore.isEmpty()) {
+                    connector.setExpDateKeystoreOrg("Sin certificado (" + aliasKeystore + ")");
+                } else {
+                    connector.setExpDateKeystoreOrg(stringExpirationDateKeystore);
+                }
+            }
+
+            if (keystoreName.equals(KEYSTORE_SSL_FILENAME)) {
+                if (stringExpirationDateKeystoreSSL.isEmpty()) {
+                    connector.setExpDateKeystoreSSL("Sin certificado (" + aliasKeystoreSSL + ")");
+                } else {
+                    connector.setExpDateKeystoreSSL(stringExpirationDateKeystoreSSL);
+                }
+            }
+
+            if (keystoreName.equals(KEYSTORE_TRUSTSTORE_FILENAME)) {
+                if (aliasTruststore == null) {
+                    connector.setExpDateKeystoreTruststore("Alias no definida");
+                } else if (stringExpirationDateTruststore.isEmpty()) {
+                    connector.setExpDateKeystoreTruststore("Sin certificado (" + aliasTruststore + ")");
+                } else {
+                    connector.setExpDateKeystoreTruststore(stringExpirationDateTruststore + " (" + aliasTruststore + ")");
+                }
+            }
+
             return ksmd;
         } catch (final KeyStoreException exception) {
             throw new ConnectorException("Error al intentar leer los aliases del keystore",
@@ -409,3 +504,4 @@ public class DefaultKeystoreManagerService implements KeystoreManagerService {
     }
 
 }
+

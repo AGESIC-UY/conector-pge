@@ -28,6 +28,7 @@
             <list>
                 <value>classpath:/config.properties</value>
                 <value>file:${connector.integration.configLocation}/connector.properties</value>
+                <value>file:${connector.integration.configLocation}/pge-client.properties</value>
             </list>
         </property>
     </bean>

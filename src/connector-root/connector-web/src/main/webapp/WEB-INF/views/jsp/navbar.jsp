@@ -1,4 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:choose>
+    <c:when test="${globalCertificateStatus == 'EXPIRED'}">
+        <c:set var="iconSettings" value="icon-settings-expired.svg"/>
+    </c:when>
+    <c:when test="${globalCertificateStatus == 'EXPIRE_SOON'}">
+        <c:set var="iconSettings" value="icon-settings-warn.svg"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="iconSettings" value="icon-settings.svg"/>
+    </c:otherwise>
+</c:choose>
+
+<header></header>
+
 <nav class="navbar">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,13 +36,14 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/globalConfiguration?type=Testing"
                        title="Configuraci&oacute;n Global">
-                        <img src="${pageContext.request.contextPath}/resources/images/icon-settings.svg">
+                        <img src="${pageContext.request.contextPath}/resources/images/${iconSettings}"
+                             alt="Global config">
                     </a>
                 </li>
                 <li>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn-help" data-toggle="modal" data-target="#myModal">
-                        <img src="${pageContext.request.contextPath}/resources/images/icon-help.svg">
+                        <img src="${pageContext.request.contextPath}/resources/images/icon-help.svg" alt="Help">
                         <span class="rich-tool-tip" style="z-index: 99; visibility: visible; display: none;">
                       <span>Ayuda</span>
                       <span style="display:none"></span>
@@ -35,7 +51,7 @@
                     </button>
                 </li>
                 <li class="user-avatar">
-                    <img src="${pageContext.request.contextPath}/resources/images/icon-user.svg">
+                    <img src="${pageContext.request.contextPath}/resources/images/icon-user.svg" alt="User icon">
                     <span>conector</span>
                 </li>
                 <li>
@@ -44,7 +60,7 @@
 
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <a href="javascript:document.getElementById('logout').submit()">
-                            <img src="${pageContext.request.contextPath}/resources/images/icon-logout.svg">
+                            <img src="${pageContext.request.contextPath}/resources/images/icon-logout.svg" alt="Logout">
                             <span class="rich-tool-tip" style="z-index: 99; visibility: visible; display: none;">
                                 <span>(Salir)</span>
                                 <span style="display:none"></span>
@@ -59,14 +75,14 @@
 
 <%@include file="help.jsp" %>
 
-
-<div id="info" class="alert alert-${css} alert-dismissible" role="alert" <c:if test="${empty msg}">style="display: none;"</c:if>>
+<div id="info" class="alert alert-${css} alert-dismissible" role="alert"
+     <c:if test="${empty msg}">style="display: none;"</c:if>>
     <button type="button" class="close" data-hide="alert" onclick="hideAlert();"
             aria-label="Close">
         <span aria-hidden="true">x</span>
     </button>
-    <c:forEach items="${msg}" var="m" >
-        <strong>${m}</strong></br>
+    <c:forEach items="${msg}" var="m">
+        <strong>${m}</strong><br/>
     </c:forEach>
 </div>
 

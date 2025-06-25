@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="head.jsp" %>
 
-<html>
 <body>
 <section class="main">
     <header></header>
@@ -29,7 +28,8 @@
                         <td><input type='password' name='password'/></td>
                     </tr>
                     <tr>
-                        <td colspan='2'><input class="pull-right btn-input" name="submit" type="submit" value="ENTRAR"/></td>
+                        <td colspan='2'><input class="pull-right btn-input" name="submit" type="submit" value="ENTRAR"/>
+                        </td>
                     </tr>
                 </table>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

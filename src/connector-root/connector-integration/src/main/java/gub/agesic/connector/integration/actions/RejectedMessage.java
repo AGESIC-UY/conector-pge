@@ -18,7 +18,7 @@ public class RejectedMessage {
                     .setHeader(HttpHeaders.STATUS_CODE, HttpStatus.BAD_REQUEST)
                     .build();
         } catch (Exception e){
-            logger.error(e.getMessage());
+            logger.error(e.getMessage(), e);
         }
         return null;
     }

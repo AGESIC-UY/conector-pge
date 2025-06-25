@@ -4,6 +4,9 @@ import gub.agesic.connector.dataaccess.entity.Connector;
 import gub.agesic.connector.dataaccess.entity.ConnectorLocalConfiguration;
 import gub.agesic.connector.dataaccess.entity.RoleOperation;
 import gub.agesic.connector.dataaccess.entity.UserCredentials;
+import gub.agesic.connector.dataaccess.enums.EnvironmentType;
+import gub.agesic.connector.enums.SamlVersion;
+import gub.agesic.connector.enums.SoapVersion;
 import gub.agesic.connector.exceptions.ConnectorException;
 import gub.agesic.connector.services.dbaccess.ConnectorService;
 import gub.agesic.connector.services.filemanager.FileManagerService;
@@ -41,38 +44,59 @@ import static gub.agesic.connector.services.keystoremanager.DefaultKeystoreManag
 
 @Service
 public class DefaultConnectorParserService implements ConnectorParserService {
-    private static final String CONNECTOR_NAME = "/connector/name";
-    private static final String CONNECTOR_DESCRIPTION = "/connector/description";
-    private static final String CONNECTOR_TYPE = "/connector/type";
-    private static final String CONNECTOR_PATH = "/connector/path";
-    private static final String CONNECTOR_URL = "/connector/url";
-    private static final String CONNECTOR_URL_V2 = "/connector/urlV2";
-    private static final String CONNECTOR_WSDL = "/connector/wsdl";
-    private static final String CONNECTOR_KEYSTORE_ORG = "/connector/keystoreOrg";
-    private static final String CONNECTOR_KEYSTORE_SSL = "/connector/keystoreSsl";
-    private static final String CONNECTOR_KEYSTORE = "/connector/keystore";
-    private static final String CONNECTOR_ALIAS_KEYSTORE_ORG = "/connector/aliasKeystore";
-    private static final String CONNECTOR_PASS_KEYSTORE_ORG = "/connector/passwordKeystoreOrg";
-    private static final String CONNECTOR_PASS_KEYSTORE_SSL = "/connector/passwordKeystoreSSL";
-    private static final String CONNECTOR_PASS_KEYSTORE = "/connector/passwordKeystore";
-    private static final String CONNECTOR_WSA_TO = "/connector/wsaTo";
-    private static final String CONNECTOR_USERNAME = "/connector/username";
-    private static final String CONNECTOR_ISSUER = "/connector/issuer";
-    private static final String CONNECTOR_ROLE_OPERATIONS = "/connector/role_operation";
-    private static final String CONNECTOR_TAG = "/connector/tag";
-    private static final String CONNECTOR_ENABLE_CACHE_TOKENS = "/connector/enableCacheTokens";
-    private static final String CONNECTOR_ENABLE_LOCAL_CONF = "/connector/enableLocalConf";
-    private static final String CONNECTOR_ENABLE_USER_TOKEN = "/connector/enableUserToken";
-    private static final String CONNECTOR_ENABLE_SSL = "/connector/enableSSL";
-    private static final String CONNECTOR_ENABLE_STS_LOCAL = "/connector/enableSTSLocal";
-    private static final String CONNECTOR_USERNAME_TOKEN_NAME = "/connector/userNameTokenName";
-    private static final String CONNECTOR_MULTIPLE_VERSION = "/connector/multipleVersion";
-    private static final String CONNECTOR_VERSION = "/connector/version";
-    private static final String EXPORTED_CONECTOR_FILE_PREFIX = "Conector_";
+    private static final String ROOT_PATH = "/connector/";
+    private static final String CONNECTOR_ELEMENT_NAME = "connector";
+
+    private static final String CONNECTOR_NAME = "name";
+    private static final String CONNECTOR_DESCRIPTION = "description";
+    private static final String CONNECTOR_TYPE = "type";
+    private static final String CONNECTOR_SAML_VERSION = "samlVersion";
+    private static final String CONNECTOR_PATH = "path";
+    private static final String CONNECTOR_URL = "url";
+    private static final String CONNECTOR_URL_V2 = "urlV2";
+    private static final String CONNECTOR_WSDL = "wsdl";
+    private static final String CONNECTOR_KEYSTORE_ORG = "keystoreOrg";
+    private static final String CONNECTOR_KEYSTORE_SSL = "keystoreSsl";
+    private static final String CONNECTOR_KEYSTORE = "keystore";
+    private static final String CONNECTOR_ALIAS_KEYSTORE_ORG = "aliasKeystore";
+    private static final String CONNECTOR_ALIAS_KEYSTORE_SSL = "aliasKeystoreSSL";
+    private static final String CONNECTOR_PASS_KEYSTORE_ORG = "passwordKeystoreOrg";
+    private static final String CONNECTOR_PASS_KEYSTORE_SSL = "passwordKeystoreSSL";
+    private static final String CONNECTOR_PASS_KEYSTORE = "passwordKeystore";
+    private static final String CONNECTOR_WSA_TO = "wsaTo";
+    private static final String CONNECTOR_USERNAME = "username";
+    private static final String CONNECTOR_ISSUER = "issuer";
+    private static final String CONNECTOR_ROLE_OPERATIONS = "role_operation";
+
+    private static final String CONNECTOR_ROLE = "role";
+    private static final String CONNECTOR_OPERATION = "operation";
+    private static final String CONNECTOR_OPERATION_FROM_WSDL = "operationFromWSDL";
+    private static final String CONNECTOR_WSA_ACTION = "wsaAction";
+    private static final String CONNECTOR_SOAP_ACTION = "soapAction";
+    private static final String CONNECTOR_SOAP_VERSION = "soapVersion";
+
+    private static final String CONNECTOR_TAG = "tag";
+    private static final String CONNECTOR_ENABLE_CACHE_TOKENS = "enableCacheTokens";
+    private static final String CONNECTOR_ENABLE_LOCAL_CONF = "enableLocalConf";
+    private static final String CONNECTOR_ENABLE_USER_TOKEN = "enableUserToken";
+    private static final String CONNECTOR_ENABLE_SSL = "enableSSL";
+    private static final String CONNECTOR_ENABLE_STS_LOCAL = "enableSTSLocal";
+    private static final String CONNECTOR_ENABLE_LOCAL_POLICY_NAME = "enableLocalPolicyName";
+    private static final String CONNECTOR_POLICY_NAME = "policyName";
+    private static final String CONNECTOR_ENABLE_LOCAL_SERVICE_TIMEOUT = "enableLocalServiceTimeOut";
+    private static final String CONNECTOR_LOCAL_SERVICE_TIMEOUT = "localServiceTimeOut";
+    private static final String CONNECTOR_ENABLE_LOCAL_EXPIRATION_NOTIFICATION = "enableLocalExpirationNotification";
+    private static final String CONNECTOR_LOCAL_EXPIRATION_NOTICE_DAYS = "localExpirationNoticeDays";
+    private static final String CONNECTOR_USERNAME_TOKEN_NAME = "userNameTokenName";
+    private static final String CONNECTOR_MULTIPLE_VERSION = "multipleVersion";
+    private static final String CONNECTOR_VERSION = "version";
+
+    private static final String EXPORTED_CONNECTOR_FILE_PREFIX = "Servicio_";
     private static final String PGE_OLD_VERSION = "2.0";
+    private static final String PGE_VERSION = "4.0";
     private static final String WSDL_ZIP = "WSDL.zip";
-    private static final Logger LOGGER = LoggerFactory
-            .getLogger(DefaultConnectorParserService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultConnectorParserService.class);
+
     private final FileManagerService fileManagerService;
     private final XPathParserService xPathParserService;
     private final ConnectorService connectorService;
@@ -94,7 +118,7 @@ public class DefaultConnectorParserService implements ConnectorParserService {
         final String connectorDirectory = fileManagerService
                 .getConnectorDirectory(connector.getId().toString());
         final Path pathOutput = Paths.get(
-                connectorDirectory + EXPORTED_CONECTOR_FILE_PREFIX + connector.getName() + XML);
+                connectorDirectory + EXPORTED_CONNECTOR_FILE_PREFIX + connector.getName() + XML);
         try {
 
             final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -102,22 +126,23 @@ public class DefaultConnectorParserService implements ConnectorParserService {
 
             // connector element
             final Document doc = docBuilder.newDocument();
-            final Element connectorElement = doc.createElement("connector");
+            final Element connectorElement = doc.createElement(CONNECTOR_ELEMENT_NAME);
             doc.appendChild(connectorElement);
 
-            addChildElement(doc, connectorElement, "name", connector.getName());
-            addChildElement(doc, connectorElement, "description", connector.getDescription());
-            addChildElement(doc, connectorElement, "type", connector.getType());
-            addChildElement(doc, connectorElement, "path", connector.getPath());
-            addChildElement(doc, connectorElement, "url", connector.getUrl());
+            addChildElement(doc, connectorElement, CONNECTOR_NAME, connector.getName());
+            addChildElement(doc, connectorElement, CONNECTOR_DESCRIPTION, connector.getDescription());
+            addChildElement(doc, connectorElement, CONNECTOR_TYPE, connector.getType());
+            addChildElement(doc, connectorElement, CONNECTOR_SAML_VERSION, connector.getSamlVersion());
+            addChildElement(doc, connectorElement, CONNECTOR_PATH, connector.getPath());
+            addChildElement(doc, connectorElement, CONNECTOR_URL, connector.getUrl());
 
             if (connector.isMultipleVersion()) {
-                addChildElement(doc, connectorElement, "urlV2", connector.getUrlV2());
+                addChildElement(doc, connectorElement, CONNECTOR_URL_V2, connector.getUrlV2());
             }
 
             // Export wsdl+xsd as a zip file
             final Path path = fileManagerService.getConnectorWSDL(connector.getId(), null);
-            addChildElement(doc, connectorElement, "wsdl", encodeFileToBase64(
+            addChildElement(doc, connectorElement, CONNECTOR_WSDL, encodeFileToBase64(
                     fileManagerService.getConnectorWSDLAndSchemasOnZipFile(path)));
             if (connector.isEnableLocalConfiguration()) {
                 final File keystore = new File(connector.getLocalConfiguration().getDirKeystore());
@@ -125,20 +150,22 @@ public class DefaultConnectorParserService implements ConnectorParserService {
                         connector.getLocalConfiguration().getDirKeystoreOrg());
                 final File keystoreSsl = new File(
                         connector.getLocalConfiguration().getDirKeystoreSsl());
-                addChildElement(doc, connectorElement, "keystoreOrg",
+                addChildElement(doc, connectorElement, CONNECTOR_KEYSTORE_ORG,
                         encodeFileToBase64(keystoreOrg));
-                addChildElement(doc, connectorElement, "keystore", encodeFileToBase64(keystore));
-                addChildElement(doc, connectorElement, "aliasKeystore",
+                addChildElement(doc, connectorElement, CONNECTOR_KEYSTORE, encodeFileToBase64(keystore));
+                addChildElement(doc, connectorElement, CONNECTOR_ALIAS_KEYSTORE_ORG,
                         connector.getLocalConfiguration().getAliasKeystore());
-                addChildElement(doc, connectorElement, "keystoreSsl",
+                addChildElement(doc, connectorElement, CONNECTOR_ALIAS_KEYSTORE_SSL,
+                        connector.getLocalConfiguration().getAliasKeystoreSSL());
+                addChildElement(doc, connectorElement, CONNECTOR_KEYSTORE_SSL,
                         encodeFileToBase64(keystoreSsl));
             }
-            addChildElement(doc, connectorElement, "wsaTo", connector.getWsaTo());
-            addChildElement(doc, connectorElement, "username", connector.getUsername());
-            addChildElement(doc, connectorElement, "issuer", connector.getIssuer());
+            addChildElement(doc, connectorElement, CONNECTOR_WSA_TO, connector.getWsaTo());
+            addChildElement(doc, connectorElement, CONNECTOR_USERNAME, connector.getUsername());
+            addChildElement(doc, connectorElement, CONNECTOR_ISSUER, connector.getIssuer());
 
             if (connector.getUserCredentials() != null) {
-                addChildElement(doc, connectorElement, "userNameTokenName",
+                addChildElement(doc, connectorElement, CONNECTOR_USERNAME_TOKEN_NAME,
                         connector.getUserCredentials().getUserNameTokenName());
             }
 
@@ -146,22 +173,46 @@ public class DefaultConnectorParserService implements ConnectorParserService {
             final List<RoleOperation> roleOperationsList = connector.getRoleOperations();
             addRoleOperationElements(roleOperationsList, doc, connectorElement);
 
-            addChildElement(doc, connectorElement, "enableCacheTokens",
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_CACHE_TOKENS,
                     String.valueOf(connector.isEnableCacheTokens()));
-            addChildElement(doc, connectorElement, "tag", connector.getTag());
-            addChildElement(doc, connectorElement, "enableLocalConf",
+            addChildElement(doc, connectorElement, CONNECTOR_TAG, connector.getTag());
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_LOCAL_CONF,
                     String.valueOf(connector.isEnableLocalConfiguration()));
-            addChildElement(doc, connectorElement, "enableUserToken",
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_USER_TOKEN,
                     String.valueOf(connector.isEnableUserCredentials()));
-            addChildElement(doc, connectorElement, "enableSSL",
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_SSL,
                     String.valueOf(connector.isEnableSsl()));
-            addChildElement(doc, connectorElement, "enableSTSLocal",
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_STS_LOCAL,
                     String.valueOf(connector.isEnableSTSLocal()));
 
-            addChildElement(doc, connectorElement, "multipleVersion",
+            // Policy Name
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_LOCAL_POLICY_NAME,
+                    String.valueOf(connector.isEnableLocalPolicyName()));
+            if (connector.isEnableLocalPolicyName()) {
+                addChildElement(doc, connectorElement, CONNECTOR_POLICY_NAME,
+                        String.valueOf(connector.getPolicyName()));
+            }
+
+            // Timeout
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_LOCAL_SERVICE_TIMEOUT,
+                    String.valueOf(connector.isEnableLocalServiceTimeOut()));
+            if (connector.isEnableLocalServiceTimeOut()) {
+                addChildElement(doc, connectorElement, CONNECTOR_LOCAL_SERVICE_TIMEOUT,
+                        String.valueOf(connector.getLocalServiceTimeOut()));
+            }
+
+            // Expiration Notification
+            addChildElement(doc, connectorElement, CONNECTOR_ENABLE_LOCAL_EXPIRATION_NOTIFICATION,
+                    String.valueOf(connector.isEnableLocalExpirationNotification()));
+            if (connector.isEnableLocalExpirationNotification()) {
+                addChildElement(doc, connectorElement, CONNECTOR_LOCAL_EXPIRATION_NOTICE_DAYS,
+                        String.valueOf(connector.getLocalExpirationNoticeDays()));
+            }
+
+            addChildElement(doc, connectorElement, CONNECTOR_MULTIPLE_VERSION,
                     String.valueOf(connector.isMultipleVersion()));
 
-            addChildElement(doc, connectorElement, "version", "3.0");
+            addChildElement(doc, connectorElement, CONNECTOR_VERSION, PGE_VERSION);
 
             // write the content into xml file
             final TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -175,11 +226,11 @@ public class DefaultConnectorParserService implements ConnectorParserService {
 
             return pathOutput;
         } catch (final ParserConfigurationException pce) {
-            final String errorMessage = "ERROR: No se pudo exportar el Conector. Hubo un error al crear un DocumentBuilder.";
+            final String errorMessage = "ERROR: No se pudo exportar el Servicio. Hubo un error al crear un DocumentBuilder.";
             LOGGER.error(errorMessage, pce);
             throw new ConnectorException(errorMessage, pce);
         } catch (final TransformerException tfe) {
-            final String errorMessage = "ERROR: No se pudo exportar el Conector. Hubo un error al transformar el Conector a un XML.";
+            final String errorMessage = "ERROR: No se pudo exportar el Servicio. Hubo un error al transformar el Servicio a un XML.";
             LOGGER.error(errorMessage, tfe);
             throw new ConnectorException(errorMessage, tfe);
         }
@@ -188,16 +239,16 @@ public class DefaultConnectorParserService implements ConnectorParserService {
     private void addRoleOperationElements(final List<RoleOperation> roleOperationsList,
                                           final Document doc, final Element connectorElement) {
         for (final RoleOperation roleOperation : roleOperationsList) {
-            final Element roleOperationsElement = doc.createElement("role_operation");
+            final Element roleOperationsElement = doc.createElement(CONNECTOR_ROLE_OPERATIONS);
             connectorElement.appendChild(roleOperationsElement);
-            addChildElement(doc, roleOperationsElement, "role", roleOperation.getRole());
-            addChildElement(doc, roleOperationsElement, "operation",
+            addChildElement(doc, roleOperationsElement, CONNECTOR_ROLE, roleOperation.getRole());
+            addChildElement(doc, roleOperationsElement, CONNECTOR_OPERATION,
                     roleOperation.getOperationInputName());
-            addChildElement(doc, roleOperationsElement, "operationFromWSDL",
+            addChildElement(doc, roleOperationsElement, CONNECTOR_OPERATION_FROM_WSDL,
                     roleOperation.getOperationFromWSDL());
-            addChildElement(doc, roleOperationsElement, "wsaAction", roleOperation.getWsaAction());
-            addChildElement(doc, roleOperationsElement, "soapAction", roleOperation.getWsaAction());
-            addChildElement(doc, roleOperationsElement, "soapVersion", roleOperation.getSoapVersion());
+            addChildElement(doc, roleOperationsElement, CONNECTOR_WSA_ACTION, roleOperation.getWsaAction());
+            addChildElement(doc, roleOperationsElement, CONNECTOR_SOAP_ACTION, roleOperation.getWsaAction());
+            addChildElement(doc, roleOperationsElement, CONNECTOR_SOAP_VERSION, roleOperation.getSoapVersion());
         }
     }
 
@@ -236,105 +287,142 @@ public class DefaultConnectorParserService implements ConnectorParserService {
         final Path connectorDirectory = fileManagerService
                 .createConnectorDirectory(connector.getId().toString());
 
-        final Node nameNode = xPathParserService.getXPathResultNode(CONNECTOR_NAME, nodeSource);
+        final Node nameNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_NAME, nodeSource);
         final String connectorName = xPathParserService.getStringNodeValue(nameNode);
         connector.setName(connectorName);
 
-        final Node pathNode = xPathParserService.getXPathResultNode(CONNECTOR_PATH, nodeSource);
+        final Node pathNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_PATH, nodeSource);
         final String connectorPath = xPathParserService.getStringNodeValue(pathNode);
         connector.setPath(connectorPath);
 
-        final Node typeNode = xPathParserService.getXPathResultNode(CONNECTOR_TYPE, nodeSource);
+        final Node typeNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_TYPE, nodeSource);
         final String connectorType = getConnectorType(typeNode);
         connector.setType(connectorType);
 
-        connectorService.checkConnectorPathAndTypeAvailabilityForType(connectorName, connectorPath,
-                connectorType);
+        connectorService.checkConnectorPathAndTypeAvailabilityForType(connectorName, connectorPath, connectorType);
 
-        final Node descriptionNode = xPathParserService.getXPathResultNode(CONNECTOR_DESCRIPTION,
+        final Node samlVersionNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_SAML_VERSION, nodeSource);
+        String samlVersion = samlVersionNode != null ? xPathParserService.getStringNodeValue(samlVersionNode) : SamlVersion.V1_1.getName();
+        connector.setSamlVersion(samlVersion);
+
+        final Node descriptionNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_DESCRIPTION,
                 nodeSource);
         connector.setDescription(xPathParserService.getStringNodeValue(descriptionNode));
 
-        final Node urlNode = xPathParserService.getXPathResultNode(CONNECTOR_URL, nodeSource);
+        final Node urlNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_URL, nodeSource);
         connector.setUrl(xPathParserService.getStringNodeValue(urlNode));
 
-        final Node wsaToNode = xPathParserService.getXPathResultNode(CONNECTOR_WSA_TO, nodeSource);
+        final Node wsaToNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_WSA_TO, nodeSource);
         connector.setWsaTo(xPathParserService.getStringNodeValue(wsaToNode));
 
-        final Node tagNode = xPathParserService.getXPathResultNode(CONNECTOR_TAG, nodeSource);
+        final Node tagNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_TAG, nodeSource);
         connector.setTag(xPathParserService.getStringNodeValue(tagNode));
 
-        final Node urlV2Node = xPathParserService.getXPathResultNode(CONNECTOR_URL_V2, nodeSource);
+        final Node urlV2Node = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_URL_V2, nodeSource);
         connector.setUrlV2(xPathParserService.getStringNodeValue(urlV2Node));
 
-        final Node usernameNode = xPathParserService.getXPathResultNode(CONNECTOR_USERNAME,
+        final Node usernameNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_USERNAME,
                 nodeSource);
         connector.setUsername(xPathParserService.getStringNodeValue(usernameNode));
 
-        final Node issuerNode = xPathParserService.getXPathResultNode(CONNECTOR_ISSUER, nodeSource);
+        final Node issuerNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_ISSUER, nodeSource);
         connector.setIssuer(xPathParserService.getStringNodeValue(issuerNode));
 
         final Node enableCacheTokensNode = xPathParserService
-                .getXPathResultNode(CONNECTOR_ENABLE_CACHE_TOKENS, nodeSource);
+                .getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_CACHE_TOKENS, nodeSource);
         connector.setEnableCacheTokens(
                 xPathParserService.getBooleanNodeValue(enableCacheTokensNode));
 
-        final Node enableSSL = xPathParserService.getXPathResultNode(CONNECTOR_ENABLE_SSL,
+        final Node enableSSL = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_SSL,
                 nodeSource);
         connector.setEnableSsl(xPathParserService.getBooleanNodeValue(enableSSL));
 
         final Node enableSTSLocal = xPathParserService
-                .getXPathResultNode(CONNECTOR_ENABLE_STS_LOCAL, nodeSource);
+                .getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_STS_LOCAL, nodeSource);
         connector.setEnableSTSLocal(xPathParserService.getBooleanNodeValue(enableSTSLocal));
 
+        final Node enableLocalPolicyName = xPathParserService
+                .getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_LOCAL_POLICY_NAME, nodeSource);
+        boolean isLocalPolicyNameEnabled = xPathParserService.getBooleanNodeValue(enableLocalPolicyName);
+        connector.setEnableLocalPolicyName(isLocalPolicyNameEnabled);
+
+        if (isLocalPolicyNameEnabled) {
+            final Node policyNameNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_POLICY_NAME, nodeSource);
+            connector.setPolicyName(xPathParserService.getStringNodeValue(policyNameNode));
+        }
+
+        final Node enableLocalServiceTimeOut = xPathParserService
+                .getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_LOCAL_SERVICE_TIMEOUT, nodeSource);
+        boolean isLocalServiceTimeOutEnabled = xPathParserService.getBooleanNodeValue(enableLocalServiceTimeOut);
+        connector.setEnableLocalServiceTimeOut(isLocalServiceTimeOutEnabled);
+
+        if (isLocalServiceTimeOutEnabled) {
+            final Node localServiceTimeOutNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_LOCAL_SERVICE_TIMEOUT, nodeSource);
+            connector.setLocalServiceTimeOut(xPathParserService.getIntegerNodeValue(localServiceTimeOutNode));
+        }
+
+        final Node enableLocalExpirationNotification = xPathParserService
+                .getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_LOCAL_EXPIRATION_NOTIFICATION, nodeSource);
+        boolean isLocalExpirationNotificationEnabled = xPathParserService.getBooleanNodeValue(enableLocalExpirationNotification);
+        connector.setEnableLocalExpirationNotification(isLocalExpirationNotificationEnabled);
+
+        if (isLocalExpirationNotificationEnabled) {
+            final Node localExpirationNoticeDaysNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_LOCAL_EXPIRATION_NOTICE_DAYS, nodeSource);
+            connector.setLocalExpirationNoticeDays(xPathParserService.getIntegerNodeValue(localExpirationNoticeDaysNode));
+        }
+
         final Node multipleVersion = xPathParserService
-                .getXPathResultNode(CONNECTOR_MULTIPLE_VERSION, nodeSource);
+                .getXPathResultNode(ROOT_PATH + CONNECTOR_MULTIPLE_VERSION, nodeSource);
         connector.setMultipleVersion(xPathParserService.getBooleanNodeValue(multipleVersion));
 
         // LOCAL CONFIGURATION
         final Node enableLocalConfNode = xPathParserService
-                .getXPathResultNode(CONNECTOR_ENABLE_LOCAL_CONF, nodeSource);
+                .getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_LOCAL_CONF, nodeSource);
         final boolean hasLocalConfig = xPathParserService.getBooleanNodeValue(enableLocalConfNode);
         connector.setEnableLocalConfiguration(hasLocalConfig);
         if (hasLocalConfig) {
             final ConnectorLocalConfiguration localConfiguration = new ConnectorLocalConfiguration();
 
             final Node aliasKeystoreOrgNode = xPathParserService
-                    .getXPathResultNode(CONNECTOR_ALIAS_KEYSTORE_ORG, nodeSource);
+                    .getXPathResultNode(ROOT_PATH + CONNECTOR_ALIAS_KEYSTORE_ORG, nodeSource);
             localConfiguration
                     .setAliasKeystore(xPathParserService.getStringNodeValue(aliasKeystoreOrgNode));
 
+            final Node aliasKeystoreSSLNode = xPathParserService
+                    .getXPathResultNode(ROOT_PATH + CONNECTOR_ALIAS_KEYSTORE_SSL, nodeSource);
+            localConfiguration
+                    .setAliasKeystore(xPathParserService.getStringNodeValue(aliasKeystoreSSLNode));
+
             final Node passwordKeystoreOrgNode = xPathParserService
-                    .getXPathResultNode(CONNECTOR_PASS_KEYSTORE_ORG, nodeSource);
+                    .getXPathResultNode(ROOT_PATH + CONNECTOR_PASS_KEYSTORE_ORG, nodeSource);
             localConfiguration.setPasswordKeystoreOrg(
                     xPathParserService.getStringNodeValue(passwordKeystoreOrgNode));
 
             final Node passwordKeystoreSslNode = xPathParserService
-                    .getXPathResultNode(CONNECTOR_PASS_KEYSTORE_SSL, nodeSource);
+                    .getXPathResultNode(ROOT_PATH + CONNECTOR_PASS_KEYSTORE_SSL, nodeSource);
             localConfiguration.setPasswordKeystoreSsl(
                     xPathParserService.getStringNodeValue(passwordKeystoreSslNode));
 
             final Node passwordKeystoreNode = xPathParserService
-                    .getXPathResultNode(CONNECTOR_PASS_KEYSTORE, nodeSource);
+                    .getXPathResultNode(ROOT_PATH + CONNECTOR_PASS_KEYSTORE, nodeSource);
             localConfiguration.setPasswordKeystore(
                     xPathParserService.getStringNodeValue(passwordKeystoreNode));
 
             connector.setLocalConfiguration(localConfiguration);
 
             importKeystores(nodeSource, connectorDirectory);
-            //}
             // END LOCAL CONFIGURATION
 
             // USER CREDENTIALS
             final Node enableUserTokenNode = xPathParserService
-                    .getXPathResultNode(CONNECTOR_ENABLE_USER_TOKEN, nodeSource);
+                    .getXPathResultNode(ROOT_PATH + CONNECTOR_ENABLE_USER_TOKEN, nodeSource);
             final boolean hasEnabledUserCredentials = xPathParserService
                     .getBooleanNodeValue(enableUserTokenNode);
             connector.setEnableUserCredentials(hasEnabledUserCredentials);
             if (hasEnabledUserCredentials) {
                 final UserCredentials userCredentials = new UserCredentials();
                 final Node usernameTokenNameNode = xPathParserService
-                        .getXPathResultNode(CONNECTOR_USERNAME_TOKEN_NAME, nodeSource);
+                        .getXPathResultNode(ROOT_PATH + CONNECTOR_USERNAME_TOKEN_NAME, nodeSource);
                 userCredentials.setUserNameTokenName(
                         xPathParserService.getStringNodeValue(usernameTokenNameNode));
                 connector.setUserCredentials(userCredentials);
@@ -344,16 +432,16 @@ public class DefaultConnectorParserService implements ConnectorParserService {
 
         // ROLE OPERATIONS
         final List<Node> roleOperationsNode = xPathParserService
-                .getXPathResultNodeList(CONNECTOR_ROLE_OPERATIONS, nodeSource);
+                .getXPathResultNodeList(ROOT_PATH + CONNECTOR_ROLE_OPERATIONS, nodeSource);
         final List<RoleOperation> roleOperationList = getRoleOperationsList(roleOperationsNode);
         connector.setRoleOperations(roleOperationList);
         // END ROLE OPERATIONS
 
         // WSDL
-        final Node wsdlNode = xPathParserService.getXPathResultNode(CONNECTOR_WSDL, nodeSource);
+        final Node wsdlNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_WSDL, nodeSource);
         final String stringNodeValue = xPathParserService.getStringNodeValue(wsdlNode);
         if (stringNodeValue.length() == 0) {
-            final String errorMessage = "ERROR: El Conector a importar no contiene un WSDL";
+            final String errorMessage = "ERROR: El Servicio a importar no contiene un WSDL";
             LOGGER.error(errorMessage);
             throw new ConnectorException(errorMessage);
         } else {
@@ -361,17 +449,14 @@ public class DefaultConnectorParserService implements ConnectorParserService {
             fileManagerService.unZip(connectorDirectory + FILE_SEPARATOR + WSDL_ZIP,
                     connectorDirectory.toString(), "");
         }
-        // Dado que los conectores de la verión anterior no tienen xsd, hay que
+        // Dado que los servicios de la versión anterior no tienen xsd, hay que
         // comentar los imports
-        final Node versionNode = xPathParserService.getXPathResultNode(CONNECTOR_VERSION,
+        final Node versionNode = xPathParserService.getXPathResultNode(ROOT_PATH + CONNECTOR_VERSION,
                 nodeSource);
         if (PGE_OLD_VERSION.equals(xPathParserService.getStringNodeValue(versionNode))) {
             final Path wsdlPath = fileManagerService.getConnectorWSDL(connector.getId(), null);
             wsdlParserService.commentXSDImportTags(wsdlPath);
         }
-        // Se comenta por error---> revisar la comparación del type
-        // Valido algunos campos del conector a la hora de importarlo
-        // validateFieldsImportedConnector(connector);
         // END WSDL
     }
 
@@ -379,10 +464,10 @@ public class DefaultConnectorParserService implements ConnectorParserService {
         String type = xPathParserService.getStringNodeValue(typeNode);
         switch (type) {
             case "Prod":
-                type = "Produccion";
+                type = EnvironmentType.PRODUCTION.getName();
                 break;
             case "Test":
-                type = "Testing";
+                type = EnvironmentType.TESTING.getName();
                 break;
             default:
                 break;
@@ -432,45 +517,29 @@ public class DefaultConnectorParserService implements ConnectorParserService {
     private List<RoleOperation> getRoleOperationsList(final List<Node> operationsList) {
         final List<RoleOperation> roleOperations = new ArrayList<>();
         for (final Node node : operationsList) {
-            final Node roleNode = xPathParserService.getNodeByName(node, "role");
-            String role = "";
-            if (roleNode != null) {
-                role = roleNode.getTextContent();
-            }
+            final Node roleNode = xPathParserService.getNodeByName(node, CONNECTOR_ROLE);
+            String role = roleNode != null ? roleNode.getTextContent() : "";
 
-            final Node operationInputNode = xPathParserService.getNodeByName(node, "operation");
-            String operationInputName = "";
-            if (operationInputNode != null) {
-                operationInputName = operationInputNode.getTextContent();
-            }
+            final Node operationInputNode = xPathParserService.getNodeByName(node, CONNECTOR_OPERATION);
+            String operationInputName = operationInputNode != null ? operationInputNode.getTextContent() : "";
 
-            final Node operationNode = xPathParserService.getNodeByName(node, "operationFromWSDL");
-            String operationName = "";
-            if (operationNode != null) {
-                operationName = operationNode.getTextContent();
-            }
+            final Node operationNode = xPathParserService.getNodeByName(node, CONNECTOR_OPERATION_FROM_WSDL);
+            String operationName = operationNode != null ? operationNode.getTextContent() : "";
 
-            final Node wsaActionNode = xPathParserService.getNodeByName(node, "wsaAction");
-            String wsaAction = "";
-            if (wsaActionNode != null) {
-                wsaAction = wsaActionNode.getTextContent();
-            }
+            final Node wsaActionNode = xPathParserService.getNodeByName(node, CONNECTOR_WSA_ACTION);
+            String wsaAction = wsaActionNode != null ? wsaActionNode.getTextContent() : "";
 
-            final Node soapVersionNode = xPathParserService.getNodeByName(node, "soapVersion");
-            String soapVersion = "1.1";
-            if (soapVersionNode != null) {
-                soapVersion = soapVersionNode.getTextContent();
-            }
+            final Node soapVersionNode = xPathParserService.getNodeByName(node, CONNECTOR_SOAP_VERSION);
+            String soapVersion = soapVersionNode != null ? soapVersionNode.getTextContent() : SoapVersion.V1_1.getName();
 
-            roleOperations
-                    .add(new RoleOperation(role, operationInputName, operationName, wsaAction, soapVersion));
+            roleOperations.add(new RoleOperation(role, operationInputName, operationName, wsaAction, soapVersion));
         }
         return roleOperations;
     }
 
     public void decodeBase64ToFile(final String base64, final String outputPath)
             throws ConnectorException {
-        byte[] data = null;
+        byte[] data;
         try {
             data = Base64.getDecoder().decode(base64.getBytes());
         } catch (final IllegalArgumentException e) {
@@ -506,41 +575,5 @@ public class DefaultConnectorParserService implements ConnectorParserService {
             throw new ConnectorException(errorMessage, e);
         }
     }
-
-    // private void validateFieldsImportedConnector(final Connector connector)
-    // throws ConnectorException
-    // {
-    // if (connector.getType() == null || connector.getType().equals(""))
-    // {
-    // final String errorMessage = "ERROR: el tipo del conector se encuentra
-    // vacio.";
-    // LOGGER.error(errorMessage);
-    // throw new ConnectorException(errorMessage);
-    // }
-    // else if (!connector.getType().equals(ConnectorType.PRODUCCION) &&
-    // !connector.getType().equals(ConnectorType.TEST))
-    // {
-    // final String errorMessage = "ERROR: el tipo del conector no se encuentra
-    // permitido.";
-    // LOGGER.error(errorMessage);
-    // throw new ConnectorException(errorMessage);
-    // }
-    //
-    // if (connector.getUrl() == null || connector.getUrl().equals(""))
-    // {
-    // final String errorMessage = "ERROR: la url del conector se encuentra
-    // vacia.";
-    // LOGGER.error(errorMessage);
-    // throw new ConnectorException(errorMessage);
-    // }
-    //
-    // if (connector.getPath() == null || connector.getPath().equals(""))
-    // {
-    // final String errorMessage = "ERROR: el path del conector se encuentra
-    // vacio.";
-    // LOGGER.error(errorMessage);
-    // throw new ConnectorException(errorMessage);
-    // }
-    // }
 
 }

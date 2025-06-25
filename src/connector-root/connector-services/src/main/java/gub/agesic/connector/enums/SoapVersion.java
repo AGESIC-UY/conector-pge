@@ -6,7 +6,7 @@ public enum SoapVersion {
     MULTIPLE("multiple"),
     UNDEFINED("undefined");
 
-    private String name;
+    private final String name;
 
     SoapVersion(String name) {
         this.name = name;

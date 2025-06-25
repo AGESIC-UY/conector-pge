@@ -52,7 +52,7 @@ public class ConnectorErrorHandler {
             final HttpServerErrorException exception = (HttpServerErrorException) originalException;
             soapFault = exception.getResponseBodyAsString();
             if (soapFault.isEmpty()) {
-                soapFault = buildSOAPFault(SERVER_CODE, INTERNAL_SERVER_ERROR);
+                soapFault = buildSOAPFault(INTERNAL_SERVER_ERROR);
             }
         }
         /*
@@ -60,28 +60,28 @@ public class ConnectorErrorHandler {
          */
         else if (originalException instanceof UnknownHostException
                 || originalException instanceof ConnectException) {
-            soapFault = buildSOAPFault(SERVER_CODE, CONNECTION_ERROR);
+            soapFault = buildSOAPFault(CONNECTION_ERROR);
         }
         /*
          * Handle timeout errors. Service did not send a response in the
          * specified timeout
          */
         else if (originalException instanceof SocketTimeoutException) {
-            soapFault = buildSOAPFault(SERVER_CODE, TIMEOUT_ERROR);
+            soapFault = buildSOAPFault(TIMEOUT_ERROR);
         }
         /*
          * Connector specific exceptions
          */
         else if (originalException instanceof ConnectorException) {
             final ConnectorException connectorException = (ConnectorException) originalException;
-            soapFault = buildSOAPFault(SERVER_CODE, connectorException.getMessage());
+            soapFault = buildSOAPFault(connectorException.getMessage());
         }
         /*
          * Unknown errors are handled here
          */
         else {
             LOGGER.error("Error desconocido procesando mensaje soap", originalException);
-            soapFault = buildSOAPFault(SERVER_CODE, INTERNAL_SERVER_ERROR);
+            soapFault = buildSOAPFault(originalException.getMessage() == null ? INTERNAL_SERVER_ERROR : originalException.getMessage());
         }
 
         return MessageBuilder.withPayload(soapFault)
@@ -89,13 +89,13 @@ public class ConnectorErrorHandler {
                 .setHeader(HttpHeaders.STATUS_CODE, HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    private String buildSOAPFault(final String code, final String errorMessage) {
+    private String buildSOAPFault(final String errorMessage) {
         final MessageFactory messageFactory;
         try {
-            messageFactory = MessageFactory.newInstance(SOAPConstants.SOAP_1_1_PROTOCOL);
+            messageFactory = MessageFactory.newInstance(SOAPConstants.SOAP_1_1_PROTOCOL);// TODO: Check this
             final SOAPMessage message = messageFactory.createMessage();
             final SOAPFault soapFault = message.getSOAPBody().addFault();
-            final QName faultName = new QName(SOAPConstants.URI_NS_SOAP_ENVELOPE, code);
+            final QName faultName = new QName(SOAPConstants.URI_NS_SOAP_ENVELOPE, SERVER_CODE);
 
             soapFault.setFaultCode(faultName);
             soapFault.setFaultActor(ACTOR);
@@ -104,11 +104,11 @@ public class ConnectorErrorHandler {
             final ByteArrayOutputStream out = new ByteArrayOutputStream();
             message.writeTo(out);
 
-            return new String(out.toString());
+            return out.toString();
 
         } catch (final SOAPException | IOException e) {
             // Si entra aca es raro
-            LOGGER.error("Error interno al construir soap fault.");
+            LOGGER.error("Error interno al construir soap fault.", e);
             return "";
         }
     }

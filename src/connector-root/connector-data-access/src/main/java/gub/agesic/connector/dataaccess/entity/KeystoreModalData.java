@@ -14,7 +14,7 @@ public class KeystoreModalData {
 
     public List<Certificado> getCertificados() {
         if (certificados == null || certificados.isEmpty()) {
-            certificados = new ArrayList<Certificado>();
+            certificados = new ArrayList<>();
         }
         return certificados;
     }

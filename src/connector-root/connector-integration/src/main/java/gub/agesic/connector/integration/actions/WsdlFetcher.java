@@ -35,7 +35,7 @@ public class WsdlFetcher {
 
         } catch (Exception e ) {
             logger.error(e);
-            throw new MessageProcessorException(e.getMessage());
+            throw new MessageProcessorException(e.getMessage(), e);
         }
     }
 

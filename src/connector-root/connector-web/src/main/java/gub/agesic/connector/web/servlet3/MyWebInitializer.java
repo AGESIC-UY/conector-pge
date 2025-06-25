@@ -54,6 +54,5 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
                 MAX_UPLOAD_SIZE_IN_MB / 2);
 
         registration.setMultipartConfig(multipartConfigElement);
-
     }
 }

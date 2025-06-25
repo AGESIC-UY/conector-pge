@@ -68,11 +68,13 @@
     -->
     <Connector port="9700" protocol="HTTP/1.1"
                connectionTimeout="20000"
-               redirectPort="8443" />
+               redirectPort="8443" 
+               address="0.0.0.0" />
 
 	<Connector port="9800" protocol="HTTP/1.1"
                connectionTimeout="20000"
-               redirectPort="8553" />
+               redirectPort="8553" 
+               address="0.0.0.0" />
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -146,7 +148,7 @@
                resourceName="UserDatabase"/>
       </Realm>
 
-      <Host name="localhost"  appBase="webapps"
+      <Host name="conector2-conector-pdi-test.apps.ocp-te.paas.red.uy"  appBase="webapps"
             unpackWARs="true" autoDeploy="true">
 
         <!-- SingleSignOn valve, share authentication between web applications

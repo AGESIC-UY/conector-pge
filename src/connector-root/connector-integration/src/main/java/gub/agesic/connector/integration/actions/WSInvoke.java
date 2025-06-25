@@ -1,28 +1,21 @@
 package gub.agesic.connector.integration.actions;
 
+import gub.agesic.connector.dataaccess.entity.Connector;
+import org.apache.log4j.Logger;
+import org.springframework.messaging.Message;
+import org.springframework.stereotype.Service;
+import org.w3c.dom.Element;
+import uy.gub.agesic.pge.beans.SAMLAssertion;
+import uy.gub.agesic.pge.opensaml.OpenSamlBootstrap;
+
+import javax.annotation.PostConstruct;
+import javax.xml.namespace.QName;
+import javax.xml.soap.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
-
-import javax.annotation.PostConstruct;
-import javax.xml.namespace.QName;
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.SOAPElement;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPFactory;
-import javax.xml.soap.SOAPHeader;
-import javax.xml.soap.SOAPMessage;
-
-import org.apache.log4j.Logger;
-import org.springframework.messaging.Message;
-import org.springframework.stereotype.Service;
-import org.w3c.dom.Element;
-
-import gub.agesic.connector.dataaccess.entity.Connector;
-import uy.gub.agesic.pge.beans.SAMLAssertion;
-import uy.gub.agesic.pge.opensaml.OpenSamlBootstrap;
 
 @Service
 public class WSInvoke {
@@ -43,26 +36,26 @@ public class WSInvoke {
         if (logger.isDebugEnabled()) {
             final ByteArrayOutputStream out = new ByteArrayOutputStream();
             request.writeTo(out);
-            logger.debug("Starting to add soap headers: " + new String(out.toString()));
+            logger.debug("Starting to add soap headers: " + out.toString());
         }
         insertTokenOnMessage(token, request, connector);
         insertWsAddressingOnMessage(request, connector);
         if (logger.isDebugEnabled()) {
             final ByteArrayOutputStream out = new ByteArrayOutputStream();
             request.writeTo(out);
-            logger.debug("Finished adding soap headers: " + new String(out.toString()));
+            logger.debug("Finished adding soap headers: " + out.toString());
         }
 
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         request.writeTo(out);
 
-        return new String(out.toString());
+        return out.toString();
     }
 
     private void insertTokenOnMessage(final SAMLAssertion samlAssertion,
-            final SOAPMessage soapMessage, final Connector connector) {
+                                      final SOAPMessage soapMessage, final Connector connector) {
 
-        final Element elemToken = samlAssertion.getDOM();
+        final Element elemToken = samlAssertion.getDOM(connector.getSamlVersion());
 
         try {
             SOAPHeader header = soapMessage.getSOAPHeader();
@@ -74,7 +67,7 @@ public class WSInvoke {
                     "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
                     "Security", "wsse");
             final Iterator iter = header.getChildElements(securityName);
-            SOAPElement security = null;
+            SOAPElement security;
             if (iter.hasNext()) {
                 security = (SOAPElement) iter.next();
             } else {
@@ -113,7 +106,7 @@ public class WSInvoke {
     }
 
     private void insertWsAddressingOnMessage(final SOAPMessage soapMessage,
-            final Connector connector) throws SOAPException {
+                                             final Connector connector) throws SOAPException {
 
         SOAPHeader header = soapMessage.getSOAPHeader();
         if (header == null) {

@@ -1,27 +1,29 @@
 package gub.agesic.connector.dataaccess.repository;
 
+import gub.agesic.connector.dataaccess.enums.EnvironmentType;
+
 /**
  * Created by adriancur on 23/11/17.
  */
 public class ConnectorTypeHolder {
 
-    private ConnectorType connectorType;
     private final boolean sslEnabled;
+    private EnvironmentType connectorType;
 
-    public ConnectorType getConnectorType() {
+    public ConnectorTypeHolder(final EnvironmentType connectorType, final boolean sslEnabled) {
+        this.connectorType = connectorType;
+        this.sslEnabled = sslEnabled;
+    }
+
+    public EnvironmentType getConnectorType() {
         return connectorType;
     }
 
-    public void setConnectorType(final ConnectorType connectorType) {
+    public void setConnectorType(final EnvironmentType connectorType) {
         this.connectorType = connectorType;
     }
 
     public boolean isSslEnabled() {
         return sslEnabled;
-    }
-
-    public ConnectorTypeHolder(final ConnectorType connectorType, final boolean sslEnabled) {
-        this.connectorType = connectorType;
-        this.sslEnabled = sslEnabled;
     }
 }

@@ -10,6 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href='<c:url value="/resources/images/favicon.ico" />'     type="image/x-icon">
+    <link rel="icon" href='<c:url value="/resources/images/favicon.ico" />' type="image/x-icon">
+
     <!-- CSS -->
     <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss"/>
     <spring:url value="/resources/stylesheet/theme.css" var="themeCss"/>
@@ -37,19 +40,14 @@
     <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs"/>
     <spring:url value="/resources/core/js/connector.js" var="connectorJs"/>
     <spring:url value="/resources/core/js/smartWizard.js" var="smartwizardJs"/>
-    <script src="${jQueryMinJs}"></script>
-    <script src="${bootstrapJs}"></script>
-    <script src="${connectorJs}"></script>
-    <script src="${smartwizardJs}"></script>
+    <script src="${jQueryMinJs}" type="text/javascript"></script>
+    <script src="${bootstrapJs}" type="text/javascript"></script>
+    <script src="${connectorJs}" type="text/javascript"></script>
+    <script src="${smartwizardJs}" type="text/javascript"></script>
     <!-- SmartWizard -->
     <spring:url value="/resources/core/js/jquery.smartWizard.js" var="jquerySmartWizard"/>
-    <script src="${jquerySmartWizard}"></script>
+    <script src="${jquerySmartWizard}" type="text/javascript"></script>
     <!-- MDBootstrap Datatables  -->
     <spring:url value="/resources/core/js/datatables.min.js" var="datatablesJs"/>
-    <script src="${datatablesJs}"></script>
-
+    <script src="${datatablesJs}" type="text/javascript"></script>
 </head>
-<body>
-
-</body>
-</html>
